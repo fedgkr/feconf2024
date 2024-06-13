@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import {styled} from "@pigment-css/react";
 
 export default function Home() {
   return (
@@ -70,9 +71,9 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2>
+          <Title>
             Templates <span>-&gt;</span>
-          </h2>
+          </Title>
           <p>Explore starter templates for Next.js.</p>
         </a>
 
@@ -93,3 +94,7 @@ export default function Home() {
     </main>
   );
 }
+
+const Title = styled.h2`
+  font-size: 24px;
+`;
