@@ -100,8 +100,11 @@ const Camera: FC = () => {
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       const rect = gl.domElement.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-      const y = (-(event.clientY - rect.top) / rect.height) * 2 + 1;
+      let x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      let y = (-(event.clientY - rect.top) / rect.height) * 2 + 1;
+
+      x *= 0.03;
+      y *= 0.03;
 
       camera.position.x = MathUtils.lerp(camera.position.x, x, 0.1);
       camera.position.y = MathUtils.lerp(camera.position.y, y, 0.1);

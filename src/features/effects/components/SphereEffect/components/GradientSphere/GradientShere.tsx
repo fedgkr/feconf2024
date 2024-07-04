@@ -260,7 +260,6 @@ const GradientSphere = forwardRef(() => {
     const orthoCamera = camera as OrthographicCamera;
     if (!meshRef.current || !orthoCamera.right) return;
 
-
     const lightRGB = [255, 246, 206];
     const scale = Math.max(1, 1 + scrollRef.current / 300);
     lightRGB.forEach((color, i) => {
@@ -282,12 +281,31 @@ const GradientSphere = forwardRef(() => {
     const targetRad = MathUtils.degToRad(
       degMap[sceneIndex] - scrollRef.current / 50
     );
+    let scrollTop = scrollRef.current!;
 
-    meshRef.current!.position.y = MathUtils.lerp(
-      meshRef.current!.position.y,
-      Math.min(10, -6 + scrollRef.current! / 200),
-      0.05
-    );
+
+    const secondSection = 1134;
+    const thirdSection = 1369;
+
+    if (scrollTop > secondSection) {
+      scrollTop += (scrollTop - secondSection) * 1.8;
+    }
+    const nextY = Math.min(20, -6 + scrollTop / 200);
+
+    const ms = 5 * Math.min(1.3, 1 + (scale - 1) / 12);
+
+    console.log(ms);
+
+    meshRef.current!.scale.x = ms;
+    meshRef.current!.scale.y = ms;
+    meshRef.current!.scale.z = ms;
+
+    meshRef.current!.position.y = nextY;
+    // MathUtils.lerp(
+    //   meshRef.current!.position.y,
+    //   nextY,
+    //   0.15
+    // );
     meshRef.current.rotation.x = MathUtils.lerp(
       meshRef.current.rotation.x,
       targetRad,
@@ -310,7 +328,7 @@ const GradientSphere = forwardRef(() => {
       <ambientLight ref={lightRef} color="#FFF6CE" intensity={3} />
       <mesh
         ref={meshRef}
-        position={[0, -6, 0]}
+        position={[0, 0, -60]}
         visible={glowState.visible}
         scale={5}
       >
