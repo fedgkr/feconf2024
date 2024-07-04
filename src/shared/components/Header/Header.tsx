@@ -6,6 +6,7 @@ import { styled } from '@pigment-css/react';
 import { Logo } from './components';
 import { Canvas } from '@react-three/fiber';
 import { Background } from '@/app/components/SponsorSection/comopnents';
+import { PerspectiveCamera } from '@react-three/drei';
 
 const Header: FC = () => {
   const [opacity, setOpacity] = useState(0);
@@ -20,6 +21,7 @@ const Header: FC = () => {
             <Canvas
               style={{ position: 'absolute', width: '100%', height: '100%' }}
             >
+              <PerspectiveCamera makeDefault position={[0, 0, 10]} />
               <Background />
             </Canvas>
           </CanvasWrap>
@@ -67,7 +69,8 @@ const CanvasWrapWrap = styled.div`
 const CanvasWrap = styled.div`
   position: absolute;
   width: 100%;
-  padding-bottom: 82.1%;
+  //padding-bottom: 82.1%;
+  padding-bottom: 100%;
   z-index: -1;
 `;
 

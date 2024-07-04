@@ -17,7 +17,7 @@ if (typeof window !== 'undefined') {
     .catch(error => console.error('Failed to load dat.GUI:', error));
 }
 
-import backgroundImage from './assets/background.png';
+import backgroundImage from './assets/background4.png';
 
 const vertexShader = `
   vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
@@ -113,11 +113,12 @@ mat4 rotateZ(float angle) {
 
     vUv = uv;
 
-    mat4 rotationMatrix = rotateZ(uRotationSpeed);
+    mat4 rotationMatrix = rotateZ(uRotationSpeed + (uTime * 0.2));
     float noise = snoise(vec3(uv, uTime * uFrequency));
 
     // vec3 pos = vec3(position.x, position.y, position.z + 0.1 * sin(uv.x * uTurbulence) * sin(uv.y * uTurbulence));
     vec3 pos = vec3(position.x, position.y, position.z + noise * uTurbulence);
+    // vec3 pos = vec3(position.x, position.y, position.z);
 
     gl_Position = projectionMatrix * modelViewMatrix * rotationMatrix * vec4(pos, 1.0);
   }
@@ -143,13 +144,13 @@ const Background: FC<Props> = () => {
   const meshRef = useRef<Mesh>(null);
   const shaderRef = useRef<ShaderMaterial>(null);
   const background = useTexture(backgroundImage.src);
-  const textureRatio = 1536 / 1870; // height / width
+  const textureRatio = 1; // height / width
   const [guiState, setGuiState] = useState({
-    meshSize: 50,
-    turbulence: 0.7,
-    frequency: 0.3,
+    meshSize: 35,
+    turbulence: 3,
+    frequency: 0.62,
     rotationSpeed: 0.55,
-    yPosition: 7.5,
+    yPosition: 10.5,
     wireframe: false,
   });
   useFrame(({ clock }) => {
@@ -162,11 +163,11 @@ const Background: FC<Props> = () => {
     const handleChange = () => setGuiState({ ...guiState });
 
     gui.add(guiState, 'wireframe').onChange(handleChange);
-    gui.add(guiState, 'meshSize', 5, 50).onChange(handleChange);
+    gui.add(guiState, 'meshSize', 5, 100).onChange(handleChange);
     gui.add(guiState, 'frequency', 0, 1).onChange(handleChange);
-    gui.add(guiState, 'turbulence', 0, 2).onChange(handleChange);
+    gui.add(guiState, 'turbulence', 0, 5).onChange(handleChange);
     gui.add(guiState, 'yPosition', 0, 15, 0.1).onChange(handleChange);
-    gui.add(guiState, 'rotationSpeed', 0, 5, 0.1).onChange(handleChange);
+    gui.add(guiState, 'rotationSpeed', 0, 10, 0.1).onChange(handleChange);
     // gui.hide();
 
     return () => {
@@ -186,7 +187,7 @@ const Background: FC<Props> = () => {
             {
               opacity: 1,
               transparent: true,
-              // wireframe: true,
+              wireframe: guiState.wireframe,
               uniforms: {
                 uTime: { value: 0 },
                 uFrequency: { value: guiState.frequency },
