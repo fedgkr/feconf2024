@@ -6,6 +6,7 @@ import { Column, SectionTitle } from '@/shared/components';
 import { useIntersection } from '@mantine/hooks';
 
 import { SponsorInfo } from './comopnents';
+import { useAurora } from '@/features/aurora';
 
 const SponsorSection: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,10 +14,10 @@ const SponsorSection: FC = () => {
     root: containerRef.current,
     threshold: 0.2,
   });
+  const { show, hide } = useAurora();
   useEffect(() => {
-    window.showBackground(entry?.isIntersecting);
+    entry?.isIntersecting ? show() : hide();
   }, [entry?.isIntersecting]);
-  console.log('entry?.isIntersecting : ', entry?.isIntersecting);
   return (
     <Section ref={ref}>
       <Column>

@@ -1,32 +1,15 @@
-'use client';
-
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { styled } from '@pigment-css/react';
 
 import { Logo } from './components';
-import { Canvas } from '@react-three/fiber';
-import { Background } from '@/app/components/SponsorSection/comopnents';
-import { PerspectiveCamera } from '@react-three/drei';
 
 const Header: FC = () => {
-  const [opacity, setOpacity] = useState(0);
-  if (typeof window === 'object') {
-    window.showBackground = (value: boolean) => setOpacity(value ? 1 : 0);
-  }
+  // const [opacity, setOpacity] = useState(0);
+  // if (typeof window === 'object') {
+  //   window.showBackground = (value: boolean) => setOpacity(value ? 1 : 0);
+  // }
   return (
     <Container>
-      <CanvasWrapWrap2 style={{ opacity }}>
-        <CanvasWrapWrap>
-          <CanvasWrap>
-            <Canvas
-              style={{ position: 'absolute', width: '100%', height: '100%' }}
-            >
-              <PerspectiveCamera makeDefault position={[0, 0, 10]} />
-              <Background />
-            </Canvas>
-          </CanvasWrap>
-        </CanvasWrapWrap>
-      </CanvasWrapWrap2>
       <Wrap>
         <LogoWrap>
           <Logo />
@@ -49,29 +32,6 @@ const Container = styled.header`
   right: 0;
   background-color: rgba(2, 3, 7, 0.1);
   backdrop-filter: blur(50px);
-`;
-
-const CanvasWrapWrap2 = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  z-index: -1;
-  transition: opacity 1200ms ease-out;
-`;
-
-const CanvasWrapWrap = styled.div`
-  width: 100%;
-`;
-
-const CanvasWrap = styled.div`
-  position: absolute;
-  width: 100%;
-  //padding-bottom: 82.1%;
-  padding-bottom: 100%;
-  z-index: -1;
 `;
 
 const Wrap = styled.div`

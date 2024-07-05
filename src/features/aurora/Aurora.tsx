@@ -1,11 +1,12 @@
 'use client';
 
-import { useTexture } from '@react-three/drei';
-import { useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { PerspectiveCamera, useTexture } from '@react-three/drei';
 import { FC, useEffect, useRef, useState } from 'react';
 import { Mesh, ShaderMaterial, Vector2 } from 'three';
-
 import type { GUI as GUIType } from 'dat.gui';
+
+import auroraImage from './assets/background4.png';
 
 let GUI: typeof GUIType;
 
@@ -16,8 +17,6 @@ if (typeof window !== 'undefined') {
     })
     .catch(error => console.error('Failed to load dat.GUI:', error));
 }
-
-import backgroundImage from './assets/background4.png';
 
 const vertexShader = `
   vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
@@ -139,16 +138,15 @@ const fragmentShader = `
 
 interface Props {}
 
-const Background: FC<Props> = () => {
-  const { camera, gl } = useThree();
+const Aurora: FC<Props> = () => {
   const meshRef = useRef<Mesh>(null);
   const shaderRef = useRef<ShaderMaterial>(null);
-  const background = useTexture(backgroundImage.src);
+  const background = useTexture(auroraImage.src);
   const textureRatio = 1; // height / width
   const [guiState, setGuiState] = useState({
     meshSize: 35,
     turbulence: 3,
-    frequency: 0.62,
+    frequency: 0.32,
     rotationSpeed: 0.55,
     yPosition: 10.5,
     wireframe: false,
@@ -156,25 +154,20 @@ const Background: FC<Props> = () => {
   useFrame(({ clock }) => {
     shaderRef.current!.uniforms.uTime.value = clock.getElapsedTime();
   });
-
   useEffect(() => {
     const gui = new GUI();
-
     const handleChange = () => setGuiState({ ...guiState });
-
     gui.add(guiState, 'wireframe').onChange(handleChange);
     gui.add(guiState, 'meshSize', 5, 100).onChange(handleChange);
     gui.add(guiState, 'frequency', 0, 1).onChange(handleChange);
     gui.add(guiState, 'turbulence', 0, 5).onChange(handleChange);
     gui.add(guiState, 'yPosition', 0, 15, 0.1).onChange(handleChange);
     gui.add(guiState, 'rotationSpeed', 0, 10, 0.1).onChange(handleChange);
-    // gui.hide();
-
+    gui.hide();
     return () => {
       gui.destroy();
     };
-  }, []);
-
+  }, [setGuiState, guiState]);
   return (
     <>
       <mesh ref={meshRef} position={[0, guiState.yPosition, 0]} scale={0.5}>
@@ -211,4 +204,4 @@ const Background: FC<Props> = () => {
   );
 };
 
-export default Background;
+export default Aurora;
