@@ -20,8 +20,6 @@ function Home() {
   );
 }
 
-const Main = styled.main`
-  height: 500vh;
-`;
+const Main = styled.main``;
 
 export default Home;

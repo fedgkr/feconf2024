@@ -41,6 +41,23 @@ const degMap: Record<number, number> = {
   5: 430,
 };
 
+const glowState = {
+  glowIntensity: 3,
+  glowPower: 4,
+  glowColor: '#5d9be5',
+  visible: true,
+  rotatable: true,
+};
+
+const dofState = {
+  focus: 150,
+  aperture: 20,
+  maxblur: 0.03,
+  blurOffset: 3,
+  blurCount: 2,
+  blurOpacity: 1,
+};
+
 const GradientSphere = forwardRef(() => {
   const sceneIndex = 0;
   // const { sceneIndex, position } = useSceneComposer();
@@ -51,7 +68,6 @@ const GradientSphere = forwardRef(() => {
     texture.repeat.setX(-1);
     texture.repeat.setY(1);
   });
-
   const texture2 = useTexture(gradientImage2.src, texture => {
     texture.wrapS = RepeatWrapping;
     texture.wrapT = RepeatWrapping;
@@ -64,43 +80,20 @@ const GradientSphere = forwardRef(() => {
     texture.repeat.setX(-1);
     texture.repeat.setY(1);
   });
-  const textureMap: Record<number, Texture> = {
-    0: texture1,
-    1: texture1,
-    2: texture1,
-    3: texture2,
-    4: texture3,
-    5: texture1,
-  };
-
-  const glowState = {
-    glowIntensity: 3,
-    glowPower: 4,
-    glowColor: '#5d9be5',
-    visible: true,
-    rotatable: true,
-  };
-  //   ,
-  //   {
-  //     glowIntensity: [0, 20, 1],
-  //     glowPower: [0, 20, 1],
-  //     glowColor: 'color',
-  //   }
-  // );
-
-  const dofState = {
-    focus: 150,
-    aperture: 20,
-    maxblur: 0.03,
-    blurOffset: 3,
-    blurCount: 2,
-    blurOpacity: 1,
-  };
-  // );
+  const textureMap: Record<number, Texture> = useMemo(
+    () => ({
+      0: texture1,
+      1: texture1,
+      2: texture1,
+      3: texture2,
+      4: texture3,
+      5: texture1,
+    }),
+    [texture1, texture2, texture3]
+  );
   const scrollRef = useRef<number>(0);
   const processingRef = useRef<Record<string, any>>({});
   const { gl, scene, camera } = useThree();
-
   useEffect(() => {
     if (!gl || !scene || !camera) {
       processingRef.current = {};
@@ -283,7 +276,6 @@ const GradientSphere = forwardRef(() => {
     );
     let scrollTop = scrollRef.current!;
 
-
     const secondSection = 1134;
     const thirdSection = 1369;
 
@@ -293,8 +285,6 @@ const GradientSphere = forwardRef(() => {
     const nextY = Math.min(20, -6 + scrollTop / 200);
 
     const ms = 5 * Math.min(1.3, 1 + (scale - 1) / 12);
-
-    console.log(ms);
 
     meshRef.current!.scale.x = ms;
     meshRef.current!.scale.y = ms;
