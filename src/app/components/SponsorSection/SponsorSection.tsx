@@ -1,25 +1,30 @@
 'use client';
 
-import { FC, useEffect, useRef } from 'react';
+import { FC } from 'react';
 import { styled } from '@pigment-css/react';
 import { Column, SectionTitle } from '@/shared/components';
-import { useIntersection } from '@mantine/hooks';
 
 import { SponsorInfo } from './comopnents';
-import { useAurora } from '@/features/aurora';
+import { motion, Variants } from 'framer-motion';
+import { useIntersection } from '@mantine/hooks';
+
+const container: Variants = {
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.5,
+    },
+  },
+};
 
 const SponsorSection: FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { ref, entry } = useIntersection({
-    root: containerRef.current,
-    threshold: 0.2,
-  });
-  const { show, hide } = useAurora();
-  useEffect(() => {
-    entry?.isIntersecting ? show() : hide();
-  }, [entry?.isIntersecting]);
+  const { ref, entry } = useIntersection();
   return (
-    <Section ref={ref}>
+    <Section
+      ref={ref}
+      animate={entry?.isIntersecting ? 'visible' : 'hidden'}
+      variants={container}
+    >
       <Column>
         <SectionTitle
           title="Sponsors"
@@ -28,16 +33,16 @@ const SponsorSection: FC = () => {
         <SponsorList>
           <SponsorInfo grade="Master" />
           <SponsorInfo grade="Diamond" />
-          <SponsorInfo grade="Gold" />
+          <SponsorInfo grade="Platiunum" />
         </SponsorList>
       </Column>
     </Section>
   );
 };
 
-const Section = styled.section`
+const Section = styled(motion.section)`
   position: relative;
-  padding: 500px 0 685px 0;
+  padding: 500px 0 300px 0;
 `;
 
 const SponsorList = styled.div`

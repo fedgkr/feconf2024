@@ -4,10 +4,6 @@ import { styled } from '@pigment-css/react';
 import { Logo } from './components';
 
 const Header: FC = () => {
-  // const [opacity, setOpacity] = useState(0);
-  // if (typeof window === 'object') {
-  //   window.showBackground = (value: boolean) => setOpacity(value ? 1 : 0);
-  // }
   return (
     <Container>
       <Wrap>
@@ -31,7 +27,8 @@ const Container = styled.header`
   left: 0;
   right: 0;
   background-color: rgba(2, 3, 7, 0.1);
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(10 px);
+  z-index: 1;
 `;
 
 const Wrap = styled.div`
@@ -42,6 +39,9 @@ const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  '@media (min-width: 768px)': {
+    height: 30px;
+  }
 `;
 
 const LogoWrap = styled.div`

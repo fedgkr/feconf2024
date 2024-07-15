@@ -1,12 +1,12 @@
 'use client';
 
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import { PerspectiveCamera, useTexture } from '@react-three/drei';
 import { FC, useEffect, useRef, useState } from 'react';
 import { Mesh, ShaderMaterial, Vector2 } from 'three';
 import type { GUI as GUIType } from 'dat.gui';
 
-import auroraImage from './assets/background4.png';
+import auroraImage from '../assets/background4.png';
 
 let GUI: typeof GUIType;
 
@@ -144,9 +144,10 @@ const Aurora: FC<Props> = () => {
   const background = useTexture(auroraImage.src);
   const textureRatio = 1; // height / width
   const [guiState, setGuiState] = useState({
-    meshSize: 35,
-    turbulence: 3,
-    frequency: 0.32,
+    // meshSize: 35,
+    meshSize: 42,
+    turbulence: 4,
+    frequency: 0.4,
     rotationSpeed: 0.55,
     yPosition: 10.5,
     wireframe: false,
@@ -170,6 +171,7 @@ const Aurora: FC<Props> = () => {
   }, [setGuiState, guiState]);
   return (
     <>
+      <PerspectiveCamera makeDefault position={[0, 0, 10]} />
       <mesh ref={meshRef} position={[0, guiState.yPosition, 0]} scale={0.5}>
         <planeGeometry
           args={[guiState.meshSize, guiState.meshSize * textureRatio, 30, 30]}

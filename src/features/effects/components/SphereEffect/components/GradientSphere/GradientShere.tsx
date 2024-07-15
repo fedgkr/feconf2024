@@ -63,7 +63,6 @@ const GradientSphere = forwardRef(() => {
   // const { sceneIndex, position } = useSceneComposer();
   const meshRef = useRef<Mesh>(null);
   const materialRef = useRef<MeshPhysicalMaterial>(null);
-  const [rotation] = useState(1);
   const texture1 = useTexture(gradientImage1.src, texture => {
     texture.repeat.setX(-1);
     texture.repeat.setY(1);
@@ -80,15 +79,16 @@ const GradientSphere = forwardRef(() => {
     texture.repeat.setX(-1);
     texture.repeat.setY(1);
   });
-  const textureMap: Record<number, Texture> = useMemo(
-    () => ({
-      0: texture1,
-      1: texture1,
-      2: texture1,
-      3: texture2,
-      4: texture3,
-      5: texture1,
-    }),
+  const textureMap = useMemo(
+    () =>
+      new Map<number, Texture>([
+        [0, texture1],
+        [1, texture1],
+        [2, texture1],
+        [3, texture2],
+        [4, texture3],
+        [5, texture1],
+      ]),
     [texture1, texture2, texture3]
   );
   const scrollRef = useRef<number>(0);
@@ -330,7 +330,7 @@ const GradientSphere = forwardRef(() => {
           glowIntensity={glowState.glowIntensity}
           glowPower={glowState.glowPower}
           glowColor={glowColor}
-          map={textureMap[sceneIndex]}
+          map={textureMap.get(sceneIndex)}
           roughness={0.35}
           metalness={0}
           reflectivity={0.2}

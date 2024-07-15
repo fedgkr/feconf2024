@@ -1,74 +1,11 @@
 'use client'; // This is a client component 👈🏽
 
 import { FC, useEffect, useRef } from 'react';
-import { Canvas, useThree } from '@react-three/fiber';
+import { useThree } from '@react-three/fiber';
 import { MathUtils, OrthographicCamera } from 'three';
 import { GradientSphere } from './components';
 
-// import noiseImage from './assets/img_noise.png';
-import { styled } from '@pigment-css/react';
-
-const Main = styled.main`
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-`;
-
-const Container = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background: #16171a;
-`;
-
-const Noise = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 1200ms ease-out,
-    background-color 550ms ease-out;
-`;
-
-interface Props { }
-
-function Cube({
-  color = "white",
-  thickness = 2,
-  roughness = 0.65,
-  envMapIntensity = 1,
-  transmission = 0,
-  metalness = 0,
-  ...props
-}) {
-  const material = {
-    color,
-    thickness,
-    roughness,
-    envMapIntensity,
-    transmission,
-    metalness
-  };
-
-  return (
-    <mesh {...props}>
-      <boxGeometry />
-      <meshPhysicalMaterial {...material} />
-    </mesh>
-  );
-}
-
+interface Props {}
 
 const Camera: FC = () => {
   const { set, camera, gl, scene } = useThree();
@@ -128,28 +65,10 @@ const SphereEffect: FC<Props> = () => {
   //   image.onload = () => setLoaded(true);
   // }, []);
   return (
-    <Main>
-      {/* <Noise
-        style={{
-          opacity: loaded ? 0.4 : 0,
-          backgroundImage: `url(${noiseImage})`,
-          backgroundColor: `rgba(0, 0, 0, ${opacity === 0 ? 0.8 : 0})`,
-        }}
-      /> */}
-      <Container>
-        <Canvas
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            zIndex: 1,
-          }}
-        >
-          <Camera />
-          <GradientSphere />
-        </Canvas>
-      </Container>
-    </Main>
+    <>
+      <Camera />
+      <GradientSphere />
+    </>
   );
 };
 

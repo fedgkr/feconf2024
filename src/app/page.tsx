@@ -1,20 +1,35 @@
+'use client';
+
 import { styled } from '@pigment-css/react';
-import { HeroSection, IntroSection, SponsorSection } from './components';
-import { Header } from '@/shared/components';
-import { AuroraWrap, AuroraProvider } from '@/features/aurora';
-import { SphereEffect } from '@/features/effects/components';
+import {
+  ChildcareSection,
+  CoCSection,
+  ContactSection,
+  FooterSection,
+  HeroIntroWrap,
+  OpenSourceSection,
+  ProgramSection,
+  SponsorSection,
+} from './components';
+import { Header, Footer } from '@/shared/components';
+import { AuroraProvider } from '@/features/aurora/contexts';
+import { EffectWrap } from '@/features/effects/components';
 
 function Home() {
   return (
     <AuroraProvider>
       <Main>
         <Header />
-        <HeroSection />
-        <IntroSection />
+        <HeroIntroWrap />
         <SponsorSection />
-        <SponsorSection />
-        <AuroraWrap />
-        <SphereEffect />
+        <ProgramSection />
+        <ChildcareSection />
+        <CoCSection />
+        <OpenSourceSection />
+        <ContactSection />
+        <FooterSection />
+        <EffectWrap />
+        <Footer />
       </Main>
     </AuroraProvider>
   );

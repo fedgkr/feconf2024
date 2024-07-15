@@ -1,12 +1,12 @@
-import { forwardRef } from 'react';
+import { FC } from 'react';
 import { styled } from '@pigment-css/react';
-import { DataLocation, HeroLogo } from './components';
 import { Column } from '@/shared/components';
+import {
+  DataLocation,
+  HeroLogo,
+} from '@/app/components/HeroSection/components';
 import { motion, Variants } from 'framer-motion';
-
-interface Props {
-  active?: boolean;
-}
+import { useIntersection } from '@mantine/hooks';
 
 const container: Variants = {
   visible: {
@@ -25,59 +25,54 @@ const line: Variants = {
   },
   hidden: {
     opacity: 0,
-    y: '60px',
+    y: '30px',
     transition: { duration: 0.25 },
   },
 };
 
-const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
+const FooterSection: FC = () => {
+  const { ref, entry } = useIntersection();
   return (
     <Section
       ref={ref}
-      animate={active ? 'visible' : 'hidden'}
+      animate={entry?.isIntersecting ? 'visible' : 'hidden'}
       variants={container}
     >
       <Column>
-        <Title variants={line}>뜨거운 열정을 가진 당신이 올해의 주인공</Title>
+        <Title variants={line}>8월 24일 토요일, FEConf와 함께해요</Title>
         <LogoWrap variants={line}>
           <HeroLogo />
         </LogoWrap>
-        <Info variants={line}>
+        <InfoWrap variants={line}>
           <DataLocation />
-        </Info>
+        </InfoWrap>
         <PurchaseButton variants={line}>티켓 구매하기</PurchaseButton>
       </Column>
     </Section>
   );
-});
+};
 
 const Section = styled(motion.section)`
-  padding: 170px 0 420px 0;
+  position: relative;
+  margin-top: 300px;
+  margin-bottom: 450px;
 `;
 
 const Title = styled(motion.h3)`
-  font-size: 28px;
+  color: #fff;
+  text-align: center;
+  font-size: 34px;
+  font-style: normal;
   font-weight: 600;
-  line-height: 1.3;
-  color: #ffffff;
-  opacity: 0;
-  transform: translateY(60px);
+  line-height: 140%; /* 47.6px */
 `;
 
 const LogoWrap = styled(motion.div)`
-  margin-top: 70px;
-  opacity: 0;
-  transform: translateY(60px);
+  margin-top: 50px;
 `;
 
-const Info = styled(motion.div)`
-  margin-top: 70px;
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #ffffff;
-  opacity: 0;
-  transform: translateY(60px);
+const InfoWrap = styled(motion.div)`
+  margin-top: 60px;
 `;
 
 const PurchaseButton = styled(motion.button)`
@@ -95,8 +90,6 @@ const PurchaseButton = styled(motion.button)`
   line-height: 1.3;
   cursor: pointer;
   background-color: white;
-  opacity: 0;
-  transform: translateY(60px);
 `;
 
-export default HeroSection;
+export default FooterSection;
