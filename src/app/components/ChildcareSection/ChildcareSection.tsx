@@ -59,7 +59,7 @@ const ChildcareSection: FC = () => {
 
 const Section = styled(motion.section)`
   position: relative;
-  padding: 300px 0;
+  padding: 150px 0;
 `;
 
 const Info = styled.div`

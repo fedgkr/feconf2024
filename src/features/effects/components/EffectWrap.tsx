@@ -1,27 +1,32 @@
 'use client';
 
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { Canvas as FiberCanvas } from '@react-three/fiber';
 import { styled } from '@pigment-css/react';
 import { useAurora } from '@/features/aurora/contexts';
 import { Aurora } from '@/features/aurora/components';
 import SphereEffect from './SphereEffect';
-import { motion } from 'framer-motion';
 
 interface Props {}
 
 const EffectWrap: FC<PropsWithChildren<Props>> = () => {
   const { visible } = useAurora();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <Container>
-      <FiberCanvas
-        style={{
-          position: 'absolute',
-          transition: 'opacity 1200ms ease-out',
-        }}
-      >
-        {visible ? <Aurora /> : <SphereEffect />}
-      </FiberCanvas>
+      {mounted && (
+        <FiberCanvas
+          style={{
+            position: 'absolute',
+            transition: 'opacity 1200ms ease-out',
+          }}
+        >
+          {visible ? <Aurora /> : <SphereEffect />}
+        </FiberCanvas>
+      )}
     </Container>
   );
 };

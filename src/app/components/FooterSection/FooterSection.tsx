@@ -54,7 +54,7 @@ const FooterSection: FC = () => {
 
 const Section = styled(motion.section)`
   position: relative;
-  margin-top: 300px;
+  margin-top: 150px;
   margin-bottom: 450px;
 `;
 

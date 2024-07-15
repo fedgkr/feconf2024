@@ -27,7 +27,7 @@ const Container = styled.header`
   left: 0;
   right: 0;
   background-color: rgba(2, 3, 7, 0.1);
-  backdrop-filter: blur(10 px);
+  backdrop-filter: blur(10px);
   z-index: 1;
 `;
 

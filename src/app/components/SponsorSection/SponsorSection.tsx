@@ -42,7 +42,7 @@ const SponsorSection: FC = () => {
 
 const Section = styled(motion.section)`
   position: relative;
-  padding: 500px 0 300px 0;
+  padding: 150px 0;
 `;
 
 const SponsorList = styled.div`

@@ -20,7 +20,7 @@ const line: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4 },
+    transition: { duration: 0.6 },
   },
   hidden: {
     opacity: 0,
@@ -60,7 +60,7 @@ const Section = styled(motion.section)`
 `;
 
 const Title = styled(motion.h1)`
-  font-size: 60px;
+  font-size: 54px;
   font-weight: 700;
   line-height: 2;
   color: rgba(1, 3, 8, 0.5);

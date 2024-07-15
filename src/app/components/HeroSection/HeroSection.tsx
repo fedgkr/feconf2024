@@ -21,7 +21,7 @@ const line: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4 },
+    transition: { duration: 0.8 },
   },
   hidden: {
     opacity: 0,
@@ -56,7 +56,7 @@ const Section = styled(motion.section)`
 `;
 
 const Title = styled(motion.h3)`
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 1.3;
   color: #ffffff;
@@ -65,13 +65,13 @@ const Title = styled(motion.h3)`
 `;
 
 const LogoWrap = styled(motion.div)`
-  margin-top: 70px;
+  margin-top: 50px;
   opacity: 0;
   transform: translateY(60px);
 `;
 
 const Info = styled(motion.div)`
-  margin-top: 70px;
+  margin-top: 78px;
   font-size: 22px;
   font-weight: 600;
   line-height: 1.4;

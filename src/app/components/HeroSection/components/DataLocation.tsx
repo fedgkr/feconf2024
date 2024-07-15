@@ -46,7 +46,7 @@ const Text = styled.span`
   color: #fff;
   text-align: center;
   font-variant-numeric: lining-nums tabular-nums;
-  font-size: 22px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: 140%;

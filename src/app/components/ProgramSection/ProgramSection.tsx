@@ -6,6 +6,8 @@ import { ProgramContextProvider } from '@/features/programs/contexts';
 import { motion, Variants } from 'framer-motion';
 import { useIntersection } from '@mantine/hooks';
 
+import timetable from './assets/timetable.jpg';
+
 const container: Variants = {
   visible: {
     transition: {
@@ -46,8 +48,8 @@ const ProgramSection: FC = () => {
           <ProgramHeader />
           <SessionList />
           <DownloadTimetable
-            download
-            href="https://2024.feconf.kr/fe2024_og.png"
+            target="_blank"
+            href={timetable.src}
             variants={line}
           >
             타임 테이블 이미지 다운로드
@@ -60,7 +62,7 @@ const ProgramSection: FC = () => {
 
 const Section = styled(motion.section)`
   position: relative;
-  padding: 300px 0;
+  padding: 150px 0;
 `;
 
 const DownloadTimetable = styled(motion.a)`
