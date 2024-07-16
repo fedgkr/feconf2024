@@ -9,17 +9,11 @@ import { motion, Variants } from 'framer-motion';
 
 interface Props {}
 
-const tabList = [
-  ProgramType.A,
-  ProgramType.B,
-  ProgramType.Sponsor,
-  ProgramType.Lightning,
-];
+const tabList = [ProgramType.A, ProgramType.B, ProgramType.Lightning];
 
 const labelLookup: Record<ProgramType, string> = {
   [ProgramType.A]: 'Speaker A',
   [ProgramType.B]: 'Speaker B',
-  [ProgramType.Sponsor]: 'Sponsor',
   [ProgramType.Lightning]: 'Lightning Talk',
 };
 
