@@ -5,8 +5,6 @@ import { ReactExtendedMaterial } from './ReactExtendedMaterial';
 import { MeshPhysicalMaterialProps, useThree } from '@react-three/fiber';
 import { forwardRef, useEffect } from 'react';
 
-
-
 const RimGlow = {
   name: 'rim-glow',
   uniforms: {

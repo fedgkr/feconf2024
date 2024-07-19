@@ -4,7 +4,7 @@ import { KawaseBlurShader } from './KawaseBlurShader.js'
 import { UniformsUtils, ShaderMaterial, WebGLRenderTarget, Vector2 } from 'three';
 
 class _KawaseBlurPass extends Pass {
-    constructor(uOffset: any, uOpacity: number) {
+    constructor(uOffset, uOpacity) {
         super();
 
         const uniforms = UniformsUtils.clone(KawaseBlurShader.uniforms);
@@ -49,8 +49,8 @@ export class KawaseBlurPass extends Pass {
         return Array.from(this._kernels);
     }
 
-    setBlurs(blurOffset: number, blurCount: number) {
-        const kernels: number[] = [];
+    setBlurs(blurOffset, blurCount) {
+        const kernels = [];
 
         for (let i = 0; i < blurCount; ++i) {
         kernels.push(blurOffset);
@@ -59,11 +59,11 @@ export class KawaseBlurPass extends Pass {
 
         for (const [i, k] of kernels.entries()) {
             const uOffset = new Vector2().setScalar(.5 + k).divide(res);
-            
+
             const pass = this._internalComposer.passes[i];
             if (pass) { // reuse
                 pass.uniforms.uOffset.value = uOffset;
-            
+
                 pass.shouldRenderToSreen = false;
             } else {
                 this._internalComposer.addPass(new _KawaseBlurPass(uOffset, 1));

@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { styled } from '@pigment-css/react';
-import { Column } from '@/shared/components';
+import { Column } from '~/shared/components';
 import {
   DataLocation,
   HeroLogo,
-} from '@/app/components/HeroSection/components';
+} from '~/app/components/HeroSection/components';
 import { motion, Variants } from 'framer-motion';
 import { useIntersection } from '@mantine/hooks';
 

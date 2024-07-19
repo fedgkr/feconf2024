@@ -1,3 +1,4 @@
+/* eslint-disable */
 // https://github.com/ycw/three-kawase-blur
 // https://github.com/mrdoob/three.js/blob/dev/examples/jsm/shaders/HorizontalBlurShader.js
 
@@ -54,7 +55,7 @@ const BlurShader = {
       //   float mul = float(uBlurs[i * 3 + 2]);
 
       //   vec2 pos = vUv + vec2(x, y);
-        
+
       //   if (pos.x <= 0.0 || pos.y <= 0.0 || pos.x >= 1.0 || pos.y >= 1.0) {
       //     continue;
       //   }
@@ -244,6 +245,7 @@ export class BlurPass extends Pass {
   ) {
     this._internalComposer.readBuffer = readBuffer;
     this._internalComposer.writeBuffer = writeBuffer;
+    // @ts-ignore
     this._internalComposer.render(renderer);
   }
 

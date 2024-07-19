@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { styled } from '@pigment-css/react';
-import { Column, SectionTitle } from '@/shared/components';
+import { Column, SectionTitle } from '~/shared/components';
 
 import jaranda from './assets/jaranda.png';
 import { motion, Variants } from 'framer-motion';

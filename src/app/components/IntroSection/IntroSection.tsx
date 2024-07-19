@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { styled } from '@pigment-css/react';
-import { Column } from '@/shared/components';
+import { Column } from '~/shared/components';
 import { motion, Variants } from 'framer-motion';
 
 interface Props {

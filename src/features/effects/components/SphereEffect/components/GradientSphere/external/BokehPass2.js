@@ -1,8 +1,7 @@
-import { WebGLRenderer } from 'three';
 import { BokehPass } from 'three/examples/jsm/Addons.js';
 
 export class BokehPass2 extends BokehPass {
-  render(renderer: WebGLRenderer, writeBuffer, readBuffer/*, deltaTime, maskActive*/) {
+  render(renderer, writeBuffer, readBuffer/*, deltaTime, maskActive*/) {
     // Render depth into texture
     this.scene.overrideMaterial = this.materialDepth;
 

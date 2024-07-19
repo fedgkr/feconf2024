@@ -11,9 +11,9 @@ import {
   ProgramSection,
   SponsorSection,
 } from './components';
-import { Header, Footer } from '@/shared/components';
-import { AuroraProvider } from '@/features/aurora/contexts';
-import { EffectWrap } from '@/features/effects/components';
+import { Header, Footer } from '~/shared/components';
+import { AuroraProvider } from '~/features/aurora/contexts';
+import { EffectWrap } from '~/features/effects/components';
 
 function Home() {
   return (

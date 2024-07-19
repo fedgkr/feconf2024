@@ -1,10 +1,10 @@
 'use client';
 
 import { FC } from 'react';
-import { ProgramType } from '@/features/programs/types';
+import { ProgramType } from '~/features/programs/types';
 import { styled } from '@pigment-css/react';
 import { eq, map } from 'lodash-es';
-import { useProgram } from '@/features/programs/contexts';
+import { useProgram } from '~/features/programs/contexts';
 import { motion, Variants } from 'framer-motion';
 
 interface Props {}

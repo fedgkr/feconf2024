@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { styled } from '@pigment-css/react';
-import { LocationIcon, TimeIcon } from '@/shared/icons';
+import { LocationIcon, TimeIcon } from '~/shared/icons';
 
 const DataLocation: FC = () => {
   return (

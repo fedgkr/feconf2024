@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Column, SectionTitle } from '@/shared/components';
+import { Column, SectionTitle } from '~/shared/components';
 import { styled } from '@pigment-css/react';
 import { ProgramTab, ProgramHeader, SessionList } from './components';
-import { ProgramContextProvider } from '@/features/programs/contexts';
+import { ProgramContextProvider } from '~/features/programs/contexts';
 import { motion, Variants } from 'framer-motion';
 import { useIntersection } from '@mantine/hooks';
 

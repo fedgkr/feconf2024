@@ -7,7 +7,7 @@ import {
   useContext,
   useState,
 } from 'react';
-import { ProgramType } from '@/features/programs/types';
+import { ProgramType } from '~/features/programs/types';
 import { noop } from 'lodash-es';
 
 interface ProgramContextType {

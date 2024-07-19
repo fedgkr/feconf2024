@@ -12,7 +12,7 @@ import {
   Texture,
   Vector2,
 } from 'three';
-import { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
+import { forwardRef, useEffect, useMemo, useRef } from 'react';
 import { useTexture } from '@react-three/drei';
 
 import gradientImage1 from './assets/gradient1.jpg';
@@ -27,7 +27,7 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 // import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { ShaderPass } from 'three/examples/jsm/Addons.js';
 import Color4 from 'three/examples/jsm/renderers/common/Color4.js';
-import { BokehPass2 } from './external/BokehPass2';
+import { BokehPass2 } from './external/BokehPass2.js';
 import { BlurShader } from './external/BlurShader';
 
 const sphereSize = 1;

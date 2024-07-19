@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { styled } from '@pigment-css/react';
 import { DataLocation, HeroLogo } from './components';
-import { Column } from '@/shared/components';
+import { Column, FadeIn } from '~/shared/components';
 import { motion, Variants } from 'framer-motion';
 
 interface Props {
@@ -17,19 +17,6 @@ const container: Variants = {
   },
 };
 
-const line: Variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8 },
-  },
-  hidden: {
-    opacity: 0,
-    y: '60px',
-    transition: { duration: 0.25 },
-  },
-};
-
 const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
   return (
     <Section
@@ -38,14 +25,18 @@ const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
       variants={container}
     >
       <Column>
-        <Title variants={line}>뜨거운 열정을 가진 당신이 올해의 주인공</Title>
-        <LogoWrap variants={line}>
+        <Title y={60} duration={{ in: 0.8 }}>
+          뜨거운 열정을 가진 당신이 올해의 주인공
+        </Title>
+        <LogoWrap y={60} duration={{ in: 0.8 }}>
           <HeroLogo />
         </LogoWrap>
-        <Info variants={line}>
+        <Info y={60} duration={{ in: 0.8 }}>
           <DataLocation />
         </Info>
-        <PurchaseButton variants={line}>티켓 구매하기</PurchaseButton>
+        <PurchaseButton y={60} duration={{ in: 0.8 }}>
+          티켓 구매하기
+        </PurchaseButton>
       </Column>
     </Section>
   );
@@ -55,32 +46,26 @@ const Section = styled(motion.section)`
   padding: 170px 0 420px 0;
 `;
 
-const Title = styled(motion.h3)`
+const Title = styled(FadeIn)`
   font-size: 24px;
   font-weight: 600;
   line-height: 1.3;
   color: #ffffff;
-  opacity: 0;
-  transform: translateY(60px);
 `;
 
-const LogoWrap = styled(motion.div)`
+const LogoWrap = styled(FadeIn)`
   margin-top: 50px;
-  opacity: 0;
-  transform: translateY(60px);
 `;
 
-const Info = styled(motion.div)`
+const Info = styled(FadeIn)`
   margin-top: 78px;
   font-size: 22px;
   font-weight: 600;
   line-height: 1.4;
   color: #ffffff;
-  opacity: 0;
-  transform: translateY(60px);
 `;
 
-const PurchaseButton = styled(motion.button)`
+const PurchaseButton = styled(FadeIn)`
   margin-top: 90px;
   padding: 17px 0;
   border: none;
@@ -95,8 +80,9 @@ const PurchaseButton = styled(motion.button)`
   line-height: 1.3;
   cursor: pointer;
   background-color: white;
-  opacity: 0;
-  transform: translateY(60px);
+  :hover {
+    background-color: #f5f5f5;
+  }
 `;
 
 export default HeroSection;

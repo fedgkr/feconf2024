@@ -3,8 +3,8 @@
 import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { Canvas as FiberCanvas } from '@react-three/fiber';
 import { styled } from '@pigment-css/react';
-import { useAurora } from '@/features/aurora/contexts';
-import { Aurora } from '@/features/aurora/components';
+import { useAurora } from '~/features/aurora/contexts';
+import { Aurora } from '~/features/aurora/components';
 import SphereEffect from './SphereEffect';
 
 interface Props {}

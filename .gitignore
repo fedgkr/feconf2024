@@ -21,3 +21,7 @@ pnpm-debug.log*
 # ignore local settings
 .env.local
 .next
+
+## Panda
+styled-system
+styled-system-studio

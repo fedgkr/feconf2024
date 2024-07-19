@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from 'react';
 import HeroSection from '../HeroSection';
 import IntroSection from '../IntroSection';
 import { useIntersection } from '@mantine/hooks';
-import { useAurora } from '@/features/aurora/contexts';
+import { useAurora } from '~/features/aurora/contexts';
 
 const HeroIntroWrap: FC = () => {
   const { ref: heroRef, entry: heroEntry } = useIntersection<HTMLElement>({
