@@ -90,7 +90,7 @@ const Place = styled('span', {
   },
 });
 
-const TicketButton = styled('span', {
+const TicketButton = styled('a', {
   base: {
     display: 'flex',
     width: '118px',
@@ -103,6 +103,7 @@ const TicketButton = styled('span', {
     fontWeight: '700',
     lineHeight: '130%',
     borderRadius: '6px',
+    cursor: 'pointer',
     backgroundColor: '#fff',
     backdropFilter: 'blur(3px)',
   },

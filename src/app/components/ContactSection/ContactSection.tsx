@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
-import { Column, SectionTitle } from '~/shared/components';
+import { Column, FadeIn, SectionTitle } from '~/shared/components';
 import { useIntersection } from '@mantine/hooks';
 import { motion, Variants } from 'framer-motion';
 
@@ -10,19 +10,6 @@ const container: Variants = {
       staggerChildren: 0.15,
       delayChildren: 0.5,
     },
-  },
-};
-
-const line: Variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4 },
-  },
-  hidden: {
-    opacity: 0,
-    y: '30px',
-    transition: { duration: 0.25 },
   },
 };
 
@@ -37,7 +24,7 @@ const ContactSection: FC = () => {
       <Column>
         <SectionTitle title="Share & Contact" />
         <Wrap>
-          <Item variants={line}>
+          <Item distance={30}>
             <Title>Share</Title>
             <Description>
               국내 최고의 프론트엔드 개발 인사이트를 얻을 수 있는 기회를
@@ -64,7 +51,7 @@ const ContactSection: FC = () => {
               <span>링크 공유하기</span>
             </Link>
           </Item>
-          <Item variants={line}>
+          <Item distance={30}>
             <Title>Contact</Title>
             <Description>
               접근성 관련하여 행사 참석에 도움이 필요하실 경우, 메일로 편하게
@@ -114,7 +101,7 @@ const Wrap = styled('div', {
   },
 });
 
-const Item = styled(motion.div, {
+const Item = styled(FadeIn, {
   base: {
     position: 'relative',
     display: 'flex',
@@ -167,7 +154,7 @@ const Link = styled('a', {
     fontSize: '16px',
     fontStyle: 'normal',
     fontWeight: '700',
-    lineHeight: '130%', /* 20.8px */
+    lineHeight: '130%' /* 20.8px */,
     background: '#fff',
     cursor: 'pointer',
     backdropFilter: 'blur(3.1121041774749756px)',

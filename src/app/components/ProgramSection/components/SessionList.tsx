@@ -3,7 +3,7 @@
 import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
 import { map } from 'lodash-es';
-import { motion, Variants } from 'framer-motion';
+import { FadeIn } from '~/shared/components';
 
 const sessions = [
   {
@@ -38,24 +38,11 @@ const sessions = [
   },
 ];
 
-const line: Variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4 },
-  },
-  hidden: {
-    opacity: 0,
-    y: '30px',
-    transition: { duration: 0.25 },
-  },
-};
-
 const SessionList: FC = () => {
   return (
     <Container>
       {map(sessions, ({ title, speaker, time }, index) => (
-        <Session key={index} variants={line}>
+        <Session key={index} distance={30}>
           <Time>
             <span>{time}</span>
             <TimeIcon>
@@ -81,7 +68,7 @@ const Container = styled('div', {
   },
 });
 
-const Session = styled(motion.div, {
+const Session = styled(FadeIn, {
   base: {
     display: 'flex',
     alignItems: 'flex-start',
@@ -149,10 +136,10 @@ const Info = styled('div', {
 const Title = styled('div', {
   base: {
     color: '#fff',
-    fontSize: '38px',
+    fontSize: '28px',
     fontStyle: 'normal',
     fontWeight: '600',
-    lineHeight: '140%', /* 53.2px */
+    lineHeight: '140%' /* 53.2px */,
   },
 });
 
@@ -163,7 +150,7 @@ const SpeakerInfo = styled('div', {
     fontSize: '18px',
     fontStyle: 'normal',
     fontWeight: '500',
-    lineHeight: '100%', /* 18px */
+    lineHeight: '100%' /* 18px */,
   },
 });
 

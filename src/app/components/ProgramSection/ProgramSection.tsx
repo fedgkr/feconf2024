@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Column, SectionTitle } from '~/shared/components';
+import { Column, FadeIn, SectionTitle } from '~/shared/components';
 import { styled } from '@styled-system/jsx';
 import { ProgramTab, ProgramHeader, SessionList } from './components';
 import { ProgramContextProvider } from '~/features/programs/contexts';
@@ -14,19 +14,6 @@ const container: Variants = {
       staggerChildren: 0.15,
       delayChildren: 0.5,
     },
-  },
-};
-
-const line: Variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4 },
-  },
-  hidden: {
-    opacity: 0,
-    y: '30px',
-    transition: { duration: 0.25 },
   },
 };
 
@@ -47,13 +34,11 @@ const ProgramSection: FC = () => {
           <ProgramTab />
           <ProgramHeader />
           <SessionList />
-          <DownloadTimetable
-            target="_blank"
-            href={timetable.src}
-            variants={line}
-          >
-            타임 테이블 이미지 다운로드
-          </DownloadTimetable>
+          <FadeIn distance={30}>
+            <DownloadTimetable target="_blank" href={timetable.src}>
+              타임 테이블 이미지 다운로드
+            </DownloadTimetable>
+          </FadeIn>
         </Column>
       </Section>
     </ProgramContextProvider>
@@ -67,7 +52,7 @@ const Section = styled(motion.section, {
   },
 });
 
-const DownloadTimetable = styled(motion.a, {
+const DownloadTimetable = styled('a', {
   base: {
     marginTop: '150px',
     marginLeft: 'auto',

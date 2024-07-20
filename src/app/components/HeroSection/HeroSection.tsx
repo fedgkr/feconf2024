@@ -25,16 +25,16 @@ const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
       variants={container}
     >
       <Column>
-        <Title duration={{ in: 0.8 }}>
+        <Title distance={60} duration={{ in: 0.8 }}>
           뜨거운 열정을 가진 당신이 올해의 주인공
         </Title>
-        <LogoWrap duration={{ in: 0.8 }}>
+        <LogoWrap distance={60} duration={{ in: 0.8 }}>
           <HeroLogo />
         </LogoWrap>
-        <Info duration={{ in: 0.8 }}>
+        <Info distance={60} duration={{ in: 0.8 }}>
           <DataLocation />
         </Info>
-        <PurchaseButton duration={{ in: 0.8 }}>
+        <PurchaseButton distance={60} duration={{ in: 0.8 }}>
           티켓 구매하기
         </PurchaseButton>
       </Column>

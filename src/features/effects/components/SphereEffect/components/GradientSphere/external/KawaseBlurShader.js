@@ -1,9 +1,9 @@
 // https://github.com/ycw/three-kawase-blur
 export const KawaseBlurShader = {
   uniforms: {
-    'tDiffuse': { value: null },
-    'uOffset': { value: null },
-    'uOpacity': { value: null },
+    tDiffuse: { value: null },
+    uOffset: { value: null },
+    uOpacity: { value: null },
   },
   vertexShader: /* glsl */ `
       varying vec2 vUv;
@@ -24,5 +24,5 @@ export const KawaseBlurShader = {
         );
         // gl_FragColor.a *= 0.9;
       }
-    `
+    `,
 };

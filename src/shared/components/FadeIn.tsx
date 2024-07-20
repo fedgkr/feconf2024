@@ -3,7 +3,7 @@ import { motion, Variants } from 'framer-motion';
 import { styled } from '@styled-system/jsx';
 
 interface Props {
-  y?: 20 | 30 | 80;
+  distance?: 0 | 20 | 30 | 60 | 80;
   duration?: {
     in?: number;
     out?: number;
@@ -12,7 +12,7 @@ interface Props {
 
 const FadeIn: FC<PropsWithChildren<Props>> = ({
   children,
-  y = 20,
+  distance = 20,
   duration,
   ...props
 }) => {
@@ -25,14 +25,14 @@ const FadeIn: FC<PropsWithChildren<Props>> = ({
       },
       hidden: {
         opacity: 0,
-        y: `${y}px`,
+        y: `${distance}px`,
         transition: { duration: duration?.out ?? 0.25 },
       },
     }),
-    [y, duration]
+    [distance, duration]
   );
   return (
-    <Container y={y} variants={variants} {...props}>
+    <Container y={distance} variants={variants} {...props}>
       {children}
     </Container>
   );
@@ -44,17 +44,23 @@ const Container = styled(motion.div, {
   },
   variants: {
     y: {
+      0: {
+        transform: 'translateY(0)',
+      },
       20: {
-        transform: 'translateY(20px)'
+        transform: 'translateY(20px)',
       },
       30: {
-        transform: 'translateY(30px)'
+        transform: 'translateY(30px)',
+      },
+      60: {
+        transform: 'translateY(60px)',
       },
       80: {
-        transform: 'translateY(80px)'
+        transform: 'translateY(80px)',
       },
-    }
-  }
+    },
+  },
 });
 
 export default FadeIn;

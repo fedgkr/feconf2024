@@ -7,6 +7,7 @@ import { useProgram } from '~/features/programs/contexts';
 import { motion, Variants } from 'framer-motion';
 import { ArrowIcon } from './components';
 import { get, indexOf, lt, size } from 'lodash-es';
+import { FadeIn } from '~/shared/components';
 
 type HeaderInfo = {
   title: string;
@@ -65,11 +66,15 @@ const ProgramHeader: FC = () => {
   };
   return (
     <Container>
-      <Title variants={line}>
-        <span>{title}</span>
-        {icon && <Icon>{icon}</Icon>}
-      </Title>
-      <Description variants={line}>{description}</Description>
+      <FadeIn distance={30}>
+        <Title>
+          <span>{title}</span>
+          {icon && <Icon>{icon}</Icon>}
+        </Title>
+      </FadeIn>
+      <FadeIn distance={30}>
+        <Description>{description}</Description>
+      </FadeIn>
       {hasPrev && (
         <NavWrap
           style={{ left: 30, transform: 'rotate(180deg)' }}
@@ -87,7 +92,7 @@ const ProgramHeader: FC = () => {
   );
 };
 
-const Container = styled(motion.div, {
+const Container = styled(FadeIn, {
   base: {
     position: 'relative',
     width: '100%',
@@ -99,7 +104,7 @@ const Container = styled(motion.div, {
   },
 });
 
-const Title = styled(motion.h2, {
+const Title = styled('h2', {
   base: {
     display: 'flex',
     justifyContent: 'center',
@@ -128,7 +133,7 @@ const Icon = styled('div', {
   },
 });
 
-const Description = styled(motion.p, {
+const Description = styled('p', {
   base: {
     marginTop: '13px',
     color: 'rgba(255, 255, 255, 0.7)',

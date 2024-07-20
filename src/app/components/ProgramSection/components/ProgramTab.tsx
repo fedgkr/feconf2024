@@ -5,7 +5,7 @@ import { ProgramType } from '~/features/programs/types';
 import { styled } from '@styled-system/jsx';
 import { eq, map } from 'lodash-es';
 import { useProgram } from '~/features/programs/contexts';
-import { motion, Variants } from 'framer-motion';
+import { FadeIn } from '~/shared/components';
 
 interface Props {}
 
@@ -17,37 +17,26 @@ const labelLookup: Record<ProgramType, string> = {
   [ProgramType.Lightning]: 'Lightning Talk',
 };
 
-const line: Variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4 },
-  },
-  hidden: {
-    opacity: 0,
-    y: '30px',
-    transition: { duration: 0.25 },
-  },
-};
-
 const ProgramTab: FC<Props> = () => {
   const { currentTab, onChangeTab } = useProgram();
   return (
-    <List variants={line}>
-      {map(tabList, tab => (
-        <Tab
-          key={tab}
-          active={eq(tab, currentTab)}
-          onClick={() => onChangeTab(tab)}
-        >
-          <Button>{labelLookup[tab]}</Button>
-        </Tab>
-      ))}
-    </List>
+    <FadeIn distance={30}>
+      <List>
+        {map(tabList, tab => (
+          <Tab
+            key={tab}
+            active={eq(tab, currentTab)}
+            onClick={() => onChangeTab(tab)}
+          >
+            <Button>{labelLookup[tab]}</Button>
+          </Tab>
+        ))}
+      </List>
+    </FadeIn>
   );
 };
 
-const List = styled(motion.ul, {
+const List = styled('ul', {
   base: {
     marginTop: '100px',
     padding: '10px',

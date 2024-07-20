@@ -1,34 +1,20 @@
 import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
-import { motion, Variants } from 'framer-motion';
+import FadeIn from '~/shared/components/FadeIn';
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const line: Variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4 },
-  },
-  hidden: {
-    opacity: 0,
-    y: '20px',
-    transition: { duration: 0.25 },
-  },
-};
-
 const SectionTitle: FC<Props> = ({ title, description }) => {
   return (
     <Container>
-      <Title variants={line}>{title}</Title>
+      <Title distance={30}>{title}</Title>
       {description && (
-        <Description
-          variants={line}
-          dangerouslySetInnerHTML={{ __html: description }}
-        />
+        <FadeIn distance={30}>
+          <Description dangerouslySetInnerHTML={{ __html: description }} />
+        </FadeIn>
       )}
     </Container>
   );
@@ -38,7 +24,7 @@ const Container = styled('div', {
   base: {},
 });
 
-const Title = styled(motion.h1, {
+const Title = styled(FadeIn, {
   base: {
     color: 'rgba(255, 255, 255, 0.6)',
     fontSize: '24px',
@@ -49,7 +35,7 @@ const Title = styled(motion.h1, {
   },
 });
 
-const Description = styled(motion.p, {
+const Description = styled('p', {
   base: {
     marginTop: '30px',
     maxWidth: '700px',

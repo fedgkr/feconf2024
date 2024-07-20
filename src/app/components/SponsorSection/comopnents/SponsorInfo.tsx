@@ -1,33 +1,20 @@
 import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
-import { motion, Variants } from 'framer-motion';
+import { FadeIn } from '~/shared/components';
 
 interface Props {
   grade: string;
 }
 
-const line: Variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4 },
-  },
-  hidden: {
-    opacity: 0,
-    y: '30px',
-    transition: { duration: 0.25 },
-  },
-};
-
 const SponsorInfo: FC<Props> = ({ grade }) => {
   return (
-    <Container variants={line}>
+    <Container distance={30}>
       <Grade>{grade}</Grade>
     </Container>
   );
 };
 
-const Container = styled(motion.div, {
+const Container = styled(FadeIn, {
   base: {
     display: 'flex',
     width: '920px',
