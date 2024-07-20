@@ -1,62 +1,118 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { styled } from '@styled-system/jsx';
-import { map } from 'lodash-es';
+import { first, map } from 'lodash-es';
 import { FadeIn } from '~/shared/components';
+import { SessionType } from '~/features/programs/types';
+import type { Session } from '~/features/programs/types';
+import { timeLabelLookup } from '~/features/programs/constants';
 
-const sessions = [
+import { SessionModal } from './components';
+
+const sessions: Session[] = [
   {
+    type: SessionType.A,
     title: 'Airbridge SDK팀이 순수한 Unit Testable한 코드를 작성하는 방법',
-    speaker: '후원사',
-    time: '12:50 - 13:00',
+    description:
+      '2023년의 프론트엔드 개발은 사실상 React로 천하 통일되었습니다. 그런데, 우리는 정말 각자의 문제를 푸는 데에 React가 필요해서, 혹은 React가 가장 적절한 도구라서 사용하고 있을까요? 프론트엔드 애플리케이션을 구성하기 위한 다양한 선택지들을 살펴보고, React 안팎의 프론트엔드 생태계를 둘러보면서, 각자의 문제를 푸는 데에 가장 적절한 도구를 찾아가 보는 시간을 가져보려 합니다.',
+    speakers: [
+      {
+        name: '후원사',
+      },
+    ],
+    order: 1,
   },
   {
+    type: SessionType.A,
     title: 'Airbridge SDK팀이 순수한 Unit Testable한 코드를 작성하는 방법',
-    speaker: '후원사',
-    time: '12:50 - 13:00',
+    description:
+      '2023년의 프론트엔드 개발은 사실상 React로 천하 통일되었습니다. 그런데, 우리는 정말 각자의 문제를 푸는 데에 React가 필요해서, 혹은 React가 가장 적절한 도구라서 사용하고 있을까요? 프론트엔드 애플리케이션을 구성하기 위한 다양한 선택지들을 살펴보고, React 안팎의 프론트엔드 생태계를 둘러보면서, 각자의 문제를 푸는 데에 가장 적절한 도구를 찾아가 보는 시간을 가져보려 합니다.',
+    speakers: [
+      {
+        name: '후원사',
+      },
+    ],
+    order: 2,
   },
   {
+    type: SessionType.A,
     title: 'Airbridge SDK팀이 순수한 Unit Testable한 코드를 작성하는 방법',
-    speaker: '후원사',
-    time: '12:50 - 13:00',
+    description:
+      '2023년의 프론트엔드 개발은 사실상 React로 천하 통일되었습니다. 그런데, 우리는 정말 각자의 문제를 푸는 데에 React가 필요해서, 혹은 React가 가장 적절한 도구라서 사용하고 있을까요? 프론트엔드 애플리케이션을 구성하기 위한 다양한 선택지들을 살펴보고, React 안팎의 프론트엔드 생태계를 둘러보면서, 각자의 문제를 푸는 데에 가장 적절한 도구를 찾아가 보는 시간을 가져보려 합니다.',
+    speakers: [
+      {
+        name: '후원사',
+      },
+    ],
+    order: 3,
   },
   {
+    type: SessionType.A,
     title: 'Airbridge SDK팀이 순수한 Unit Testable한 코드를 작성하는 방법',
-    speaker: '후원사',
-    time: '12:50 - 13:00',
+    description:
+      '2023년의 프론트엔드 개발은 사실상 React로 천하 통일되었습니다. 그런데, 우리는 정말 각자의 문제를 푸는 데에 React가 필요해서, 혹은 React가 가장 적절한 도구라서 사용하고 있을까요? 프론트엔드 애플리케이션을 구성하기 위한 다양한 선택지들을 살펴보고, React 안팎의 프론트엔드 생태계를 둘러보면서, 각자의 문제를 푸는 데에 가장 적절한 도구를 찾아가 보는 시간을 가져보려 합니다.',
+    speakers: [
+      {
+        name: '후원사',
+      },
+    ],
+    order: 4,
   },
   {
+    type: SessionType.A,
     title: 'Airbridge SDK팀이 순수한 Unit Testable한 코드를 작성하는 방법',
-    speaker: '후원사',
-    time: '12:50 - 13:00',
-  },
-  {
-    title: 'Airbridge SDK팀이 순수한 Unit Testable한 코드를 작성하는 방법',
-    speaker: '후원사',
-    time: '12:50 - 13:00',
+    description:
+      '2023년의 프론트엔드 개발은 사실상 React로 천하 통일되었습니다. 그런데, 우리는 정말 각자의 문제를 푸는 데에 React가 필요해서, 혹은 React가 가장 적절한 도구라서 사용하고 있을까요? 프론트엔드 애플리케이션을 구성하기 위한 다양한 선택지들을 살펴보고, React 안팎의 프론트엔드 생태계를 둘러보면서, 각자의 문제를 푸는 데에 가장 적절한 도구를 찾아가 보는 시간을 가져보려 합니다.',
+    speakers: [
+      {
+        name: '후원사',
+      },
+    ],
+    order: 5,
   },
 ];
 
 const SessionList: FC = () => {
+  const [currentSession, setCurrentSession] = useState<Session | null>(null);
+  const [open, setOpen] = useState(false);
+  const handleClickSession = (session: Session) => {
+    setCurrentSession(session);
+    setOpen(true);
+  };
+  const handleChangeOpen = (open: boolean) => {
+    if (!open) setOpen(open);
+  };
   return (
     <Container>
-      {map(sessions, ({ title, speaker, time }, index) => (
-        <Session key={index} distance={30}>
-          <Time>
-            <span>{time}</span>
-            <TimeIcon>
-              <IconChild />
-            </TimeIcon>
-          </Time>
-          <SessionInfo>
-            <Info>
-              <Title>{title}</Title>
-              <SpeakerInfo>{speaker}</SpeakerInfo>
-            </Info>
-          </SessionInfo>
-        </Session>
-      ))}
+      {map(sessions, (session, index) => {
+        const { title, speakers, order } = session;
+        return (
+          <Session
+            key={index}
+            distance={30}
+            onClick={() => handleClickSession(session)}
+          >
+            <Time>
+              <span>{timeLabelLookup[order]}</span>
+              <TimeIcon>
+                <IconChild />
+              </TimeIcon>
+            </Time>
+            <SessionInfo>
+              <Info>
+                <Title>{title}</Title>
+                <SpeakerInfo>{first(speakers)?.name}</SpeakerInfo>
+              </Info>
+            </SessionInfo>
+          </Session>
+        );
+      })}
+      <SessionModal
+        session={currentSession}
+        open={open}
+        onChangeOpen={handleChangeOpen}
+      />
     </Container>
   );
 };
@@ -72,6 +128,7 @@ const Session = styled(FadeIn, {
   base: {
     display: 'flex',
     alignItems: 'flex-start',
+    cursor: 'pointer',
     '&:not(:first-child)': {
       marginTop: '60px',
     },

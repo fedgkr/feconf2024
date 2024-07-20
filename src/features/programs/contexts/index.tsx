@@ -7,21 +7,21 @@ import {
   useContext,
   useState,
 } from 'react';
-import { ProgramType } from '~/features/programs/types';
+import { SessionType } from '~/features/programs/types';
 import { noop } from 'lodash-es';
 
 interface ProgramContextType {
-  currentTab: ProgramType;
-  onChangeTab: (tab: ProgramType) => void;
+  currentTab: SessionType;
+  onChangeTab: (tab: SessionType) => void;
 }
 
 const ProgramContext = createContext<ProgramContextType>({
-  currentTab: ProgramType.A,
+  currentTab: SessionType.A,
   onChangeTab: noop,
 });
 
 const ProgramContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [currentTab, setCurrentTab] = useState(ProgramType.A);
+  const [currentTab, setCurrentTab] = useState(SessionType.A);
   return (
     <ProgramContext.Provider value={{ currentTab, onChangeTab: setCurrentTab }}>
       {children}

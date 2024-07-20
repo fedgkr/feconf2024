@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { ProgramType } from '~/features/programs/types';
+import { SessionType } from '~/features/programs/types';
 import { styled } from '@styled-system/jsx';
 import { eq, map } from 'lodash-es';
 import { useProgram } from '~/features/programs/contexts';
@@ -9,12 +9,12 @@ import { FadeIn } from '~/shared/components';
 
 interface Props {}
 
-const tabList = [ProgramType.A, ProgramType.B, ProgramType.Lightning];
+const tabList = [SessionType.A, SessionType.B, SessionType.Lightning];
 
-const labelLookup: Record<ProgramType, string> = {
-  [ProgramType.A]: 'Speaker A',
-  [ProgramType.B]: 'Speaker B',
-  [ProgramType.Lightning]: 'Lightning Talk',
+const labelLookup: Record<SessionType, string> = {
+  [SessionType.A]: 'Speaker A',
+  [SessionType.B]: 'Speaker B',
+  [SessionType.Lightning]: 'Lightning Talk',
 };
 
 const ProgramTab: FC<Props> = () => {

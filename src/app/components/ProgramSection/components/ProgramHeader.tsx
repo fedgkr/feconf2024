@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { ProgramType } from '~/features/programs/types';
+import { SessionType } from '~/features/programs/types';
 import { styled } from '@styled-system/jsx';
 import { useProgram } from '~/features/programs/contexts';
 import { motion, Variants } from 'framer-motion';
@@ -15,22 +15,22 @@ type HeaderInfo = {
   icon?: string;
 };
 
-const programList = [ProgramType.A, ProgramType.B, ProgramType.Lightning];
+const programList = [SessionType.A, SessionType.B, SessionType.Lightning];
 
-const headerLookup: Record<ProgramType, HeaderInfo> = {
-  [ProgramType.A]: {
+const headerLookup: Record<SessionType, HeaderInfo> = {
+  [SessionType.A]: {
     title: 'Speaker',
     description:
       '2024년, 국내 최정상 프론트 엔지니어들의 가장 뜨거웠던 현장 경험을 공유합니다',
     icon: 'A',
   },
-  [ProgramType.B]: {
+  [SessionType.B]: {
     title: 'Speaker',
     description:
       '2024년, 국내 최정상 프론트 엔지니어들의 가장 뜨거웠던 현장 경험을 공유합니다',
     icon: 'B',
   },
-  [ProgramType.Lightning]: {
+  [SessionType.Lightning]: {
     title: 'Lightning Talk',
     description:
       '짧지만 강렬하게 프론트엔드 개발에 대한 진솔한 이야기를 나누며 함께 공감하고 토론하세요',

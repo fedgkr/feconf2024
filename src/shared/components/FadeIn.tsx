@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useMemo } from 'react';
+import { FC, MouseEventHandler, PropsWithChildren, useMemo } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { styled } from '@styled-system/jsx';
 
@@ -8,6 +8,7 @@ interface Props {
     in?: number;
     out?: number;
   };
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
 const FadeIn: FC<PropsWithChildren<Props>> = ({
