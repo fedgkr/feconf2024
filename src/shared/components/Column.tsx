@@ -1,9 +1,11 @@
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+const Column = styled('div', {
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+});
 
 export default Column;

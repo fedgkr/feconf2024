@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { Column } from '~/shared/components';
 import { motion, Variants } from 'framer-motion';
 
@@ -55,46 +55,40 @@ const IntroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
   );
 });
 
-const Section = styled(motion.section)`
-  padding: 180px 0 300px 0;
-`;
+const Section = styled(motion.section, {
+  base: {
+    padding: '180px 0 300px 0',
+  },
+});
 
-const Title = styled(motion.h1)`
-  font-size: 54px;
-  font-weight: 700;
-  line-height: 2;
-  color: rgba(1, 3, 8, 0.5);
-`;
+const Title = styled(motion.h1, {
+  base: {
+    fontSize: '54px',
+    fontWeight: '700',
+    lineHeight: '2',
+    color: 'rgba(1, 3, 8, 0.5)',
+  },
+});
 
-const Description = styled(motion.p)`
-  width: 492px;
-  margin-top: 80px;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.6;
-  color: rgba(1, 3, 8, 0.8);
-  text-align: center;
-`;
+const Description = styled(motion.p, {
+  base: {
+    width: '492px',
+    marginTop: '80px',
+    fontSize: '20px',
+    fontWeight: '600',
+    lineHeight: '1.6',
+    color: 'rgba(1, 3, 8, 0.8)',
+    textAlign: 'center',
+  },
+});
 
-const Highlight = styled.span`
-  position: relative;
-  display: inline-block;
-  line-height: 1;
-  color: black;
-
-  &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    border-radius: 20px;
-    content: '';
-    //background-color: #fff;
-    z-index: -1;
-    transform: translate(-20px, -20px);
-  }
-`;
+const Highlight = styled('span', {
+  base: {
+    position: 'relative',
+    display: 'inline-block',
+    lineHeight: '1',
+    color: 'black',
+  },
+});
 
 export default IntroSection;

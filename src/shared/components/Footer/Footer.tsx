@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 
 import { Logo } from './components';
 
@@ -16,32 +16,40 @@ const Footer: FC = () => {
   );
 };
 
-const Container = styled.footer``;
+const Container = styled('footer', {
+  base: {},
+});
 
-const Wrap = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  padding: 64px 80px 60px 80px;
-  max-width: 1366px;
-  margin: 0 auto;
-`;
+const Wrap = styled('div', {
+  base: {
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '64px 80px 60px 80px',
+    maxWidth: '1366px',
+    margin: '0 auto',
+  },
+});
 
-const LogoWrap = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 14px;
-`;
+const LogoWrap = styled('div', {
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '14px',
+  },
+});
 
-const Rights = styled.span`
-  color: rgba(255, 255, 255, 0.4);
-  text-align: right;
-  font-variant-numeric: lining-nums tabular-nums;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-  letter-spacing: 0.28px;
-`;
+const Rights = styled('span', {
+  base: {
+    color: 'rgba(255, 255, 255, 0.4)',
+    textAlign: 'right',
+    fontVariantNumeric: 'lining-nums tabular-nums',
+    fontSize: '14px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '140%',
+    letterSpacing: '0.28px',
+  },
+});
 
 export default Footer;

@@ -2,7 +2,7 @@
 
 import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { Canvas as FiberCanvas } from '@react-three/fiber';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { useAurora } from '~/features/aurora/contexts';
 import { Aurora } from '~/features/aurora/components';
 import SphereEffect from './SphereEffect';
@@ -31,15 +31,17 @@ const EffectWrap: FC<PropsWithChildren<Props>> = () => {
   );
 };
 
-const Container = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  z-index: -1;
-`;
+const Container = styled('div', {
+  base: {
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    zIndex: '-1',
+  },
+});
 
 export default EffectWrap;

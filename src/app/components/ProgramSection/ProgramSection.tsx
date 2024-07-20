@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Column, SectionTitle } from '~/shared/components';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { ProgramTab, ProgramHeader, SessionList } from './components';
 import { ProgramContextProvider } from '~/features/programs/contexts';
 import { motion, Variants } from 'framer-motion';
@@ -39,7 +39,7 @@ const ProgramSection: FC = () => {
         animate={entry?.isIntersecting ? 'visible' : 'hidden'}
         variants={container}
       >
-        <Column sx={{ maxWidth: 946, margin: '0 auto' }}>
+        <Column style={{ maxWidth: 946, margin: '0 auto' }}>
           <SectionTitle
             title="Program"
             description="FEConf를 빛낼<br/>스피커와 프로그램을 소개합니다"
@@ -60,31 +60,35 @@ const ProgramSection: FC = () => {
   );
 };
 
-const Section = styled(motion.section)`
-  position: relative;
-  padding: 150px 0;
-`;
+const Section = styled(motion.section, {
+  base: {
+    position: 'relative',
+    padding: '150px 0',
+  },
+});
 
-const DownloadTimetable = styled(motion.a)`
-  margin-top: 150px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  width: 350px;
-  height: 64px;
-  padding: 20px 60px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 10px;
-  color: rgba(1, 3, 8, 1);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 130%;
-  cursor: pointer;
-  background: #fff;
-  backdrop-filter: blur(3.1121041774749756px);
-`;
+const DownloadTimetable = styled(motion.a, {
+  base: {
+    marginTop: '150px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    display: 'flex',
+    width: '350px',
+    height: '64px',
+    padding: '20px 60px',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '8px',
+    borderRadius: '10px',
+    color: '#010308',
+    fontSize: '20px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '130%',
+    cursor: 'pointer',
+    background: '#fff',
+    backdropFilter: 'blur(3.1121041774749756px)',
+  },
+});
 
 export default ProgramSection;

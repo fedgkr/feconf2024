@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { Column, SectionTitle } from '~/shared/components';
 
 import { SponsorInfo } from './comopnents';
@@ -40,16 +40,20 @@ const SponsorSection: FC = () => {
   );
 };
 
-const Section = styled(motion.section)`
-  position: relative;
-  padding: 150px 0;
-`;
+const Section = styled(motion.section, {
+  base: {
+    position: 'relative',
+    padding: '150px 0',
+  },
+});
 
-const SponsorList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  margin-top: 100px;
-`;
+const SponsorList = styled('div', {
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '50px',
+    marginTop: '100px',
+  },
+});
 
 export default SponsorSection;

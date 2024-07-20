@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { LocationIcon, TimeIcon } from '~/shared/icons';
 
 const DataLocation: FC = () => {
@@ -21,35 +21,43 @@ const DataLocation: FC = () => {
   );
 };
 
-const Container = styled.div`
-  display: flex;
-  gap: 30px;
-`;
+const Container = styled('div', {
+  base: {
+    display: 'flex',
+    gap: '30px',
+  },
+});
 
-const Wrap = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-`;
+const Wrap = styled('div', {
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '20px',
+  },
+});
 
-const IconWrap = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.3);
-`;
+const IconWrap = styled('div', {
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '34px',
+    height: '34px',
+    borderRadius: '10px',
+    background: 'rgba(255, 255, 255, 0.3)',
+  },
+});
 
-const Text = styled.span`
-  color: #fff;
-  text-align: center;
-  font-variant-numeric: lining-nums tabular-nums;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-`;
+const Text = styled('span', {
+  base: {
+    color: '#fff',
+    textAlign: 'center',
+    fontVariantNumeric: 'lining-nums tabular-nums',
+    fontSize: '20px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '140%',
+  },
+});
 
 export default DataLocation;

@@ -2,11 +2,11 @@
 
 import { FC } from 'react';
 import { ProgramType } from '~/features/programs/types';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { useProgram } from '~/features/programs/contexts';
 import { motion, Variants } from 'framer-motion';
 import { ArrowIcon } from './components';
-import { find, findIndex, get, indexOf, lt, size } from 'lodash-es';
+import { get, indexOf, lt, size } from 'lodash-es';
 
 type HeaderInfo = {
   title: string;
@@ -87,64 +87,74 @@ const ProgramHeader: FC = () => {
   );
 };
 
-const Container = styled(motion.div)`
-  position: relative;
-  width: 100%;
-  margin-top: 50px;
-  padding: 45px 0;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(33, 35, 50, 0.2);
-`;
+const Container = styled(motion.div, {
+  base: {
+    position: 'relative',
+    width: '100%',
+    marginTop: '50px',
+    padding: '45px 0',
+    borderRadius: '20px',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    background: 'rgba(33, 35, 50, 0.2)',
+  },
+});
 
-const Title = styled(motion.h2)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  font-weight: 500;
-  color: #fff;
-  line-height: 1.3;
-  text-align: center;
-`;
+const Title = styled(motion.h2, {
+  base: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '40px',
+    fontWeight: '500',
+    color: '#fff',
+    lineHeight: '1.3',
+    textAlign: 'center',
+  },
+});
 
-const Icon = styled.div`
-  width: 35px;
-  height: 35px;
-  margin-left: 20px;
-  border-radius: 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 18px;
-  font-weight: 400;
-  background-color: rgba(78, 77, 96, 0.3);
-`;
+const Icon = styled('div', {
+  base: {
+    width: '35px',
+    height: '35px',
+    marginLeft: '20px',
+    borderRadius: '10px',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+    fontSize: '18px',
+    fontWeight: '400',
+    backgroundColor: 'rgba(78, 77, 96, 0.3)',
+  },
+});
 
-const Description = styled(motion.p)`
-  margin-top: 13px;
-  color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 160%;
-`;
+const Description = styled(motion.p, {
+  base: {
+    marginTop: '13px',
+    color: 'rgba(255, 255, 255, 0.7)',
+    textAlign: 'center',
+    fontSize: '16px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '160%',
+  },
+});
 
-const NavWrap = styled.button`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  cursor: pointer;
-`;
+const NavWrap = styled('button', {
+  base: {
+    position: 'absolute',
+    top: '0',
+    bottom: '0',
+    width: '35px',
+    height: '35px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 'auto 0',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    borderRadius: '10px',
+    cursor: 'pointer',
+  },
+});
 
 export default ProgramHeader;

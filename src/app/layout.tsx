@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@pigment-css/react/styles.css';
 
 import './reset.css';
 import './globals.css';

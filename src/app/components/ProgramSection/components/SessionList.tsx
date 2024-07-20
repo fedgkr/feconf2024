@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { map } from 'lodash-es';
 import { motion, Variants } from 'framer-motion';
 
@@ -74,79 +74,97 @@ const SessionList: FC = () => {
   );
 };
 
-const Container = styled.div`
-  margin-top: 100px;
-  min-height: 223px;
-`;
-
-const Session = styled(motion.div)({
-  display: 'flex',
-  alignItems: 'flex-start',
-  '&:not(:first-child)': {
-    marginTop: 60,
+const Container = styled('div', {
+  base: {
+    marginTop: '100px',
+    minHeight: '223px',
   },
 });
 
-const Time = styled.div`
-  position: relative;
-  display: flex;
-  flex-grow: 0;
-  color: rgba(255, 255, 255, 0.8);
-  text-align: right;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  margin-top: 58px;
-  margin-right: 84px;
-`;
+const Session = styled(motion.div, {
+  base: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    '&:not(:first-child)': {
+      marginTop: '60px',
+    },
+  },
+});
 
-const TimeIcon = styled.div`
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 50%;
-  right: -27px;
-  width: 15px;
-  height: 15px;
-  font-size: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
-  transform: translate(100%, -50%);
-`;
+const Time = styled('div', {
+  base: {
+    position: 'relative',
+    display: 'flex',
+    flexGrow: 0,
+    color: 'rgba(255, 255, 255, 0.8)',
+    textAlign: 'right',
+    fontSize: '16px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    marginTop: '58px',
+    marginRight: '84px',
+  },
+});
 
-const IconChild = styled.div`
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.8);
-`;
+const TimeIcon = styled('div', {
+  base: {
+    position: 'absolute',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: '50%',
+    right: '-27px',
+    width: '15px',
+    height: '15px',
+    fontSize: 0,
+    borderRadius: '50%',
+    background: 'rgba(255, 255, 255, 0.35)',
+    transform: 'translate(100%, -50%)',
+  },
+});
 
-const SessionInfo = styled.div`
-  flex: 1;
-  border-radius: 20px;
-  background: rgba(78, 77, 96, 0.2);
-`;
+const IconChild = styled('div', {
+  base: {
+    width: '7px',
+    height: '7px',
+    borderRadius: '50%',
+    background: 'rgba(255, 255, 255, 0.8)',
+  },
+});
 
-const Info = styled.div`
-  padding: 30px 180px 45px 40px;
-`;
+const SessionInfo = styled('div', {
+  base: {
+    flex: 1,
+    borderRadius: '20px',
+    background: 'rgba(78, 77, 96, 0.2)',
+  },
+});
 
-const Title = styled.div`
-  color: #fff;
-  font-size: 38px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%; /* 53.2px */
-`;
+const Info = styled('div', {
+  base: {
+    padding: '30px 180px 45px 40px',
+  },
+});
 
-const SpeakerInfo = styled.div`
-  margin-top: 24px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 100%; /* 18px */
-`;
+const Title = styled('div', {
+  base: {
+    color: '#fff',
+    fontSize: '38px',
+    fontStyle: 'normal',
+    fontWeight: '600',
+    lineHeight: '140%', /* 53.2px */
+  },
+});
+
+const SpeakerInfo = styled('div', {
+  base: {
+    marginTop: '24px',
+    color: 'rgba(255, 255, 255, 0.5)',
+    fontSize: '18px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '100%', /* 18px */
+  },
+});
 
 export default SessionList;

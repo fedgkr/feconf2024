@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { Column, SectionTitle } from '~/shared/components';
 import { useIntersection } from '@mantine/hooks';
 import { motion, Variants } from 'framer-motion';
@@ -99,67 +99,79 @@ const ContactSection: FC = () => {
   );
 };
 
-const Section = styled(motion.section)`
-  position: relative;
-  padding: 150px 0;
-`;
+const Section = styled(motion.section, {
+  base: {
+    position: 'relative',
+    padding: '150px 0',
+  },
+});
 
-const Wrap = styled.div`
-  margin-top: 130px;
-  display: flex;
-  gap: 50px;
-`;
+const Wrap = styled('div', {
+  base: {
+    marginTop: '130px',
+    display: 'flex',
+    gap: '50px',
+  },
+});
 
-const Item = styled(motion.div)`
-  position: relative;
-  display: flex;
-  width: 540px;
-  height: 336px;
-  padding: 50px;
-  flex-direction: column;
-  align-items: flex-start;
-  border-radius: 20px;
-  background: rgba(78, 77, 96, 0.2);
-`;
+const Item = styled(motion.div, {
+  base: {
+    position: 'relative',
+    display: 'flex',
+    width: '540px',
+    height: '336px',
+    padding: '50px',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    borderRadius: '20px',
+    background: 'rgba(78, 77, 96, 0.2)',
+  },
+});
 
-const Title = styled.h4`
-  color: #fff;
-  text-align: center;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 130%;
-  letter-spacing: 1.2px;
-`;
+const Title = styled('h4', {
+  base: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: '30px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '130%',
+    letterSpacing: '1.2px',
+  },
+});
 
-const Description = styled.div`
-  margin-top: 20px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 160%;
-`;
+const Description = styled('div', {
+  base: {
+    marginTop: '20px',
+    color: 'rgba(255, 255, 255, 0.8)',
+    fontSize: '14px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '160%',
+  },
+});
 
-const Link = styled.a`
-  position: absolute;
-  right: 52px;
-  bottom: 50px;
-  display: flex;
-  height: 50px;
-  padding: 16px 22px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  gap: 12px;
-  color: #010308;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 130%; /* 20.8px */
-  background: #fff;
-  cursor: pointer;
-  backdrop-filter: blur(3.1121041774749756px);
-`;
+const Link = styled('a', {
+  base: {
+    position: 'absolute',
+    right: '52px',
+    bottom: '50px',
+    display: 'flex',
+    height: '50px',
+    padding: '16px 22px',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '10px',
+    gap: '12px',
+    color: '#010308',
+    fontSize: '16px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '130%', /* 20.8px */
+    background: '#fff',
+    cursor: 'pointer',
+    backdropFilter: 'blur(3.1121041774749756px)',
+  },
+});
 
 export default ContactSection;

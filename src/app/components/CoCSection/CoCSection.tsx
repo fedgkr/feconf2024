@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { Column, SectionTitle } from '~/shared/components';
 import { useIntersection } from '@mantine/hooks';
 import { motion, Variants } from 'framer-motion';
@@ -82,51 +82,63 @@ const CoCSection: FC = () => {
   );
 };
 
-const Section = styled(motion.section)`
-  position: relative;
-  padding: 150px 0;
-`;
+const Section = styled(motion.section, {
+  base: {
+    position: 'relative',
+    padding: '150px 0',
+  },
+});
 
-const CoCList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  margin-top: 130px;
-  gap: 30px;
-`;
+const CoCList = styled('ul', {
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: '130px',
+    gap: '30px',
+  },
+});
 
-const Wrap = styled(motion.li)`
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-`;
+const Wrap = styled(motion.li, {
+  base: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '30px',
+  },
+});
 
-const Item = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  width: 540px;
-  height: 190px;
-  padding: 40px;
-  align-items: flex-start;
-  gap: 10px;
-  flex-shrink: 0;
-  border-radius: 20px;
-  background: rgba(78, 77, 96, 0.2);
-`;
+const Item = styled(motion.div, {
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '540px',
+    height: '190px',
+    padding: '40px',
+    alignItems: 'flex-start',
+    gap: '10px',
+    flexShrink: 0,
+    borderRadius: '20px',
+    background: 'rgba(78, 77, 96, 0.2)',
+  },
+});
 
-const Title = styled.h4`
-  color: #fff;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 140%;
-`;
+const Title = styled('h4', {
+  base: {
+    color: '#fff',
+    fontSize: '16px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '140%',
+  },
+});
 
-const Description = styled.p`
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%;
-`;
+const Description = styled('p', {
+  base: {
+    color: 'rgba(255, 255, 255, 0.8)',
+    fontSize: '14px',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    lineHeight: '160%',
+  },
+});
 
 export default CoCSection;

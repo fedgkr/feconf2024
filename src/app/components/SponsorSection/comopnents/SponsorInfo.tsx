@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { motion, Variants } from 'framer-motion';
 
 interface Props {
@@ -27,21 +27,25 @@ const SponsorInfo: FC<Props> = ({ grade }) => {
   );
 };
 
-const Container = styled(motion.div)`
-  display: flex;
-  width: 920px;
-  height: 230px;
-  justify-content: center;
-  border-radius: 20px;
-  background: rgba(78, 77, 96, 0.2);
-`;
+const Container = styled(motion.div, {
+  base: {
+    display: 'flex',
+    width: '920px',
+    height: '230px',
+    justifyContent: 'center',
+    borderRadius: '20px',
+    background: 'rgba(78, 77, 96, 0.2)',
+  },
+});
 
-const Grade = styled.h2`
-  margin-top: 30px;
-  font-size: 18px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.3);
-  line-height: 1.4;
-`;
+const Grade = styled('h2', {
+  base: {
+    marginTop: '30px',
+    fontSize: '18px',
+    fontWeight: '500',
+    color: 'rgba(255, 255, 255, 0.3)',
+    lineHeight: '1.4',
+  },
+});
 
 export default SponsorInfo;

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { Column, SectionTitle } from '~/shared/components';
 
 import jaranda from './assets/jaranda.png';
@@ -57,55 +57,65 @@ const ChildcareSection: FC = () => {
   );
 };
 
-const Section = styled(motion.section)`
-  position: relative;
-  padding: 150px 0;
-`;
+const Section = styled(motion.section, {
+  base: {
+    position: 'relative',
+    padding: '150px 0',
+  },
+})
 
-const Info = styled.div`
-  margin-top: 100px;
-  display: flex;
-  width: 100%;
-  max-width: 920px;
-  padding: 40px 25px 60px 25px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  border-radius: 20px;
-  background: rgba(78, 77, 96, 0.2);
-  box-shadow: 20px 20px 200px 0px rgba(1, 3, 8, 0.07);
-`;
+const Info = styled('div', {
+  base: {
+    marginTop: '100px',
+    display: 'flex',
+    width: '100%',
+    maxWidth: '920px',
+    padding: '40px 25px 60px 25px',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '40px',
+    borderRadius: '20px',
+    background: 'rgba(78, 77, 96, 0.2)',
+    boxShadow: '20px 20px 200px 0px rgba(1, 3, 8, 0.07)',
+  },
+});
 
-const Image = styled(motion.img)`
-  width: 357px;
-  height: 113px;
-`;
+const Image = styled(motion.img, {
+  base: {
+    width: '357px',
+    height: '113px',
+  },
+});
 
-const Description = styled(motion.p)`
-  color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 160%; /* 28.8px */
-`;
+const Description = styled(motion.p, {
+  base: {
+    color: 'rgba(255, 255, 255, 0.7)',
+    textAlign: 'center',
+    fontSize: '18px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '160%', /* 28.8px */
+  },
+});
 
-const PurchaseButton = styled(motion.button)`
-  margin-top: 80px;
-  padding: 17px 0;
-  border: none;
-  border-radius: 10px;
-  width: 240px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #010308;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.3;
-  cursor: pointer;
-  background-color: white;
-`;
+const PurchaseButton = styled(motion.button, {
+  base: {
+    marginTop: '80px',
+    padding: '17px 0',
+    border: 'none',
+    borderRadius: '10px',
+    width: '240px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: '#010308',
+    fontSize: '20px',
+    fontWeight: '700',
+    lineHeight: '1.3',
+    cursor: 'pointer',
+    backgroundColor: 'white',
+  },
+});
 
 export default ChildcareSection;

@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 import { ProgramType } from '~/features/programs/types';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { eq, map } from 'lodash-es';
 import { useProgram } from '~/features/programs/contexts';
 import { motion, Variants } from 'framer-motion';
@@ -47,39 +47,45 @@ const ProgramTab: FC<Props> = () => {
   );
 };
 
-const List = styled(motion.ul)`
-  margin-top: 100px;
-  padding: 10px;
-  border-radius: 12px;
-  background-color: rgba(78, 77, 96, 0.2);
-`;
-
-const Tab = styled('li')<{ active: boolean }>({
-  display: 'inline-block',
-  padding: '6px 14px',
-  margin: '0 20px',
-  cursor: 'pointer',
-  color: '#fff',
-  fontSize: '18px',
-  fontWeight: 500,
-  lineHeight: '140%',
-  borderRadius: '8px',
-  textAlign: 'center',
-  transition: 'background-color 200ms ease-out',
-  variants: [
-    {
-      props: { active: true },
-      style: { backgroundColor: 'rgba(78, 77, 96, 0.50);' },
-    },
-    {
-      props: { active: false },
-      style: { backgroundColor: 'transparent' },
-    },
-  ],
+const List = styled(motion.ul, {
+  base: {
+    marginTop: '100px',
+    padding: '10px',
+    borderRadius: '12px',
+    backgroundColor: 'rgba(78, 77, 96, 0.2)',
+  },
 });
 
-const Button = styled.button`
-  cursor: pointer;
-`;
+const Tab = styled('li', {
+  base: {
+    display: 'inline-block',
+    padding: '6px 14px',
+    margin: '0 20px',
+    cursor: 'pointer',
+    color: '#fff',
+    fontSize: '18px',
+    fontWeight: 500,
+    lineHeight: '140%',
+    borderRadius: '8px',
+    textAlign: 'center',
+    transition: 'background-color 200ms ease-out',
+  },
+  variants: {
+    active: {
+      true: {
+        backgroundColor: 'rgba(78, 77, 96, 0.50)',
+      },
+      false: {
+        backgroundColor: 'transparent',
+      },
+    },
+  },
+});
+
+const Button = styled('button', {
+  base: {
+    cursor: 'pointer',
+  },
+});
 
 export default ProgramTab;

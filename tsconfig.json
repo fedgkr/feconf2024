@@ -24,11 +24,15 @@
     "paths": {
       "~/*": [
         "./src/*"
+      ],
+      "@styled-system/*": [
+        "./styled-system/*"
       ]
     }
   },
   "include": [
     "next-env.d.ts",
+    "styled-system",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"

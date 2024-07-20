@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -10,7 +11,6 @@
   },
   "dependencies": {
     "@mantine/hooks": "^7.11.1",
-    "@pigment-css/react": "https://pkg.csb.dev/mui/pigment-css/commit/cfe48ebe/@pigment-css/react",
     "@react-three/drei": "^9.105.4",
     "@react-three/fiber": "^8.16.2",
     "@react-three/postprocessing": "^2.16.2",
@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@pandacss/dev": "^0.43.0",
-    "@pigment-css/nextjs-plugin": "https://pkg.csb.dev/mui/pigment-css/commit/cfe48ebe/@pigment-css/nextjs-plugin",
     "@types/dat.gui": "^0.7.13",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^20",

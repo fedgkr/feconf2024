@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { Column } from '~/shared/components';
 import {
   DataLocation,
@@ -52,44 +52,54 @@ const FooterSection: FC = () => {
   );
 };
 
-const Section = styled(motion.section)`
-  position: relative;
-  margin-top: 150px;
-  margin-bottom: 450px;
-`;
+const Section = styled(motion.section, {
+  base: {
+    position: 'relative',
+    marginTop: '150px',
+    marginBottom: '450px',
+  },
+});
 
-const Title = styled(motion.h3)`
-  color: #fff;
-  text-align: center;
-  font-size: 34px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%; /* 47.6px */
-`;
+const Title = styled(motion.h3, {
+  base: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: '34px',
+    fontStyle: 'normal',
+    fontWeight: '600',
+    lineHeight: '140%', /* 47.6px */
+  },
+});
 
-const LogoWrap = styled(motion.div)`
-  margin-top: 50px;
-`;
+const LogoWrap = styled(motion.div, {
+  base: {
+    marginTop: '50px',
+  },
+});
 
-const InfoWrap = styled(motion.div)`
-  margin-top: 60px;
-`;
+const InfoWrap = styled(motion.div, {
+  base: {
+    marginTop: '60px',
+  },
+});
 
-const PurchaseButton = styled(motion.button)`
-  margin-top: 90px;
-  padding: 17px 0;
-  border: none;
-  border-radius: 10px;
-  width: 240px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #010308;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.3;
-  cursor: pointer;
-  background-color: white;
-`;
+const PurchaseButton = styled(motion.button, {
+  base: {
+    marginTop: '90px',
+    padding: '17px 0',
+    border: 'none',
+    borderRadius: '10px',
+    width: '240px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: '#010308',
+    fontSize: '20px',
+    fontWeight: '700',
+    lineHeight: '1.3',
+    cursor: 'pointer',
+    backgroundColor: 'white',
+  },
+});
 
 export default FooterSection;

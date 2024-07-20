@@ -47,4 +47,5 @@ const Logo: FC = () => (
     </defs>
   </svg>
 );
+
 export default Logo;

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { styled } from '@pigment-css/react';
+import { styled } from '@styled-system/jsx';
 import { motion, Variants } from 'framer-motion';
 
 interface Props {
@@ -34,27 +34,33 @@ const SectionTitle: FC<Props> = ({ title, description }) => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled('div', {
+  base: {},
+});
 
-const Title = styled(motion.h1)`
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 130%;
-  text-align: center;
-`;
+const Title = styled(motion.h1, {
+  base: {
+    color: 'rgba(255, 255, 255, 0.6)',
+    fontSize: '24px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '130%',
+    textAlign: 'center',
+  },
+});
 
-const Description = styled(motion.p)`
-  margin-top: 30px;
-  max-width: 700px;
-  color: #fff;
-  text-wrap: wrap;
-  text-align: center;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%;
-`;
+const Description = styled(motion.p, {
+  base: {
+    marginTop: '30px',
+    maxWidth: '700px',
+    color: '#fff',
+    textWrap: 'wrap',
+    textAlign: 'center',
+    fontSize: '48px',
+    fontStyle: 'normal',
+    fontWeight: '600',
+    lineHeight: '140%',
+  },
+});
 
 export default SectionTitle;
