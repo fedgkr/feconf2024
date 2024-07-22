@@ -24,7 +24,10 @@ const DataLocation: FC = () => {
 const Container = styled('div', {
   base: {
     display: 'flex',
-    gap: '30px',
+    gap: {
+      base: '12px',
+      xl: '30px',
+    },
   },
 });
 
@@ -32,7 +35,10 @@ const Wrap = styled('div', {
   base: {
     display: 'flex',
     alignItems: 'center',
-    gap: '20px',
+    gap: {
+      base: '8px',
+      xl: '20px',
+    },
   },
 });
 
@@ -41,10 +47,26 @@ const IconWrap = styled('div', {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '34px',
-    height: '34px',
+    width: {
+      base: '26px',
+      xl: '34px',
+    },
+    height: {
+      base: '26px',
+      xl: '34px',
+    },
     borderRadius: '10px',
     background: 'rgba(255, 255, 255, 0.3)',
+    '& svg': {
+      width: {
+        base: '15px',
+        xl: 'initial',
+      },
+      height: {
+        base: '15px',
+        xl: 'initial',
+      },
+    },
   },
 });
 
@@ -53,9 +75,12 @@ const Text = styled('span', {
     color: '#fff',
     textAlign: 'center',
     fontVariantNumeric: 'lining-nums tabular-nums',
-    fontSize: '20px',
+    fontSize: {
+      base: '14px',
+      xl: '20px',
+    },
     fontStyle: 'normal',
-    fontWeight: '500',
+    fontWeight: '600',
     lineHeight: '140%',
   },
 });

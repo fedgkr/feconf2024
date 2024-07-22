@@ -23,7 +23,7 @@ const ChildcareSection: FC = () => {
       animate={entry?.isIntersecting ? 'visible' : 'hidden'}
       variants={container}
     >
-      <Column>
+      <Column style={{ maxWidth: 946, margin: '0 auto' }}>
         <SectionTitle
           title="Childcare Service"
           description="2024 FEConf는<br/>아이 돌봄 서비스와 함께합니다"
@@ -42,9 +42,9 @@ const ChildcareSection: FC = () => {
             </Description>
           </FadeIn>
         </Info>
-        <FadeIn distance={30}>
+        <ButtonWrap distance={30}>
           <PurchaseButton>아이 돌봄 티켓 구매하기</PurchaseButton>
-        </FadeIn>
+        </ButtonWrap>
       </Column>
     </Section>
   );
@@ -53,22 +53,37 @@ const ChildcareSection: FC = () => {
 const Section = styled(motion.section, {
   base: {
     position: 'relative',
-    padding: '150px 0',
+    padding: {
+      base: '60px 20px',
+      xl: '150px 0',
+    },
   },
 });
 
 const Info = styled(FadeIn, {
   base: {
-    marginTop: '100px',
+    marginTop: {
+      base: '50px',
+      xl: '100px',
+    },
     display: 'flex',
     width: '100%',
     maxWidth: '920px',
-    padding: '40px 25px 60px 25px',
+    padding: {
+      base: '20px 25px 30px 25px',
+      xl: '40px 25px 60px 25px',
+    },
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '40px',
-    borderRadius: '20px',
+    gap: {
+      base: '20px',
+      xl: '40px',
+    },
+    borderRadius: {
+      base: '10px',
+      xl: '20px',
+    },
     background: 'rgba(78, 77, 96, 0.2)',
     boxShadow: '20px 20px 200px 0px rgba(1, 3, 8, 0.07)',
   },
@@ -76,8 +91,14 @@ const Info = styled(FadeIn, {
 
 const Image = styled('img', {
   base: {
-    width: '357px',
-    height: '113px',
+    width: {
+      base: '188px',
+      xl: '357px',
+    },
+    height: {
+      base: '59px',
+      xl: '113px',
+    },
   },
 });
 
@@ -85,29 +106,50 @@ const Description = styled('p', {
   base: {
     color: 'rgba(255, 255, 255, 0.7)',
     textAlign: 'center',
-    fontSize: '18px',
+    fontSize: {
+      base: '14px',
+      xl: '18px',
+    },
     fontStyle: 'normal',
     fontWeight: '500',
     lineHeight: '160%' /* 28.8px */,
   },
 });
 
-const PurchaseButton = styled('button', {
+const PurchaseButton = styled('a', {
   base: {
-    marginTop: '80px',
-    padding: '17px 0',
+    marginTop: {
+      base: '40px',
+      xl: '80px',
+    },
+    padding: {
+      base: '20px 0',
+      xl: '17px 0',
+    },
     border: 'none',
     borderRadius: '10px',
-    width: '240px',
+    width: {
+      base: '100%',
+      xl: '240px',
+    },
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     color: '#010308',
-    fontSize: '20px',
+    fontSize: {
+      base: '16px',
+      xl: '20px',
+    },
     fontWeight: '700',
     lineHeight: '1.3',
     cursor: 'pointer',
     backgroundColor: 'white',
+  },
+});
+
+const ButtonWrap = styled(FadeIn, {
+  base: {
+    width: '100%',
   },
 });
 

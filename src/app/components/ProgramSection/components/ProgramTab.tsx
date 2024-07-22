@@ -38,9 +38,23 @@ const ProgramTab: FC<Props> = () => {
 
 const List = styled('ul', {
   base: {
-    marginTop: '100px',
-    padding: '10px',
-    borderRadius: '12px',
+    display: 'flex',
+    marginTop: {
+      base: '50px',
+      xl: '100px',
+    },
+    padding: {
+      base: '8px',
+      xl: '10px',
+    },
+    borderRadius: {
+      base: '10px',
+      xl: '12px',
+    },
+    gap: {
+      base: '10px',
+      xl: '10px',
+    },
     backgroundColor: 'rgba(78, 77, 96, 0.2)',
   },
 });
@@ -48,14 +62,22 @@ const List = styled('ul', {
 const Tab = styled('li', {
   base: {
     display: 'inline-block',
-    padding: '6px 14px',
-    margin: '0 20px',
+    padding: {
+      base: '4px 8px',
+      xl: '6px 14px',
+    },
     cursor: 'pointer',
     color: '#fff',
-    fontSize: '18px',
+    fontSize: {
+      base: '12px',
+      xl: '18px',
+    },
     fontWeight: 500,
     lineHeight: '140%',
-    borderRadius: '8px',
+    borderRadius: {
+      base: '5px',
+      xl: '8px',
+    },
     textAlign: 'center',
     transition: 'background-color 200ms ease-out',
   },

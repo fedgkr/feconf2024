@@ -36,7 +36,7 @@ const IntroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
         </FadeIn>
         <FadeIn>
           <Title>
-            국내 최대 프론트엔드 컨퍼런스 <Highlight>FEConf</Highlight>
+            국내 최고 컨퍼런스 <Highlight>FEConf</Highlight>
           </Title>
         </FadeIn>
         <FadeIn>
@@ -52,13 +52,19 @@ const IntroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
 
 const Section = styled(motion.section, {
   base: {
-    padding: '180px 0 300px 0',
+    padding: {
+      base: '200px 0 300px 0',
+      xl: '180px 0 300px 0',
+    },
   },
 });
 
 const Title = styled('h1', {
   base: {
-    fontSize: '54px',
+    fontSize: {
+      base: '26px',
+      xl: '54px',
+    },
     fontWeight: '700',
     lineHeight: '2',
     color: 'rgba(1, 3, 8, 0.5)',
@@ -67,9 +73,18 @@ const Title = styled('h1', {
 
 const Description = styled('p', {
   base: {
-    width: '492px',
-    marginTop: '50px',
-    fontSize: '20px',
+    width: {
+      base: '313px',
+      xl: '492px',
+    },
+    marginTop: {
+      base: '60px',
+      xl: '50px',
+    },
+    fontSize: {
+      base: '16px',
+      xl: '20px',
+    },
     fontWeight: '600',
     lineHeight: '1.6',
     color: 'rgba(1, 3, 8, 0.8)',

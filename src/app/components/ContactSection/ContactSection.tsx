@@ -89,15 +89,28 @@ const ContactSection: FC = () => {
 const Section = styled(motion.section, {
   base: {
     position: 'relative',
-    padding: '150px 0',
+    padding: {
+      base: '60px 20px',
+      xl: '150px 0',
+    },
   },
 });
 
 const Wrap = styled('div', {
   base: {
-    marginTop: '130px',
+    marginTop: {
+      base: '50px',
+      xl: '130px',
+    },
     display: 'flex',
-    gap: '50px',
+    flexDirection: {
+      base: 'column',
+      xl: 'row',
+    },
+    gap: {
+      base: '20px',
+      xl: '50px',
+    },
   },
 });
 
@@ -105,12 +118,24 @@ const Item = styled(FadeIn, {
   base: {
     position: 'relative',
     display: 'flex',
-    width: '540px',
-    height: '336px',
-    padding: '50px',
+    width: {
+      base: '100%',
+      xl: '540px',
+    },
+    height: {
+      base: 'initial',
+      xl: '336px',
+    },
+    padding: {
+      base: '20px 20px 100px 20px',
+      xl: '50px',
+    },
     flexDirection: 'column',
     alignItems: 'flex-start',
-    borderRadius: '20px',
+    borderRadius: {
+      base: '10px',
+      xl: '20px',
+    },
     background: 'rgba(78, 77, 96, 0.2)',
   },
 });
@@ -119,7 +144,10 @@ const Title = styled('h4', {
   base: {
     color: '#fff',
     textAlign: 'center',
-    fontSize: '30px',
+    fontSize: {
+      base: '16px',
+      xl: '30px',
+    },
     fontStyle: 'normal',
     fontWeight: '500',
     lineHeight: '130%',
@@ -141,17 +169,34 @@ const Description = styled('div', {
 const Link = styled('a', {
   base: {
     position: 'absolute',
-    right: '52px',
-    bottom: '50px',
+    right: {
+      base: '20px',
+      xl: '52px',
+    },
+    bottom: {
+      base: '30px',
+      xl: '50px',
+    },
     display: 'flex',
-    height: '50px',
-    padding: '16px 22px',
+    padding: {
+      base: '10px 14px',
+      xl: '16px 22px',
+    },
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: '10px',
-    gap: '12px',
+    borderRadius: {
+      base: '5px',
+      xl: '10px',
+    },
+    gap: {
+      base: '6px',
+      xl: '12px',
+    },
     color: '#010308',
-    fontSize: '16px',
+    fontSize: {
+      base: '14px',
+      xl: '16px',
+    },
     fontStyle: 'normal',
     fontWeight: '700',
     lineHeight: '130%' /* 20.8px */,

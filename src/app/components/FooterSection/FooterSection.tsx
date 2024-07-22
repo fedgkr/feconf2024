@@ -39,9 +39,9 @@ const FooterSection: FC = () => {
             <DataLocation />
           </InfoWrap>
         </FadeIn>
-        <FadeIn distance={30}>
+        <ButtonWrap distance={30}>
           <PurchaseButton>티켓 구매하기</PurchaseButton>
-        </FadeIn>
+        </ButtonWrap>
       </Column>
     </Section>
   );
@@ -50,8 +50,14 @@ const FooterSection: FC = () => {
 const Section = styled(motion.section, {
   base: {
     position: 'relative',
-    marginTop: '150px',
+    marginTop: {
+      base: '60px',
+      xl: '150px',
+    },
     marginBottom: '160px',
+    padding: {
+      base: '0 20px',
+    },
   },
 });
 
@@ -59,7 +65,10 @@ const Title = styled('h3', {
   base: {
     color: '#fff',
     textAlign: 'center',
-    fontSize: '34px',
+    fontSize: {
+      base: '18px',
+      xl: '34px',
+    },
     fontStyle: 'normal',
     fontWeight: '600',
     lineHeight: '140%',
@@ -68,23 +77,45 @@ const Title = styled('h3', {
 
 const LogoWrap = styled('div', {
   base: {
-    marginTop: '50px',
+    marginTop: {
+      base: '30px',
+      xl: '50px',
+    },
+    '& > svg': {
+      width: {
+        base: '300px',
+        xl: 'initial',
+      },
+      height: {
+        base: '64px',
+        xl: 'initial',
+      },
+    },
   },
 });
 
 const InfoWrap = styled('div', {
   base: {
-    marginTop: '60px',
+    marginTop: {
+      base: '40px',
+      xl: '60px',
+    },
   },
 });
 
 const PurchaseButton = styled('button', {
   base: {
-    marginTop: '90px',
+    marginTop: {
+      base: '40px',
+      xl: '90px',
+    },
     padding: '17px 0',
     border: 'none',
     borderRadius: '10px',
-    width: '240px',
+    width: {
+      base: '100%',
+      xl: '240px',
+    },
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -94,6 +125,12 @@ const PurchaseButton = styled('button', {
     lineHeight: '1.3',
     cursor: 'pointer',
     backgroundColor: 'white',
+  },
+});
+
+const ButtonWrap = styled(FadeIn, {
+  base: {
+    width: '100%',
   },
 });
 

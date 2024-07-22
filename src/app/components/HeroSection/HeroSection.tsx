@@ -34,9 +34,9 @@ const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
         <Info distance={60} duration={{ in: 0.8 }}>
           <DataLocation />
         </Info>
-        <PurchaseButton distance={60} duration={{ in: 0.8 }}>
-          티켓 구매하기
-        </PurchaseButton>
+        <FadeIn distance={60} duration={{ in: 0.8 }}>
+          <PurchaseButton>티켓 구매하기</PurchaseButton>
+        </FadeIn>
       </Column>
     </Section>
   );
@@ -44,13 +44,19 @@ const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
 
 const Section = styled(motion.section, {
   base: {
-    padding: '170px 0 420px 0',
+    padding: {
+      base: '144px 0 60px 0',
+      xl: '170px 0 420px 0',
+    },
   },
 });
 
 const Title = styled(FadeIn, {
   base: {
-    fontSize: '24px',
+    fontSize: {
+      base: '18px',
+      xl: '24px',
+    },
     fontWeight: '600',
     lineHeight: '1.3',
     color: '#ffffff',
@@ -59,32 +65,56 @@ const Title = styled(FadeIn, {
 
 const LogoWrap = styled(FadeIn, {
   base: {
-    marginTop: '50px',
+    marginTop: {
+      base: '30px',
+      xl: '50px',
+    },
+    '& svg': {
+      width: {
+        base: '300px',
+        xl: 'initial',
+      },
+      height: {
+        base: '64px',
+        xl: 'initial',
+      },
+    },
   },
 });
 
 const Info = styled(FadeIn, {
   base: {
-    marginTop: '78px',
-    fontSize: '22px',
-    fontWeight: '600',
-    lineHeight: '1.4',
-    color: '#ffffff',
+    marginTop: {
+      base: '40px',
+      xl: '78px',
+    },
   },
 });
 
-const PurchaseButton = styled(FadeIn, {
+const PurchaseButton = styled('a', {
   base: {
-    marginTop: '90px',
-    padding: '17px 0',
+    marginTop: {
+      base: '50px',
+      xl: '90px',
+    },
+    padding: {
+      base: '16px 0',
+      xl: '17px 0',
+    },
     border: 'none',
     borderRadius: '10px',
-    width: '240px',
+    width: {
+      base: '300px',
+      xl: '240px',
+    },
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     color: '#010308',
-    fontSize: '20px',
+    fontSize: {
+      base: '16px',
+      xl: '20px',
+    },
     fontWeight: '700',
     lineHeight: '1.3',
     cursor: 'pointer',

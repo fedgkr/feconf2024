@@ -96,9 +96,18 @@ const Container = styled(FadeIn, {
   base: {
     position: 'relative',
     width: '100%',
-    marginTop: '50px',
-    padding: '45px 0',
-    borderRadius: '20px',
+    marginTop: {
+      base: '20px',
+      xl: '50px',
+    },
+    padding: {
+      base: '20px 22px',
+      xl: '45px 0',
+    },
+    borderRadius: {
+      base: '10px',
+      xl: '20px',
+    },
     border: '1px solid rgba(255, 255, 255, 0.1)',
     background: 'rgba(33, 35, 50, 0.2)',
   },
@@ -109,7 +118,10 @@ const Title = styled('h2', {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize: '40px',
+    fontSize: {
+      base: '20px',
+      xl: '40px',
+    },
     fontWeight: '500',
     color: '#fff',
     lineHeight: '1.3',
@@ -119,15 +131,30 @@ const Title = styled('h2', {
 
 const Icon = styled('div', {
   base: {
-    width: '35px',
-    height: '35px',
-    marginLeft: '20px',
-    borderRadius: '10px',
+    width: {
+      base: '24px',
+      xl: '35px',
+    },
+    height: {
+      base: '24px',
+      xl: '35px',
+    },
+    marginLeft: {
+      base: '6px',
+      xl: '20px',
+    },
+    borderRadius: {
+      base: '5px',
+      xl: '10px',
+    },
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
     color: 'white',
-    fontSize: '18px',
+    fontSize: {
+      base: '12px',
+      xl: '18px',
+    },
     fontWeight: '400',
     backgroundColor: 'rgba(78, 77, 96, 0.3)',
   },
@@ -135,10 +162,16 @@ const Icon = styled('div', {
 
 const Description = styled('p', {
   base: {
-    marginTop: '13px',
+    marginTop: {
+      base: '20px',
+      xl: '13px',
+    },
     color: 'rgba(255, 255, 255, 0.7)',
     textAlign: 'center',
-    fontSize: '16px',
+    fontSize: {
+      base: '14px',
+      xl: '16px',
+    },
     fontStyle: 'normal',
     fontWeight: '500',
     lineHeight: '160%',
@@ -152,7 +185,10 @@ const NavWrap = styled('button', {
     bottom: '0',
     width: '35px',
     height: '35px',
-    display: 'flex',
+    display: {
+      base: 'none',
+      xl: 'flex',
+    },
     justifyContent: 'center',
     alignItems: 'center',
     margin: 'auto 0',

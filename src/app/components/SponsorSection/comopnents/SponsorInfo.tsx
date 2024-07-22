@@ -17,18 +17,32 @@ const SponsorInfo: FC<Props> = ({ grade }) => {
 const Container = styled(FadeIn, {
   base: {
     display: 'flex',
-    width: '920px',
-    height: '230px',
+    width: {
+      base: '100%',
+      xl: '920px',
+    },
+    height: {
+      base: 'initial',
+    },
+    padding: {
+      base: '20px 25px 30px 25px',
+      xl: '30px 25px 28px 25px',
+    },
     justifyContent: 'center',
-    borderRadius: '20px',
+    borderRadius: {
+      base: '10px',
+      xl: '20px',
+    },
     background: 'rgba(78, 77, 96, 0.2)',
   },
 });
 
 const Grade = styled('h2', {
   base: {
-    marginTop: '30px',
-    fontSize: '18px',
+    fontSize: {
+      base: '16px',
+      xl: '18px',
+    },
     fontWeight: '500',
     color: 'rgba(255, 255, 255, 0.3)',
     lineHeight: '1.4',

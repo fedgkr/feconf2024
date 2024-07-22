@@ -27,7 +27,10 @@ const Container = styled('div', {
 const Title = styled(FadeIn, {
   base: {
     color: 'rgba(255, 255, 255, 0.6)',
-    fontSize: '24px',
+    fontSize: {
+      base: '18px',
+      xl: '24px',
+    },
     fontStyle: 'normal',
     fontWeight: '500',
     lineHeight: '130%',
@@ -42,7 +45,10 @@ const Description = styled('p', {
     color: '#fff',
     textWrap: 'wrap',
     textAlign: 'center',
-    fontSize: '48px',
+    fontSize: {
+      base: '20px',
+      xl: '48px',
+    },
     fontStyle: 'normal',
     fontWeight: '600',
     lineHeight: '140%',

@@ -21,7 +21,7 @@ const CoCSection: FC = () => {
       animate={entry?.isIntersecting ? 'visible' : 'hidden'}
       variants={container}
     >
-      <Column>
+      <Column style={{ maxWidth: 946, margin: '0 auto' }}>
         <SectionTitle
           title="Code of Conduct"
           description="FEConf에 참여하는 모든 분은<br/>다음 사항을 준수해주세요"
@@ -79,7 +79,10 @@ const CoCSection: FC = () => {
 const Section = styled(motion.section, {
   base: {
     position: 'relative',
-    padding: '150px 0',
+    padding: {
+      base: '60px 20px',
+      xl: '150px 0',
+    },
   },
 });
 
@@ -87,15 +90,20 @@ const CoCList = styled('ul', {
   base: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '130px',
-    gap: '30px',
+    marginTop: {
+      base: '50px',
+      xl: '130px',
+    },
+    gap: {
+      base: '20px',
+      xl: '30px',
+    },
   },
 });
 
 const CoCItem = styled('li', {
   base: {
     display: 'flex',
-    gap: '30px',
   },
 });
 
@@ -103,7 +111,14 @@ const Wrap = styled(FadeIn, {
   base: {
     display: 'flex',
     justifyContent: 'center',
-    gap: '30px',
+    flexDirection: {
+      base: 'column',
+      xl: 'row',
+    },
+    gap: {
+      base: '20px',
+      xl: '30px',
+    },
   },
 });
 
@@ -111,13 +126,20 @@ const Item = styled(FadeIn, {
   base: {
     display: 'flex',
     flexDirection: 'column',
-    width: '540px',
-    height: '190px',
-    padding: '40px',
+    width: {
+      base: '100%',
+      xl: '540px',
+    },
+    padding: {
+      base: '20px',
+      xl: '40px',
+    },
     alignItems: 'flex-start',
-    gap: '10px',
     flexShrink: 0,
-    borderRadius: '20px',
+    borderRadius: {
+      base: '10px',
+      xl: '20px',
+    },
     background: 'rgba(78, 77, 96, 0.2)',
   },
 });
@@ -139,6 +161,10 @@ const Description = styled('p', {
     fontStyle: 'normal',
     fontWeight: '400',
     lineHeight: '160%',
+    marginTop: {
+      base: '10px',
+      xl: '20px',
+    },
   },
 });
 

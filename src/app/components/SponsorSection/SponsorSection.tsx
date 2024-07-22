@@ -28,7 +28,7 @@ const SponsorSection: FC = () => {
       <Column>
         <SectionTitle
           title="Sponsors"
-          description="프론트엔드 개발 생태계를 밝혀주는 2024 FEconf 후원사를 소개합니다"
+          description="프론트엔드 개발 생태계를 밝혀주는<br/>2024 FEconf 후원사를 소개합니다"
         />
         <SponsorList>
           <SponsorInfo grade="Master" />
@@ -43,7 +43,10 @@ const SponsorSection: FC = () => {
 const Section = styled(motion.section, {
   base: {
     position: 'relative',
-    padding: '150px 0',
+    padding: {
+      base: '120px 0 60px 0',
+      xl: '150px 0',
+    },
   },
 });
 
@@ -51,8 +54,21 @@ const SponsorList = styled('div', {
   base: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '50px',
-    marginTop: '100px',
+    width: {
+      base: '100%',
+      xl: 'initial',
+    },
+    padding: {
+      base: '20px',
+    },
+    gap: {
+      base: '20px',
+      xl: '50px',
+    },
+    marginTop: {
+      base: '50px',
+      xl: '100px',
+    },
   },
 });
 

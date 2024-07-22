@@ -35,10 +35,16 @@ const Container = styled('header', {
 
 const Wrap = styled('div', {
   base: {
-    height: '66px',
+    height: {
+      base: '60px',
+      xl: '66px',
+    },
     maxWidth: '1366px',
     margin: '0 auto',
-    padding: '0 50px 0 80px',
+    padding: {
+      base: '20px',
+      xl: '0 50px 0 80px',
+    },
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -50,11 +56,23 @@ const LogoWrap = styled('div', {
     display: 'flex',
     alignItems: 'center',
     gap: '14px',
+    justifyContent: {
+      base: 'space-between',
+      xl: 'flex-start',
+    },
+    width: {
+      base: '100%',
+      xl: 'initial',
+    },
   },
 });
 
 const Divider = styled('div', {
   base: {
+    flexGrow: {
+      base: 1,
+      xl: 'initial',
+    },
     width: '50px',
     height: '1px',
     background: 'linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 100%)',
@@ -73,7 +91,10 @@ const Date = styled('span', {
 
 const ActionWrap = styled('div', {
   base: {
-    display: 'flex',
+    display: {
+      base: 'none',
+      xl: 'flex',
+    },
     alignItems: 'center',
     gap: '25px',
   },

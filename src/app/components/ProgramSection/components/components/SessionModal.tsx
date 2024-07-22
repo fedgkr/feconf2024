@@ -63,9 +63,16 @@ const Content = styled(Dialog.Content, {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 595,
-    borderRadius: 20,
-    padding: '30px 40px 40px 40px',
+    width: 'calc(100% - 40px)',
+    maxWidth: 595,
+    borderRadius: {
+      base: '10px',
+      xl: '20px',
+    },
+    padding: {
+      base: '20px',
+      xl: '30px 40px 40px 40px',
+    },
     backgroundColor: '#1A1B23',
     zIndex: 2,
   },
@@ -97,11 +104,17 @@ const Time = styled('div', {
 const Title = styled(Dialog.Title, {
   base: {
     color: '#FFF',
-    fontSize: '32px',
+    fontSize: {
+      base: '18px',
+      xl: '32px',
+    },
     fontStyle: 'normal',
     fontWeight: 600,
     lineHeight: '140%',
-    marginTop: '24px',
+    marginTop: {
+      base: '20px',
+      xl: '24px',
+    },
   },
 });
 
@@ -112,7 +125,10 @@ const Description = styled('p', {
     fontStyle: 'normal',
     fontWeight: 400,
     lineHeight: '160%',
-    marginTop: '14px',
+    marginTop: {
+      base: '12px',
+      xl: '14px',
+    },
   },
 });
 
@@ -122,7 +138,10 @@ const Speaker = styled('div', {
     fontSize: '14px',
     fontStyle: 'normal',
     fontWeight: 500,
-    marginTop: '30px',
+    marginTop: {
+      base: '20px',
+      xl: '30px',
+    },
   },
 });
 

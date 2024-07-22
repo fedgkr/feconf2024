@@ -48,7 +48,10 @@ const OpenSourceSection: FC = () => {
 const Section = styled(motion.section, {
   base: {
     position: 'relative',
-    padding: '150px 0',
+    padding: {
+      base: '60px 20px',
+      xl: '150px 0',
+    },
   },
 });
 
@@ -57,13 +60,25 @@ const Wrap = styled(FadeIn, {
     display: 'flex',
     width: '100%',
     maxWidth: '920px',
-    marginTop: '130px',
-    padding: '40px 25px 60px 25px',
+    marginTop: {
+      base: '50px',
+      xl: '130px',
+    },
+    padding: {
+      base: '20px 16px 30px 16px',
+      xl: '40px 25px 60px 25px',
+    },
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '40px',
-    borderRadius: '20px',
+    gap: {
+      base: '20px',
+      xl: '40px',
+    },
+    borderRadius: {
+      base: '10px',
+      xl: '20px',
+    },
     background: 'rgba(78, 77, 96, 0.2)',
     boxShadow: '20px 20px 200px 0px rgba(1, 3, 8, 0.07)',
   },
@@ -71,8 +86,14 @@ const Wrap = styled(FadeIn, {
 
 const Image = styled('img', {
   base: {
-    width: '612px',
-    height: '169px',
+    width: {
+      base: '228px',
+      xl: '612px',
+    },
+    height: {
+      base: '63px',
+      xl: '169px',
+    },
   },
 });
 
@@ -80,7 +101,10 @@ const Description = styled('p', {
   base: {
     color: 'rgba(255, 255, 255, 0.7)',
     textAlign: 'center',
-    fontSize: '18px',
+    fontSize: {
+      base: '14px',
+      xl: '18px',
+    },
     fontStyle: 'normal',
     fontWeight: '500',
     lineHeight: '160%',

@@ -119,18 +119,29 @@ const SessionList: FC = () => {
 
 const Container = styled('div', {
   base: {
-    marginTop: '100px',
-    minHeight: '223px',
+    marginTop: {
+      base: '40px',
+      xl: '100px',
+    },
+    width: '100%',
   },
 });
 
 const Session = styled(FadeIn, {
   base: {
+    width: '100%',
     display: 'flex',
     alignItems: 'flex-start',
+    flexDirection: {
+      base: 'column',
+      xl: 'row',
+    },
     cursor: 'pointer',
     '&:not(:first-child)': {
-      marginTop: '60px',
+      marginTop: {
+        base: '30px',
+        xl: '60px',
+      },
     },
   },
 });
@@ -140,13 +151,27 @@ const Time = styled('div', {
     position: 'relative',
     display: 'flex',
     flexGrow: 0,
+    flexDirection: {
+      base: 'row-reverse',
+      xl: 'row',
+    },
     color: 'rgba(255, 255, 255, 0.8)',
     textAlign: 'right',
     fontSize: '16px',
     fontStyle: 'normal',
     fontWeight: '500',
-    marginTop: '58px',
-    marginRight: '84px',
+    marginTop: {
+      base: 'initial',
+      xl: '58px',
+    },
+    marginRight: {
+      base: 'initial',
+      xl: '84px',
+    },
+    paddingLeft: {
+      base: '31px',
+      xl: 'initial',
+    },
   },
 });
 
@@ -157,13 +182,23 @@ const TimeIcon = styled('div', {
     alignItems: 'center',
     justifyContent: 'center',
     top: '50%',
-    right: '-27px',
+    right: {
+      base: 'initial',
+      xl: '-27px',
+    },
+    left: {
+      base: '8px',
+      xl: 'initial',
+    },
     width: '15px',
     height: '15px',
     fontSize: 0,
     borderRadius: '50%',
     background: 'rgba(255, 255, 255, 0.35)',
-    transform: 'translate(100%, -50%)',
+    transform: {
+      base: 'translate(0, -50%)',
+      xl: 'translate(100%, -50%)',
+    },
   },
 });
 
@@ -178,36 +213,56 @@ const IconChild = styled('div', {
 
 const SessionInfo = styled('div', {
   base: {
+    width: '100%',
     flex: 1,
-    borderRadius: '20px',
+    borderRadius: {
+      base: '10px',
+      xl: '20px',
+    },
+    marginTop: {
+      base: '14px',
+      xl: 'initial',
+    },
     background: 'rgba(78, 77, 96, 0.2)',
   },
 });
 
 const Info = styled('div', {
   base: {
-    padding: '30px 180px 45px 40px',
+    padding: {
+      base: '16px',
+      xl: '30px 180px 45px 40px',
+    },
   },
 });
 
 const Title = styled('div', {
   base: {
     color: '#fff',
-    fontSize: '28px',
+    fontSize: {
+      base: '16px',
+      xl: '28px',
+    },
     fontStyle: 'normal',
     fontWeight: '600',
-    lineHeight: '140%' /* 53.2px */,
+    lineHeight: '140%',
   },
 });
 
 const SpeakerInfo = styled('div', {
   base: {
-    marginTop: '24px',
+    marginTop: {
+      base: '10px',
+      xl: '24px',
+    },
     color: 'rgba(255, 255, 255, 0.5)',
-    fontSize: '18px',
+    fontSize: {
+      base: '12px',
+      xl: '18px',
+    },
     fontStyle: 'normal',
     fontWeight: '500',
-    lineHeight: '100%' /* 18px */,
+    lineHeight: '100%',
   },
 });
 

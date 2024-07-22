@@ -34,11 +34,11 @@ const ProgramSection: FC = () => {
           <ProgramTab />
           <ProgramHeader />
           <SessionList />
-          <FadeIn distance={30}>
+          <ButtonWrap distance={30}>
             <DownloadTimetable target="_blank" href={timetable.src}>
               타임 테이블 이미지 다운로드
             </DownloadTimetable>
-          </FadeIn>
+          </ButtonWrap>
         </Column>
       </Section>
     </ProgramContextProvider>
@@ -48,31 +48,53 @@ const ProgramSection: FC = () => {
 const Section = styled(motion.section, {
   base: {
     position: 'relative',
-    padding: '150px 0',
+    padding: {
+      base: '60px 20px',
+      xl: '150px 0',
+    },
   },
 });
 
 const DownloadTimetable = styled('a', {
   base: {
-    marginTop: '150px',
+    marginTop: {
+      base: '40px',
+      xl: '150px',
+    },
     marginLeft: 'auto',
     marginRight: 'auto',
     display: 'flex',
-    width: '350px',
-    height: '64px',
+    maxWidth: {
+      base: 'initial',
+      xl: '350px',
+    },
+    width: '100%',
+    height: {
+      base: '54px',
+      xl: '64px',
+    },
     padding: '20px 60px',
     justifyContent: 'center',
     alignItems: 'center',
     gap: '8px',
     borderRadius: '10px',
     color: '#010308',
-    fontSize: '20px',
+    fontSize: {
+      base: '16px',
+      xl: '20px',
+    },
     fontStyle: 'normal',
     fontWeight: '700',
     lineHeight: '130%',
     cursor: 'pointer',
     background: '#fff',
     backdropFilter: 'blur(3.1121041774749756px)',
+  },
+});
+
+const ButtonWrap = styled(FadeIn, {
+  base: {
+    width: '100%',
   },
 });
 
