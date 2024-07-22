@@ -8,19 +8,28 @@ import { Aurora } from '@/features/aurora/components';
 import SphereEffect from './SphereEffect';
 import { motion } from 'framer-motion';
 
-interface Props {}
+interface Props { }
 
 const EffectWrap: FC<PropsWithChildren<Props>> = () => {
-  const { visible } = useAurora();
   return (
     <Container>
       <FiberCanvas
+        frameloop='never'
         style={{
           position: 'absolute',
           transition: 'opacity 1200ms ease-out',
         }}
       >
-        {visible ? <Aurora /> : <SphereEffect />}
+        <Aurora />
+      </FiberCanvas>
+      <FiberCanvas
+        frameloop='never'
+        style={{
+          position: 'absolute',
+          transition: 'opacity 1200ms ease-out',
+        }}
+      >
+        <SphereEffect />
       </FiberCanvas>
     </Container>
   );

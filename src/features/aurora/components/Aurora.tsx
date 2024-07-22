@@ -1,12 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import { useFrame } from '@react-three/fiber';
+import { useThree } from '@react-three/fiber';
 import { PerspectiveCamera, useTexture } from '@react-three/drei';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Mesh, ShaderMaterial, Vector2 } from 'three';
 import type { GUI as GUIType } from 'dat.gui';
 
 import auroraImage from '../assets/background4.png';
+import { useHeroScreen } from '@/features/hooks/useHeroScreen';
+import { usePrefersReducedMotionRef } from '@/features/hooks/usePrefersReducedMotion';
 
 let GUI: typeof GUIType;
 
@@ -152,9 +155,25 @@ const Aurora: FC<Props> = () => {
     yPosition: 10.5,
     wireframe: false,
   });
-  useFrame(({ clock }) => {
-    shaderRef.current!.uniforms.uTime.value = clock.getElapsedTime();
-  });
+  const { gl, scene, camera } = useThree();
+  const { scrollRef, screenSizeRef, sizeRef, onScroll, onResize, dispatch } =
+    useHeroScreen();
+
+  const startTime = Date.now();
+  let id = 0;
+
+  const render = useCallback((once?: boolean) => {
+    cancelAnimationFrame(id);
+    if (shaderRef.current?.uniforms) {
+      shaderRef.current!.uniforms.uTime.value = (Date.now() - startTime) / 1000;
+    }
+    gl.render(scene, camera);
+
+    if (!once && !reducedRef.current) {
+      id = requestAnimationFrame(() => render());
+    }
+  }, []);
+
   useEffect(() => {
     const gui = new GUI();
     const handleChange = () => setGuiState({ ...guiState });
@@ -169,10 +188,56 @@ const Aurora: FC<Props> = () => {
       gui.destroy();
     };
   }, [setGuiState, guiState]);
+
+  useEffect(() => {
+    onResize(() => {
+      if (!gl) {
+        return;
+      }
+      const { width, height } = sizeRef.current;
+      gl.setSize(width, height);
+      (camera as any).aspect = width / height;
+      camera.updateProjectionMatrix();
+      dispatch('scroll');
+    });
+    onScroll(() => {
+      if (!gl) {
+        return;
+      }
+      const firstSectionRect = screenSizeRef.current[0];
+      const secondSectionRect = screenSizeRef.current[1];
+      const maxScaleScroll =
+        firstSectionRect.height +
+        secondSectionRect.height * 0.66 -
+        sizeRef.current.height / 2;
+      const prevVisible = meshRef.current!.visible;
+
+      const opacity = Math.min(
+        Math.max(0, scrollRef.current - maxScaleScroll) * 0.01,
+        1
+      );
+      meshRef.current!.visible = opacity > 0;
+
+      if (opacity || prevVisible !== !!opacity) {
+        render(!opacity);
+      }
+    });
+
+    dispatch('resize');
+  }, [gl, camera]);
+  const reducedRef = usePrefersReducedMotionRef(() => {
+    render(meshRef.current!.visible);
+  });
+
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 10]} />
-      <mesh ref={meshRef} position={[0, guiState.yPosition, 0]} scale={0.5}>
+      <mesh
+        ref={meshRef}
+        position={[0, guiState.yPosition, 0]}
+        scale={0.5}
+        visible={false}
+      >
         <planeGeometry
           args={[guiState.meshSize, guiState.meshSize * textureRatio, 30, 30]}
         />
