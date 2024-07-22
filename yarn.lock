@@ -227,11 +227,6 @@
   resolved "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.0.tgz#3188bcb273a414b0d215fd22a58540b989b9409a"
   integrity sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==
 
-"@mantine/hooks@^7.11.1":
-  version "7.11.2"
-  resolved "https://registry.npmjs.org/@mantine/hooks/-/hooks-7.11.2.tgz#5629dff7ae7253f94e819c26b3b1adf97e68fd48"
-  integrity sha512-jhyVe/sbDEG2U8rr2lMecUPgQxcfr5hh9HazqGfkS7ZRIMDO7uJ947yAcTMGGkp5Lxtt5TBFt1Cb6tiB2/1agg==
-
 "@mediapipe/tasks-vision@0.10.8":
   version "0.10.8"
   resolved "https://registry.npmjs.org/@mediapipe/tasks-vision/-/tasks-vision-0.10.8.tgz#a78e137018a19933b7a1d0e887d553d4ab833d10"
@@ -3520,6 +3515,11 @@ react-dom@^18:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
+
+react-intersection-observer@^9.13.0:
+  version "9.13.0"
+  resolved "https://registry.npmjs.org/react-intersection-observer/-/react-intersection-observer-9.13.0.tgz#ee10827954cf6ccc204d027f8400a6ddb8df163a"
+  integrity sha512-y0UvBfjDiXqC8h0EWccyaj4dVBWMxgEx0t5RGNzQsvkfvZwugnKwxpu70StY4ivzYuMajavwUDjH4LJyIki9Lw==
 
 react-is@^16.13.1:
   version "16.13.1"

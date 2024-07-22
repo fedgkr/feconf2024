@@ -3,15 +3,17 @@
 import { FC, useEffect, useState } from 'react';
 import HeroSection from '../HeroSection';
 import IntroSection from '../IntroSection';
-import { useIntersection } from '@mantine/hooks';
+import { useInView } from 'react-intersection-observer';
 import { useAurora } from '~/features/aurora/contexts';
 
 const HeroIntroWrap: FC = () => {
-  const { ref: heroRef, entry: heroEntry } = useIntersection<HTMLElement>({
+  const { ref: heroRef, inView: heroInView } = useInView({
     threshold: 0.3,
+    triggerOnce: true,
   });
-  const { ref: introRef, entry: introEntry } = useIntersection<HTMLElement>({
+  const { ref: introRef, inView: introInView } = useInView({
     threshold: 0.3,
+    triggerOnce: true,
   });
   const { show, hide } = useAurora();
   const [mounted, setMounted] = useState(false);
@@ -19,16 +21,13 @@ const HeroIntroWrap: FC = () => {
     setTimeout(() => setMounted(true), 200);
   }, []);
   useEffect(() => {
-    const isInSection = heroEntry?.isIntersecting || introEntry?.isIntersecting;
+    const isInSection = heroInView || introInView;
     isInSection ? hide() : show();
-  }, [heroEntry?.isIntersecting, introEntry?.isIntersecting, show, hide]);
+  }, [heroInView, introInView, show, hide]);
   return (
     <>
-      <HeroSection
-        ref={heroRef}
-        active={heroEntry?.isIntersecting && mounted}
-      />
-      <IntroSection ref={introRef} active={introEntry?.isIntersecting} />
+      <HeroSection ref={heroRef} active={heroInView && mounted} />
+      <IntroSection ref={introRef} active={introInView} />
     </>
   );
 };

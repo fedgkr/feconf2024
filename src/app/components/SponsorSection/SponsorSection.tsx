@@ -6,7 +6,7 @@ import { Column, SectionTitle } from '~/shared/components';
 
 import { SponsorInfo } from './comopnents';
 import { motion, Variants } from 'framer-motion';
-import { useIntersection } from '@mantine/hooks';
+import { useInView } from 'react-intersection-observer';
 
 const container: Variants = {
   visible: {
@@ -18,11 +18,13 @@ const container: Variants = {
 };
 
 const SponsorSection: FC = () => {
-  const { ref, entry } = useIntersection();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
   return (
     <Section
       ref={ref}
-      animate={entry?.isIntersecting ? 'visible' : 'hidden'}
+      animate={inView ? 'visible' : 'hidden'}
       variants={container}
     >
       <Column>

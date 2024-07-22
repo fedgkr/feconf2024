@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
 import { Column, FadeIn, SectionTitle } from '~/shared/components';
-import { useIntersection } from '@mantine/hooks';
 import { motion, Variants } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const container: Variants = {
   visible: {
@@ -14,11 +14,13 @@ const container: Variants = {
 };
 
 const CoCSection: FC = () => {
-  const { ref, entry } = useIntersection();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
   return (
     <Section
       ref={ref}
-      animate={entry?.isIntersecting ? 'visible' : 'hidden'}
+      animate={inView ? 'visible' : 'hidden'}
       variants={container}
     >
       <Column style={{ maxWidth: 946, margin: '0 auto' }}>

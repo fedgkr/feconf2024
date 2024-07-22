@@ -4,9 +4,9 @@ import { styled } from '@styled-system/jsx';
 import { ProgramTab, ProgramHeader, SessionList } from './components';
 import { ProgramContextProvider } from '~/features/programs/contexts';
 import { motion, Variants } from 'framer-motion';
-import { useIntersection } from '@mantine/hooks';
 
 import timetable from './assets/timetable.jpg';
+import { useInView } from 'react-intersection-observer';
 
 const container: Variants = {
   visible: {
@@ -18,12 +18,14 @@ const container: Variants = {
 };
 
 const ProgramSection: FC = () => {
-  const { ref, entry } = useIntersection();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
   return (
     <ProgramContextProvider>
       <Section
         ref={ref}
-        animate={entry?.isIntersecting ? 'visible' : 'hidden'}
+        animate={inView ? 'visible' : 'hidden'}
         variants={container}
       >
         <Column style={{ maxWidth: 946, margin: '0 auto' }}>
