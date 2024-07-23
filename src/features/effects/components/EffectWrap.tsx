@@ -3,8 +3,8 @@
 import { FC, PropsWithChildren } from 'react';
 import { Canvas as FiberCanvas } from '@react-three/fiber';
 import { styled } from '@styled-system/jsx';
-import { Aurora } from '~/features/aurora/components';
-import SphereEffect from './SphereEffect';
+import { GradientSphere } from './SphereEffect/components';
+import Aurora from '~/features/aurora/components/Aurora';
 
 interface Props {}
 
@@ -15,19 +15,20 @@ const EffectWrap: FC<PropsWithChildren<Props>> = () => {
         frameloop="never"
         style={{
           position: 'absolute',
-          transition: 'opacity 1200ms ease-out',
+          // transition: 'opacity 1200ms ease-out',
         }}
       >
         <Aurora />
       </FiberCanvas>
       <FiberCanvas
         frameloop="never"
+        orthographic
         style={{
           position: 'absolute',
-          transition: 'opacity 1200ms ease-out',
+          // transition: 'opacity 1200ms ease-out',
         }}
       >
-        <SphereEffect />
+        <GradientSphere />
       </FiberCanvas>
     </Container>
   );

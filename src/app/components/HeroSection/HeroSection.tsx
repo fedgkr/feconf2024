@@ -25,7 +25,7 @@ const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
       animate={active ? 'visible' : 'hidden'}
       variants={container}
     >
-      <Column>
+      <Container>
         <Title distance={60} duration={{ in: 0.8 }}>
           뜨거운 열정을 가진 당신이 올해의 주인공
         </Title>
@@ -40,18 +40,29 @@ const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
             티켓 구매하기
           </PurchaseButton>
         </FadeIn>
-      </Column>
+      </Container>
     </Section>
   );
 });
 
 const Section = styled(motion.section, {
   base: {
-    padding: {
-      base: '144px 0 60px 0',
-      xl: '170px 0 420px 0',
-    },
+    height: '100vh',
+    minHeight: '600px',
   },
+});
+
+const Container = styled(Column, {
+  base: {
+    position: 'absolute',
+    top: '50%',
+    width: '100%',
+    transform: 'translateY(-50%) translateY(-40px)',
+    // padding: {
+    //   base: '144px 0 60px 0',
+    //   xl: '170px 0 420px 0',
+    // },
+  }
 });
 
 const Title = styled(FadeIn, {
