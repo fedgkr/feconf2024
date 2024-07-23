@@ -12,7 +12,7 @@ const EffectWrap: FC<PropsWithChildren<Props>> = () => {
   return (
     <Container>
       <FiberCanvas
-        frameloop='never'
+        frameloop="never"
         style={{
           position: 'absolute',
           transition: 'opacity 1200ms ease-out',
@@ -21,7 +21,7 @@ const EffectWrap: FC<PropsWithChildren<Props>> = () => {
         <Aurora />
       </FiberCanvas>
       <FiberCanvas
-        frameloop='never'
+        frameloop="never"
         style={{
           position: 'absolute',
           transition: 'opacity 1200ms ease-out',

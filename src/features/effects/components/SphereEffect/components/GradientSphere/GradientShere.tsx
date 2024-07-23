@@ -24,8 +24,8 @@ import { ShaderPass } from 'three/examples/jsm/Addons.js';
 import Color4 from 'three/examples/jsm/renderers/common/Color4.js';
 import { BokehPass2 } from './external/BokehPass2.js';
 import { BlurShader } from './external/BlurShader';
-import { useHeroScreen } from '@/features/hooks/useHeroScreen';
-import { usePrefersReducedMotionRef } from '@/features/hooks/usePrefersReducedMotion';
+import { useHeroScreen } from '~/features/hooks/useHeroScreen';
+import { usePrefersReducedMotionRef } from '~/features/hooks/usePrefersReducedMotion';
 
 const sphereSize = 1;
 const sphereSegments = 64;

@@ -8,8 +8,8 @@ import { Mesh, ShaderMaterial, Vector2 } from 'three';
 import type { GUI as GUIType } from 'dat.gui';
 
 import auroraImage from '../assets/background4.png';
-import { useHeroScreen } from '@/features/hooks/useHeroScreen';
-import { usePrefersReducedMotionRef } from '@/features/hooks/usePrefersReducedMotion';
+import { useHeroScreen } from '~/features/hooks/useHeroScreen';
+import { usePrefersReducedMotionRef } from '~/features/hooks/usePrefersReducedMotion';
 
 let GUI: typeof GUIType;
 
