@@ -6,19 +6,14 @@ import {
   MathUtils,
   Mesh,
   MeshPhysicalMaterial,
-  OrthographicCamera,
-  RepeatWrapping,
   ShaderMaterial,
-  Texture,
   Vector2,
 } from 'three';
-import { forwardRef, useEffect, useMemo, useRef } from 'react';
+import { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useTexture } from '@react-three/drei';
 
 import gradientImage1 from './assets/gradient1.jpg';
-import gradientImage2 from './assets/gradient2.jpg';
-import gradientImage3 from './assets/gradient3.jpg';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useThree } from '@react-three/fiber';
 import { MeshPhysicalMaterialWithGlow } from './MeshPhysicalMaterialWithGlow';
 // import { MeshPosition, useSceneComposer } from '~/shared/contexts';
 // import useMeshScale from '~/shared/hooks/useMeshScale';
@@ -29,17 +24,11 @@ import { ShaderPass } from 'three/examples/jsm/Addons.js';
 import Color4 from 'three/examples/jsm/renderers/common/Color4.js';
 import { BokehPass2 } from './external/BokehPass2.js';
 import { BlurShader } from './external/BlurShader';
+import { useHeroScreen } from '~/features/hooks/useHeroScreen';
+import { usePrefersReducedMotionRef } from '~/features/hooks/usePrefersReducedMotion';
 
 const sphereSize = 1;
 const sphereSegments = 64;
-const degMap: Record<number, number> = {
-  0: -250,
-  1: 70,
-  2: 120,
-  3: 230,
-  4: 290,
-  5: 430,
-};
 
 const glowState = {
   glowIntensity: 3,
@@ -59,70 +48,36 @@ const dofState = {
 };
 
 const GradientSphere = forwardRef(() => {
-  const sceneIndex = 0;
-  // const { sceneIndex, position } = useSceneComposer();
   const meshRef = useRef<Mesh>(null);
   const materialRef = useRef<MeshPhysicalMaterial>(null);
-  const texture1 = useTexture(gradientImage1.src, texture => {
+  const texture = useTexture(gradientImage1.src, texture => {
     texture.repeat.setX(-1);
     texture.repeat.setY(1);
   });
-  const texture2 = useTexture(gradientImage2.src, texture => {
-    texture.wrapS = RepeatWrapping;
-    texture.wrapT = RepeatWrapping;
-    texture.repeat.setX(-1);
-    texture.repeat.setY(1);
-  });
-  const texture3 = useTexture(gradientImage3.src, texture => {
-    texture.wrapS = RepeatWrapping;
-    texture.wrapT = RepeatWrapping;
-    texture.repeat.setX(-1);
-    texture.repeat.setY(1);
-  });
-  const textureMap = useMemo(
-    () =>
-      new Map<number, Texture>([
-        [0, texture1],
-        [1, texture1],
-        [2, texture1],
-        [3, texture2],
-        [4, texture3],
-        [5, texture1],
-      ]),
-    [texture1, texture2, texture3]
-  );
-  const scrollRef = useRef<number>(0);
+
+  const lightRef = useRef<AmbientLight>(null);
   const processingRef = useRef<Record<string, any>>({});
   const { gl, scene, camera } = useThree();
+
+  const { sizeRef, scrollRef, screenSizeRef, onScroll, onResize, dispatch } =
+    useHeroScreen();
+
+  const render = useCallback(() => {
+    processingRef.current?.composer?.render();
+  }, []);
+
   useEffect(() => {
     if (!gl || !scene || !camera) {
       processingRef.current = {};
       return;
     }
-    // gl.autoClear = false;
 
     const postprocessing = processingRef.current;
-
     const renderPass = new RenderPass(scene, camera);
 
     renderPass.clearAlpha = 0;
     renderPass.clearColor = new Color4(0, 1, 1, 0);
     renderPass.clearDepth = true;
-
-    // const blurCount = dofState.blurCount;
-    // const blurOffset = dofState.blurOffset;
-    // const blurOpacity = dofState.blurOpacity;
-    // const horizontalBlurPass = new ShaderPass(HorizontalBlurShader);
-    // const blurPass = new InternalBlurPass(gl);
-    // const kawaseBlurPass = new KawaseBlurPass({
-    //   renderer: gl,
-    //   blurOffset,
-    //   blurCount,
-    //   opacity: blurOpacity,
-    // });
-
-    // blurPass.setBlurs(blurOffset, blurCount);
-    // kawaseBlurPass.setBlurs(blurOffset, blurCount);
 
     const bokehPass = new BokehPass2(scene, camera, {
       focus: dofState.focus,
@@ -190,30 +145,8 @@ const GradientSphere = forwardRef(() => {
     postprocessing.finalComposer = finalComposer;
     postprocessing.bokeh = bokehPass;
     postprocessing.blurShaderPass = blurShaderPass;
-    // postprocessing.kawaseBlurPass = kawaseBlurPass;
-    // postprocessing.blurPass = blurPass;
 
-    function onResize() {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-
-      composer.setSize(width, height);
-      // finalComposer.setSize(width, height);
-    }
-
-    function onScroll() {
-      const scrollTop = document.documentElement.scrollTop;
-
-      scrollRef.current = scrollTop;
-    }
-    window.addEventListener('resize', onResize);
-    window.addEventListener('scroll', onScroll);
-
-    onScroll();
-    onResize();
     return () => {
-      window.removeEventListener('resize', onResize);
-      window.removeEventListener('scroll', onScroll);
       processingRef.current = {};
     };
   }, [gl, scene, camera]);
@@ -235,78 +168,117 @@ const GradientSphere = forwardRef(() => {
       blurOffset / res.y;
   }, [gl, Object.values(dofState)]);
 
-  const lightRef = useRef<AmbientLight>(null);
-
-  // useEffect(() => {
-  //   lightRef.current?.layers.set(0);
-  //   meshRef.current?.layers.set(0);
-  // }, []);
-
   useEffect(() => {
-    meshRef.current!.rotation.x = MathUtils.degToRad(-150);
-    // meshRef.current!.rotation.y = MathUtils.degToRad(-150);
-  }, []);
+    meshRef.current!.rotation.x = MathUtils.degToRad(-50);
 
-  useFrame(() => {
-    // gl.autoClear = false;
+    let id = requestAnimationFrame(function raq() {
+      if (!meshRef.current) {
+        id = requestAnimationFrame(raq);
+        return;
+      }
 
-    const orthoCamera = camera as OrthographicCamera;
-    if (!meshRef.current || !orthoCamera.right) return;
+      const targetRad = MathUtils.degToRad(-200 - scrollRef.current / 50);
 
-    const lightRGB = [255, 246, 206];
-    const scale = Math.max(1, 1 + scrollRef.current / 300);
-    lightRGB.forEach((color, i) => {
-      lightRGB[i] = Math.min(255, color * scale);
+      meshRef.current.rotation.x = MathUtils.lerp(
+        meshRef.current.rotation.x,
+        targetRad,
+        0.05
+      );
+
+      render();
+      if (Math.abs(meshRef.current.rotation.x - targetRad) < 0.05) {
+        return;
+      }
+      id = requestAnimationFrame(raq);
     });
 
-    const emissiveValue = Math.max(0, scale / 2 - 1);
-    materialRef.current!.emissive = new Color(
-      emissiveValue,
-      emissiveValue,
-      emissiveValue
-    );
-    lightRef.current!.color = new Color(
-      lightRGB[0] / 255,
-      lightRGB[1] / 255,
-      lightRGB[2] / 255
-    );
+    onResize(() => {
+      if (!processingRef.current?.composer) {
+        return;
+      }
+      processingRef.current?.composer.setSize(
+        sizeRef.current.width,
+        sizeRef.current.height
+      );
+      dispatch('scroll');
+    });
 
-    const targetRad = MathUtils.degToRad(
-      degMap[sceneIndex] - scrollRef.current / 50
-    );
-    let scrollTop = scrollRef.current!;
+    onScroll(() => {
+      if (!meshRef.current) {
+        return;
+      }
+      const isReduced = reducedRef.current;
+      const firstSectionRect = screenSizeRef.current[0];
+      const secondSectionRect = screenSizeRef.current[1];
+      const maxScaleScroll =
+        firstSectionRect.height +
+        secondSectionRect.height / 3 -
+        sizeRef.current.height / 2;
 
-    const secondSection = 1134;
-    // const thirdSection = 1369;
+      const lightRGB = [255, 246, 206];
+      const scaleDist = Math.min(1, scrollRef.current / maxScaleScroll) * 3;
+      const scale = Math.max(1, 1 + scaleDist);
 
-    if (scrollTop > secondSection) {
-      scrollTop += (scrollTop - secondSection) * 1.8;
-    }
-    const nextY = Math.min(20, -6 + scrollTop / 200);
+      lightRGB.forEach((color, i) => {
+        lightRGB[i] = Math.min(255, color * scale);
+      });
 
-    const ms = 5 * Math.min(1.3, 1 + (scale - 1) / 12);
+      const emissiveValue = Math.max(0, scale / 2 - 1);
+      materialRef.current!.emissive = new Color(
+        emissiveValue,
+        emissiveValue,
+        emissiveValue
+      );
+      lightRef.current!.color = new Color(
+        lightRGB[0] / 255,
+        lightRGB[1] / 255,
+        lightRGB[2] / 255
+      );
 
-    meshRef.current!.scale.x = ms;
-    meshRef.current!.scale.y = ms;
-    meshRef.current!.scale.z = ms;
+      let scrollTop = scrollRef.current!;
 
-    meshRef.current!.position.y = nextY;
-    // MathUtils.lerp(
-    //   meshRef.current!.position.y,
-    //   nextY,
-    //   0.15
-    // );
-    meshRef.current.rotation.x = MathUtils.lerp(
-      meshRef.current.rotation.x,
-      targetRad,
-      0.05
-    );
+      if (!isReduced && scrollTop > maxScaleScroll) {
+        scrollTop += (scrollTop - maxScaleScroll) * 1.1;
+      }
 
-    // camera.layers.set(0);
-    processingRef.current?.composer?.render();
-  }, 1);
+      const opacity = Math.min(
+        1,
+        Math.max(0, 1 - (scrollTop - maxScaleScroll - 100) * 0.0004)
+      );
 
-  // useMeshScale(meshRef);
+      gl.domElement.style.opacity = `${opacity}`;
+
+      const prevVisible = meshRef.current!.visible;
+
+      if (opacity) {
+        meshRef.current!.visible = true;
+      } else {
+        meshRef.current!.visible = false;
+      }
+
+      const nextY = Math.min(20, -7 + scrollTop / 150);
+      const ms = 5 * (isReduced ? 1.3 : Math.min(1.3, 1 + (scale - 1) / 12));
+
+      meshRef.current!.scale.x = ms;
+      meshRef.current!.scale.y = ms;
+      meshRef.current!.scale.z = ms;
+
+      meshRef.current!.position.y = nextY;
+
+      if (opacity || prevVisible !== !!opacity) {
+        render();
+      }
+    });
+
+    dispatch('resize');
+
+    return () => {
+      cancelAnimationFrame(id);
+    };
+  }, []);
+  const reducedRef = usePrefersReducedMotionRef(() => {
+    dispatch('scroll');
+  });
 
   const glowColor = useMemo(() => {
     return new Color(glowState.glowColor);
@@ -316,12 +288,7 @@ const GradientSphere = forwardRef(() => {
     <>
       {/* <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} /> */}
       <ambientLight ref={lightRef} color="#FFF6CE" intensity={3} />
-      <mesh
-        ref={meshRef}
-        position={[0, 0, -60]}
-        visible={glowState.visible}
-        scale={5}
-      >
+      <mesh ref={meshRef} position={[0, 0, -60]} visible={false} scale={5}>
         <sphereGeometry args={[sphereSize, sphereSegments, sphereSegments]} />
         <MeshPhysicalMaterialWithGlow
           ref={materialRef}
@@ -330,7 +297,7 @@ const GradientSphere = forwardRef(() => {
           glowIntensity={glowState.glowIntensity}
           glowPower={glowState.glowPower}
           glowColor={glowColor}
-          map={textureMap.get(sceneIndex)}
+          map={texture}
           roughness={0.35}
           metalness={0}
           reflectivity={0.2}
