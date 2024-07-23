@@ -6,10 +6,11 @@ import {
   MathUtils,
   Mesh,
   MeshPhysicalMaterial,
+  OrthographicCamera,
   ShaderMaterial,
   Vector2,
 } from 'three';
-import { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useTexture } from '@react-three/drei';
 
 import gradientImage1 from './assets/gradient1.jpg';
@@ -20,7 +21,7 @@ import { MeshPhysicalMaterialWithGlow } from './MeshPhysicalMaterialWithGlow';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 // import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { ShaderPass } from 'three/examples/jsm/Addons.js';
+import { BokehPass, ShaderPass } from 'three/examples/jsm/Addons.js';
 import Color4 from 'three/examples/jsm/renderers/common/Color4.js';
 import { BokehPass2 } from './external/BokehPass2.js';
 import { BlurShader } from './external/BlurShader';
@@ -47,7 +48,7 @@ const dofState = {
   blurOpacity: 1,
 };
 
-const GradientSphere = forwardRef(() => {
+function GradientSphere() {
   const meshRef = useRef<Mesh>(null);
   const materialRef = useRef<MeshPhysicalMaterial>(null);
   const texture = useTexture(gradientImage1.src, texture => {
@@ -57,7 +58,9 @@ const GradientSphere = forwardRef(() => {
 
   const lightRef = useRef<AmbientLight>(null);
   const processingRef = useRef<Record<string, any>>({});
-  const { gl, scene, camera } = useThree();
+  const three = useThree();
+  const { gl, scene } = three;
+  const camera = three.camera as OrthographicCamera;
 
   const { sizeRef, scrollRef, screenSizeRef, onScroll, onResize, dispatch } =
     useHeroScreen();
@@ -67,10 +70,11 @@ const GradientSphere = forwardRef(() => {
   }, []);
 
   useEffect(() => {
-    if (!gl || !scene || !camera) {
+    if (!gl || !scene) {
       processingRef.current = {};
       return;
     }
+    console.log(camera);
 
     const postprocessing = processingRef.current;
     const renderPass = new RenderPass(scene, camera);
@@ -98,12 +102,7 @@ const GradientSphere = forwardRef(() => {
       })
     );
     composer.addPass(blurShaderPass);
-
-    // composer.addPass(kawaseBlurPass);
-    // composer.addPass(outputPass);
     composer.addPass(bokehPass);
-    // composer.addPass(outputPass);
-    // composer.addPass(outputPass);
 
     const mixPass = new ShaderPass(
       new ShaderMaterial({
@@ -137,12 +136,8 @@ const GradientSphere = forwardRef(() => {
     );
     mixPass.needsSwap = true;
 
-    const finalComposer = new EffectComposer(gl);
-    finalComposer.addPass(renderPass);
-    finalComposer.addPass(mixPass);
 
     postprocessing.composer = composer;
-    postprocessing.finalComposer = finalComposer;
     postprocessing.bokeh = bokehPass;
     postprocessing.blurShaderPass = blurShaderPass;
 
@@ -196,10 +191,24 @@ const GradientSphere = forwardRef(() => {
       if (!processingRef.current?.composer) {
         return;
       }
-      processingRef.current?.composer.setSize(
-        sizeRef.current.width,
-        sizeRef.current.height
-      );
+
+      const innerWidth = sizeRef.current.width;
+      const innerHeight = sizeRef.current.height;
+      const ratio = innerWidth / innerHeight;
+      const height = 8;
+      const width = height * ratio;
+
+      camera.left = width / -2;
+      camera.right = width / 2;
+      camera.top = height / 2;
+      camera.bottom = height / -2;
+      camera.near = 1;
+      camera.far = 100;
+      camera.updateProjectionMatrix();
+
+      gl.setSize(innerWidth, innerHeight);
+      processingRef.current?.composer.setSize(innerWidth, innerHeight);
+
       dispatch('scroll');
     });
 
@@ -249,21 +258,19 @@ const GradientSphere = forwardRef(() => {
       gl.domElement.style.opacity = `${opacity}`;
 
       const prevVisible = meshRef.current!.visible;
-
-      if (opacity) {
-        meshRef.current!.visible = true;
-      } else {
-        meshRef.current!.visible = false;
-      }
-
       const nextY = Math.min(20, -7 + scrollTop / 150);
       const ms = 5 * (isReduced ? 1.3 : Math.min(1.3, 1 + (scale - 1) / 12));
 
       meshRef.current!.scale.x = ms;
       meshRef.current!.scale.y = ms;
       meshRef.current!.scale.z = ms;
-
       meshRef.current!.position.y = nextY;
+
+      if (opacity) {
+        meshRef.current!.visible = true;
+      } else {
+        meshRef.current!.visible = false;
+      }
 
       if (opacity || prevVisible !== !!opacity) {
         render();
@@ -288,7 +295,7 @@ const GradientSphere = forwardRef(() => {
     <>
       {/* <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} /> */}
       <ambientLight ref={lightRef} color="#FFF6CE" intensity={3} />
-      <mesh ref={meshRef} position={[0, 0, -60]} visible={false} scale={5}>
+      <mesh ref={meshRef} position={[0, 0, -30]} visible={false} scale={5}>
         <sphereGeometry args={[sphereSize, sphereSegments, sphereSegments]} />
         <MeshPhysicalMaterialWithGlow
           ref={materialRef}
@@ -305,6 +312,6 @@ const GradientSphere = forwardRef(() => {
       </mesh>
     </>
   );
-});
+}
 
 export default GradientSphere;

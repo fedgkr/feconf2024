@@ -2,7 +2,7 @@
 'use client';
 
 import { useThree } from '@react-three/fiber';
-import { PerspectiveCamera, useTexture } from '@react-three/drei';
+import { useTexture } from '@react-three/drei';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Mesh, ShaderMaterial, Vector2 } from 'three';
 import type { GUI as GUIType } from 'dat.gui';
@@ -196,6 +196,7 @@ const Aurora: FC<Props> = () => {
       }
       const { width, height } = sizeRef.current;
       gl.setSize(width, height);
+      camera.position.z = 10;
       (camera as any).aspect = width / height;
       camera.updateProjectionMatrix();
       dispatch('scroll');
@@ -213,9 +214,11 @@ const Aurora: FC<Props> = () => {
       const prevVisible = meshRef.current!.visible;
 
       const opacity = Math.min(
-        Math.max(0, scrollRef.current - maxScaleScroll) * 0.01,
+        Math.max(0, scrollRef.current - maxScaleScroll) * 0.002,
         1
       );
+
+      gl.domElement.style.opacity = `${opacity}`;
       meshRef.current!.visible = opacity > 0;
 
       if (opacity || prevVisible !== !!opacity) {
@@ -231,7 +234,6 @@ const Aurora: FC<Props> = () => {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 10]} />
       <mesh
         ref={meshRef}
         position={[0, guiState.yPosition, 0]}
