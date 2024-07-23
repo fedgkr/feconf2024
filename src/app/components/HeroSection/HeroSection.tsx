@@ -3,6 +3,7 @@ import { styled } from '@styled-system/jsx';
 import { DataLocation, HeroLogo } from './components';
 import { Column, FadeIn } from '~/shared/components';
 import { motion, Variants } from 'framer-motion';
+import { TICKET_LINK } from '~/shared/constants';
 
 interface Props {
   active?: boolean;
@@ -35,7 +36,9 @@ const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
           <DataLocation />
         </Info>
         <FadeIn distance={60} duration={{ in: 0.8 }}>
-          <PurchaseButton>티켓 구매하기</PurchaseButton>
+          <PurchaseButton target="_blank" href={TICKET_LINK}>
+            티켓 구매하기
+          </PurchaseButton>
         </FadeIn>
       </Column>
     </Section>

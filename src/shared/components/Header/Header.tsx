@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
 
 import { Logo } from './components';
+import { TICKET_LINK } from '~/shared/constants';
 
 const Header: FC = () => {
   return (
@@ -14,7 +15,9 @@ const Header: FC = () => {
         </LogoWrap>
         <ActionWrap>
           <Place>서울특별시 광진구 능동로 209 | 세종대학교 광개토회관</Place>
-          <TicketButton>티켓 구매하기</TicketButton>
+          <TicketButton target="_blank" href={TICKET_LINK}>
+            티켓 구매하기
+          </TicketButton>
         </ActionWrap>
       </Wrap>
     </Container>

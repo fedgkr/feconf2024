@@ -12,7 +12,7 @@ interface Speaker {
 interface Session {
   type: SessionType;
   title: string;
-  description: string;
+  description?: string;
   speakers: Speaker[];
   order: number;
 }

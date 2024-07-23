@@ -24,8 +24,7 @@ const EffectWrap: FC<PropsWithChildren<Props>> = () => {
             transition: 'opacity 1200ms ease-out',
           }}
         >
-          {/* {visible ? <Aurora /> : <SphereEffect />} */}
-          {visible ? <Aurora /> : null}
+          {visible ? <Aurora /> : <SphereEffect />}
         </FiberCanvas>
       )}
     </Container>

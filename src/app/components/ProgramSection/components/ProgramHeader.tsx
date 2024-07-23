@@ -4,7 +4,6 @@ import { FC } from 'react';
 import { SessionType } from '~/features/programs/types';
 import { styled } from '@styled-system/jsx';
 import { useProgram } from '~/features/programs/contexts';
-import { motion, Variants } from 'framer-motion';
 import { ArrowIcon } from './components';
 import { get, indexOf, lt, size } from 'lodash-es';
 import { FadeIn } from '~/shared/components';
@@ -34,19 +33,6 @@ const headerLookup: Record<SessionType, HeaderInfo> = {
     title: 'Lightning Talk',
     description:
       '짧지만 강렬하게 프론트엔드 개발에 대한 진솔한 이야기를 나누며 함께 공감하고 토론하세요',
-  },
-};
-
-const line: Variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4 },
-  },
-  hidden: {
-    opacity: 0,
-    y: '30px',
-    transition: { duration: 0.25 },
   },
 };
 

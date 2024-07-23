@@ -7,6 +7,7 @@ import {
 } from '~/app/components/HeroSection/components';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { TICKET_LINK } from '~/shared/constants';
 
 const container: Variants = {
   visible: {
@@ -42,7 +43,9 @@ const FooterSection: FC = () => {
           </InfoWrap>
         </FadeIn>
         <ButtonWrap distance={30}>
-          <PurchaseButton>티켓 구매하기</PurchaseButton>
+          <PurchaseButton target="_blank" href={TICKET_LINK}>
+            티켓 구매하기
+          </PurchaseButton>
         </ButtonWrap>
       </Column>
     </Section>
@@ -105,12 +108,14 @@ const InfoWrap = styled('div', {
   },
 });
 
-const PurchaseButton = styled('button', {
+const PurchaseButton = styled('a', {
   base: {
     marginTop: {
       base: '40px',
       xl: '90px',
     },
+    marginLeft: 'auto',
+    marginRight: 'auto',
     padding: '17px 0',
     border: 'none',
     borderRadius: '10px',
@@ -133,6 +138,7 @@ const PurchaseButton = styled('button', {
 const ButtonWrap = styled(FadeIn, {
   base: {
     width: '100%',
+    textAlign: 'center',
   },
 });
 

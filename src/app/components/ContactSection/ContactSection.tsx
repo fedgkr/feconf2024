@@ -201,10 +201,20 @@ const Link = styled('a', {
     },
     fontStyle: 'normal',
     fontWeight: '700',
-    lineHeight: '130%' /* 20.8px */,
+    lineHeight: '130%',
     background: '#fff',
     cursor: 'pointer',
     backdropFilter: 'blur(3.1121041774749756px)',
+    '& > svg': {
+      width: {
+        base: '20px',
+        xl: 'initial',
+      },
+      height: {
+        base: '20px',
+        xl: 'initial',
+      },
+    },
   },
 });
 

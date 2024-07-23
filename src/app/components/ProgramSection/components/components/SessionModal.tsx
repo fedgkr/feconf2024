@@ -6,7 +6,7 @@ import { Session } from '~/features/programs/types';
 import { timeLabelLookup } from '~/features/programs/constants';
 
 import CloseIcon from './CloseIcon';
-import { first } from 'lodash-es';
+import { first, map, size } from 'lodash-es';
 
 interface Props {
   session: Session | null;
@@ -15,7 +15,6 @@ interface Props {
 }
 
 const SessionModal: FC<Props> = ({ session, open, onChangeOpen }) => {
-  const speaker = first(session?.speakers);
   return (
     <Dialog.Root open={open} onOpenChange={onChangeOpen}>
       <Dialog.Portal>
@@ -35,10 +34,19 @@ const SessionModal: FC<Props> = ({ session, open, onChangeOpen }) => {
           {session && (
             <>
               <Title>{session.title}</Title>
-              <Description>{session.description}</Description>
+              <Description
+                dangerouslySetInnerHTML={{ __html: session.description || '' }}
+              />
               <Speaker>
-                <span>{speaker?.name}</span>
-                {speaker?.company && <span> | {speaker?.company}</span>}
+                {map(session?.speakers, (speaker, index) => (
+                  <>
+                    <span>
+                      {speaker?.name}
+                      {index < size(session?.speakers) - 1 ? ', ' : ''}
+                    </span>
+                    {speaker?.company && <span> | {speaker?.company}</span>}
+                  </>
+                ))}
               </Speaker>
             </>
           )}

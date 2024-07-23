@@ -5,6 +5,7 @@ import { Column, FadeIn, SectionTitle } from '~/shared/components';
 import jaranda from './assets/jaranda.png';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { TICKET_LINK } from '~/shared/constants';
 
 const container: Variants = {
   visible: {
@@ -36,16 +37,18 @@ const ChildcareSection: FC = () => {
           </FadeIn>
           <FadeIn distance={30}>
             <Description>
-              아이 돌봄 서비스는 컨퍼런스 참여자들의 행사 집중도 향상을 위한
-              현장 자녀 케어 서비스입니다.
+              2024 FEConf는 자녀 동반 참가자를 위한 현장 아이돌봄 케어 서비스를
+              제공합니다.
               <br />
-              안전하고 보람찬 아이 돌봄 서비스를 제공하기 위해 2024 FEConf 아이
-              돌봄 서비스는 자란다와 함께 운영됩니다.
+              육아 케어 전문 기업 자란다와 함께 안전하고 보람찬 아이돌봄
+              서비스를 운영합니다.
             </Description>
           </FadeIn>
         </Info>
         <ButtonWrap distance={30}>
-          <PurchaseButton>아이 돌봄 티켓 구매하기</PurchaseButton>
+          <PurchaseButton target="_blank" href={TICKET_LINK}>
+            아이 돌봄 티켓 구매하기
+          </PurchaseButton>
         </ButtonWrap>
       </Column>
     </Section>
@@ -134,7 +137,7 @@ const PurchaseButton = styled('a', {
       base: '100%',
       xl: '240px',
     },
-    display: 'flex',
+    display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
     color: '#010308',
@@ -152,6 +155,7 @@ const PurchaseButton = styled('a', {
 const ButtonWrap = styled(FadeIn, {
   base: {
     width: '100%',
+    textAlign: 'center',
   },
 });
 
