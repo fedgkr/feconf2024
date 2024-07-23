@@ -172,7 +172,7 @@ function GradientSphere() {
         return;
       }
 
-      const targetRad = MathUtils.degToRad(-200 - scrollRef.current / 50);
+      const targetRad = MathUtils.degToRad(-250 - scrollRef.current / 50);
 
       meshRef.current.rotation.x = MathUtils.lerp(
         meshRef.current.rotation.x,
