@@ -13,7 +13,7 @@ import {
 } from 'three';
 
 class _KawaseBlurPass extends Pass {
-  constructor(uOffset, uOpacity) {
+  constructor(uOffset) {
     super();
 
     const uniforms = UniformsUtils.clone(KawaseBlurShader.uniforms);

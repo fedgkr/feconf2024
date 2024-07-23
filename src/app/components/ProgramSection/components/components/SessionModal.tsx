@@ -6,7 +6,7 @@ import { Session } from '~/features/programs/types';
 import { timeLabelLookup } from '~/features/programs/constants';
 
 import CloseIcon from './CloseIcon';
-import { first, map, size } from 'lodash-es';
+import { map, size } from 'lodash-es';
 
 interface Props {
   session: Session | null;

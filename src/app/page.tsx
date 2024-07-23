@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import {
   ChildcareSection,
   CoCSection,
@@ -16,7 +15,6 @@ import { AuroraProvider } from '~/features/aurora/contexts';
 import { EffectWrap } from '~/features/effects/components';
 
 import { styled } from '@styled-system/jsx';
-import { FC } from 'react';
 
 function Home() {
   return (

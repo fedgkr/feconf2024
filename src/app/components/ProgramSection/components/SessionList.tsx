@@ -2,7 +2,7 @@
 
 import { FC, useState } from 'react';
 import { styled } from '@styled-system/jsx';
-import { first, map, size } from 'lodash-es';
+import { map, size } from 'lodash-es';
 import { FadeIn } from '~/shared/components';
 import { SessionType } from '~/features/programs/types';
 import type { Session } from '~/features/programs/types';

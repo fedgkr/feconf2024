@@ -277,7 +277,7 @@ const GradientSphere = forwardRef(() => {
     let scrollTop = scrollRef.current!;
 
     const secondSection = 1134;
-    const thirdSection = 1369;
+    // const thirdSection = 1369;
 
     if (scrollTop > secondSection) {
       scrollTop += (scrollTop - secondSection) * 1.8;
