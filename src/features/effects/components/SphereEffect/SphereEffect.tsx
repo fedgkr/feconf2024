@@ -2,10 +2,10 @@
 
 import { FC, useEffect, useRef } from 'react';
 import { useThree } from '@react-three/fiber';
-import { MathUtils, OrthographicCamera } from 'three';
+import { OrthographicCamera } from 'three';
 import { GradientSphere } from './components';
 
-interface Props { }
+interface Props {}
 
 const Camera: FC = () => {
   const { set } = useThree();
