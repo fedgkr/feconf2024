@@ -21,7 +21,7 @@ import { MeshPhysicalMaterialWithGlow } from './MeshPhysicalMaterialWithGlow';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 // import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { BokehPass, ShaderPass } from 'three/examples/jsm/Addons.js';
+import { ShaderPass } from 'three/examples/jsm/Addons.js';
 import Color4 from 'three/examples/jsm/renderers/common/Color4.js';
 import { BokehPass2 } from './external/BokehPass2.js';
 import { BlurShader } from './external/BlurShader';
@@ -135,7 +135,6 @@ function GradientSphere() {
       'baseTexture'
     );
     mixPass.needsSwap = true;
-
 
     postprocessing.composer = composer;
     postprocessing.bokeh = bokehPass;

@@ -58,11 +58,7 @@ const Container = styled(Column, {
     top: '50%',
     width: '100%',
     transform: 'translateY(-50%) translateY(-40px)',
-    // padding: {
-    //   base: '144px 0 60px 0',
-    //   xl: '170px 0 420px 0',
-    // },
-  }
+  },
 });
 
 const Title = styled(FadeIn, {
