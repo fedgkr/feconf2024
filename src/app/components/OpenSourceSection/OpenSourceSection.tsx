@@ -2,7 +2,10 @@ import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
 import { Column, FadeIn, SectionTitle } from '~/shared/components';
 
-import openSources from './assets/opensources.png';
+import babelLogo from './assets/babel.png';
+import corejsLogo from './assets/core-js.png';
+import pretendardLogo from './assets/pretendard.png';
+import reactHookFormLogo from './assets/react-hook-form.png';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -32,7 +35,40 @@ const OpenSourceSection: FC = () => {
         />
         <Wrap distance={0} duration={{ in: 0.2 }}>
           <FadeIn distance={30}>
-            <Image src={openSources.src} />
+            <List>
+              <Item>
+                <Image
+                  src={babelLogo.src}
+                  width="77px"
+                  height="30px"
+                  alt="Babel"
+                />
+              </Item>
+              <Item>
+                <Image
+                  src={corejsLogo.src}
+                  width="135px"
+                  height="32px"
+                  alt="Corejs"
+                />
+              </Item>
+              <Item>
+                <Image
+                  src={pretendardLogo.src}
+                  width="111px"
+                  height="40px"
+                  alt="Pretendard"
+                />
+              </Item>
+              <Item>
+                <Image
+                  src={reactHookFormLogo.src}
+                  width="193px"
+                  height="24px"
+                  alt="React Hook Form"
+                />
+              </Item>
+            </List>
           </FadeIn>
           <FadeIn distance={30}>
             <Description>
@@ -86,17 +122,36 @@ const Wrap = styled(FadeIn, {
   },
 });
 
-const Image = styled('img', {
+const List = styled('ul', {
   base: {
+    margin: {
+      base: '0 auto',
+    },
+    display: 'flex',
     width: {
-      base: '228px',
-      xl: '612px',
+      base: '100%',
+      xl: '540px',
     },
-    height: {
-      base: '63px',
-      xl: '169px',
-    },
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap',
   },
+});
+
+const Item = styled('li', {
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    height: '40px',
+    padding: '0 12px',
+    marginRight: '12px',
+    boxSizing: 'content-box',
+    marginTop: '16px',
+  },
+});
+
+const Image = styled('img', {
+  base: {},
 });
 
 const Description = styled('p', {

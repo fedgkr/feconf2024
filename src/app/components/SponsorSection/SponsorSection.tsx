@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
-import { Column, SectionTitle } from '~/shared/components';
+import { Column, FadeIn, SectionTitle } from '~/shared/components';
 
 import { SponsorInfo } from './comopnents';
 import { motion, Variants } from 'framer-motion';
@@ -82,7 +82,7 @@ const SponsorList = styled('div', {
   },
 });
 
-const MediaSponsor = styled('div', {
+const MediaSponsor = styled(FadeIn, {
   base: {
     display: 'flex',
     alignItems: 'center',
