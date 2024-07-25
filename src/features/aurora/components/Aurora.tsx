@@ -183,7 +183,7 @@ const Aurora: FC<Props> = () => {
     gui.add(guiState, 'turbulence', 0, 5).onChange(handleChange);
     gui.add(guiState, 'yPosition', 0, 15, 0.1).onChange(handleChange);
     gui.add(guiState, 'rotationSpeed', 0, 10, 0.1).onChange(handleChange);
-    gui.hide();
+    // gui.hide();
     return () => {
       gui.destroy();
     };
