@@ -1,1 +1,1 @@
-export { default } from './GradientShere';
+export { default } from './GradientSphere';
