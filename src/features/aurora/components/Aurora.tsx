@@ -148,11 +148,11 @@ const Aurora: FC<Props> = () => {
   const textureRatio = 1; // height / width
   const [guiState, setGuiState] = useState({
     // meshSize: 35,
-    meshSize: 42,
-    turbulence: 4,
-    frequency: 0.4,
-    rotationSpeed: 0.55,
-    yPosition: 10.5,
+    meshSize: 52,
+    turbulence: 3,
+    frequency: 0.3,
+    rotationSpeed: 0.2,
+    yPosition: 13.5,
     wireframe: false,
   });
   const { gl, scene, camera } = useThree();
@@ -184,7 +184,7 @@ const Aurora: FC<Props> = () => {
     gui.add(guiState, 'yPosition', 0, 15, 0.1).onChange(handleChange);
     gui.add(guiState, 'rotationSpeed', 0, 10, 0.1).onChange(handleChange);
     gui.domElement.style.marginTop = '70px';
-    // gui.hide();
+    gui.hide();
     return () => {
       gui.destroy();
     };

@@ -8,7 +8,7 @@ import { SessionType } from '~/features/programs/types';
 import type { Session } from '~/features/programs/types';
 import { timeLabelLookup } from '~/features/programs/constants';
 
-import { SessionModal } from './components';
+import { ClockIcon, SessionModal } from './components';
 import { useProgram } from '~/features/programs/contexts';
 import {
   aSessionList,
@@ -36,6 +36,7 @@ const SessionList: FC = () => {
   };
   return (
     <Container>
+      <TimeIcon />
       {map(sessions, (session, index) => {
         const { title, speakers, order } = session;
         return (
@@ -46,9 +47,9 @@ const SessionList: FC = () => {
           >
             <Time>
               <span>{timeLabelLookup[order]}</span>
-              <TimeIcon>
+              <LiveIcon>
                 <IconChild />
-              </TimeIcon>
+              </LiveIcon>
             </Time>
             <SessionInfo>
               <Info>
@@ -77,6 +78,7 @@ const SessionList: FC = () => {
 
 const Container = styled('div', {
   base: {
+    position: 'relative',
     marginTop: {
       base: '40px',
       xl: '100px',
@@ -95,12 +97,24 @@ const Session = styled(FadeIn, {
       xl: 'row',
     },
     cursor: 'pointer',
-    '&:not(:first-child)': {
+    '&:not(:first-of-type)': {
       marginTop: {
         base: '30px',
         xl: '60px',
       },
     },
+  },
+});
+
+const TimeIcon = styled(ClockIcon, {
+  base: {
+    position: 'absolute',
+    top: '0px',
+    left: '119px',
+    padding: '9px 8px 8px 9px',
+    boxSizing: 'content-box !important',
+    borderRadius: '10px',
+    backgroundColor: 'rgba(78, 77, 96, 0.2)',
   },
 });
 
@@ -133,7 +147,7 @@ const Time = styled('div', {
   },
 });
 
-const TimeIcon = styled('div', {
+const LiveIcon = styled('div', {
   base: {
     position: 'absolute',
     display: 'flex',
