@@ -20,13 +20,12 @@ import { MeshPhysicalMaterialWithGlow } from './MeshPhysicalMaterialWithGlow';
 // import useMeshScale from '~/shared/hooks/useMeshScale';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-// import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { ShaderPass } from 'three/examples/jsm/Addons.js';
+import { BokehPass, ShaderPass } from 'three/examples/jsm/Addons.js';
 import Color4 from 'three/examples/jsm/renderers/common/Color4.js';
-import { BokehPass2 } from './external/BokehPass2.js';
 import { BlurShader } from './external/BlurShader';
 import { useHeroScreen } from '~/features/hooks/useHeroScreen';
 import { usePrefersReducedMotionRef } from '~/features/hooks/usePrefersReducedMotion';
+import { BokehShader } from './external/BokehShader';
 
 const sphereSize = 1;
 const sphereSegments = 64;
@@ -42,7 +41,7 @@ const glowState = {
 const dofState = {
   focus: 150,
   aperture: 20,
-  maxblur: 0.03,
+  maxblur: 0.02,
   blurOffset: 3,
   blurCount: 2,
   blurOpacity: 1,
@@ -74,7 +73,6 @@ function GradientSphere() {
       processingRef.current = {};
       return;
     }
-    console.log(camera);
 
     const postprocessing = processingRef.current;
     const renderPass = new RenderPass(scene, camera);
@@ -83,14 +81,18 @@ function GradientSphere() {
     renderPass.clearColor = new Color4(0, 1, 1, 0);
     renderPass.clearDepth = true;
 
-    const bokehPass = new BokehPass2(scene, camera, {
+    // focus?: number;
+    // aspect?: number;
+    // aperture?: number;
+    // maxblur?: number;
+    const bokehPass = new BokehPass(scene, camera, {
       focus: dofState.focus,
       aperture: dofState.aperture * 0.00001,
       maxblur: dofState.maxblur,
     });
 
-    // const outputPass = new OutputPass();
     const composer = new EffectComposer(gl);
+
     composer.addPass(renderPass);
 
     const blurShaderPass = new ShaderPass(
@@ -101,44 +103,22 @@ function GradientSphere() {
         },
       })
     );
-    composer.addPass(blurShaderPass);
-    composer.addPass(bokehPass);
-
-    const mixPass = new ShaderPass(
+    const bokehShaderPass = new ShaderPass(
       new ShaderMaterial({
+        ...BokehShader,
         uniforms: {
-          baseTexture: { value: null },
-          bloomTexture: { value: composer.renderTarget2.texture },
+          ...BokehShader.uniforms,
         },
-        vertexShader: `varying vec2 vUv;
-          void main() {
-
-            vUv = uv;
-
-            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-
-          }`,
-        fragmentShader: `
-
-          uniform sampler2D baseTexture;
-          uniform sampler2D bloomTexture;
-
-          varying vec2 vUv;
-
-          void main() {
-
-            // gl_FragColor = texture2D(baseTexture, vUv); + texture2D(bloomTexture, vUv);
-            gl_FragColor = ( texture2D( baseTexture, vUv ) + vec4( 1.0 ) * texture2D( bloomTexture, vUv ) );
-          }`,
-        defines: {},
-      }),
-      'baseTexture'
+      })
     );
-    mixPass.needsSwap = true;
+    composer.addPass(blurShaderPass);
+    composer.addPass(bokehShaderPass);
 
     postprocessing.composer = composer;
     postprocessing.bokeh = bokehPass;
+    postprocessing.bokehShaderPass = bokehShaderPass;
     postprocessing.blurShaderPass = blurShaderPass;
+    postprocessing.renderPass = renderPass;
 
     return () => {
       processingRef.current = {};
@@ -149,13 +129,18 @@ function GradientSphere() {
     if (!processingRef.current.bokeh) {
       return;
     }
-    const bokeh = processingRef.current.bokeh;
-    bokeh.uniforms['focus'].value = dofState.focus;
-    bokeh.uniforms['aperture'].value = dofState.aperture * 0.00001;
-    bokeh.uniforms['maxblur'].value = dofState.maxblur;
-    // const blurCount = dofState.blurCount;
-    const blurOffset = dofState.blurOffset;
+    // const bokeh = processingRef.current.bokeh;
+    // bokeh.uniforms['focus'].value = dofState.focus;
+    // bokeh.uniforms['aperture'].value = dofState.aperture * 0.00001;
+    // bokeh.uniforms['maxblur'].value = dofState.maxblur;
 
+    const bokehShaderPass = processingRef.current.bokehShaderPass;
+
+    bokehShaderPass.uniforms['focus'].value = dofState.focus;
+    bokehShaderPass.uniforms['aperture'].value = dofState.aperture * 0.00001;
+    bokehShaderPass.uniforms['maxblur'].value = dofState.maxblur;
+
+    const blurOffset = dofState.blurOffset;
     const res = gl.getDrawingBufferSize(new Vector2());
 
     processingRef.current.blurShaderPass.uniforms.uBlurOffset.value =
@@ -171,7 +156,7 @@ function GradientSphere() {
         return;
       }
 
-      const targetRad = MathUtils.degToRad(-250 - scrollRef.current / 50);
+      const targetRad = MathUtils.degToRad(-250);
 
       meshRef.current.rotation.x = MathUtils.lerp(
         meshRef.current.rotation.x,
@@ -226,12 +211,13 @@ function GradientSphere() {
       const lightRGB = [255, 246, 206];
       const scaleDist = Math.min(1, scrollRef.current / maxScaleScroll) * 3;
       const scale = Math.max(1, 1 + scaleDist);
+      const emissiveValue = Math.max(0, scale / 2 - 1);
 
+      processingRef.current.bokehShaderPass.enabled = !isReduced;
       lightRGB.forEach((color, i) => {
         lightRGB[i] = Math.min(255, color * scale);
       });
 
-      const emissiveValue = Math.max(0, scale / 2 - 1);
       materialRef.current!.emissive = new Color(
         emissiveValue,
         emissiveValue,
@@ -264,6 +250,7 @@ function GradientSphere() {
       meshRef.current!.scale.y = ms;
       meshRef.current!.scale.z = ms;
       meshRef.current!.position.y = nextY;
+      meshRef.current!.position.z = -3;
 
       if (opacity) {
         meshRef.current!.visible = true;
