@@ -112,23 +112,4 @@ const Place = styled('span', {
   },
 });
 
-const TicketButton = styled('a', {
-  base: {
-    display: 'flex',
-    width: '118px',
-    height: '39px',
-    padding: '16px 20px',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: '#010308',
-    fontSize: '14px',
-    fontWeight: '700',
-    lineHeight: '130%',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    backgroundColor: '#fff',
-    backdropFilter: 'blur(3px)',
-  },
-});
-
 export default Header;

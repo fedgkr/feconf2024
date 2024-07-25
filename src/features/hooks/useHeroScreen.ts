@@ -6,37 +6,44 @@ export function useHeroScreen() {
   const screenSizeRef = useRef<DOMRect[]>([]);
   const target = useMemo(() => new EventTarget(), []);
 
-  const scroll = useCallback((unScroll?: boolean) => {
-    const scrollTop = document.documentElement.scrollTop;
+  const scroll = useCallback(
+    (unScroll?: boolean) => {
+      scrollRef.current = document.documentElement.scrollTop;
+      if (!unScroll) target.dispatchEvent(new CustomEvent('scroll'));
+    },
+    [target]
+  );
+  const resize = useCallback(
+    (unDispatch?: boolean) => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
 
-    scrollRef.current = scrollTop;
-
-    if (!unScroll) {
-      target.dispatchEvent(new CustomEvent('scroll'));
-    }
-  }, []);
-  const resize = useCallback((unDispatch?: boolean) => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    sizeRef.current = { width, height };
-    screenSizeRef.current = [...document.querySelectorAll('section')].map(
-      el => {
-        return el.getBoundingClientRect();
+      sizeRef.current = { width, height };
+      screenSizeRef.current = [...document.querySelectorAll('section')].map(
+        el => {
+          return el.getBoundingClientRect();
+        }
+      );
+      if (!unDispatch) {
+        target.dispatchEvent(new CustomEvent('resize'));
       }
-    );
-    if (!unDispatch) {
-      target.dispatchEvent(new CustomEvent('resize'));
-    }
-  }, []);
+    },
+    [target]
+  );
 
-  const onScroll = useCallback((callback: () => void) => {
-    target.addEventListener('scroll', callback);
-  }, []);
+  const onScroll = useCallback(
+    (callback: () => void) => {
+      target.addEventListener('scroll', callback);
+    },
+    [target]
+  );
 
-  const onResize = useCallback((callback: () => void) => {
-    target.addEventListener('resize', callback);
-  }, []);
+  const onResize = useCallback(
+    (callback: () => void) => {
+      target.addEventListener('resize', callback);
+    },
+    [target]
+  );
 
   useEffect(() => {
     const resizeCallback = () => resize();
@@ -51,7 +58,7 @@ export function useHeroScreen() {
       window.removeEventListener('resize', resizeCallback);
       window.removeEventListener('scroll', scrollCallback);
     };
-  }, []);
+  }, [resize, scroll]);
 
   return {
     sizeRef,

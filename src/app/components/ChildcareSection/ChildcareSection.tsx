@@ -115,42 +115,4 @@ const Description = styled('p', {
   },
 });
 
-const PurchaseButton = styled('a', {
-  base: {
-    marginTop: {
-      base: '40px',
-      xl: '80px',
-    },
-    padding: {
-      base: '20px 0',
-      xl: '17px 0',
-    },
-    border: 'none',
-    borderRadius: '10px',
-    width: {
-      base: '100%',
-      xl: '240px',
-    },
-    display: 'inline-flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: '#010308',
-    fontSize: {
-      base: '16px',
-      xl: '20px',
-    },
-    fontWeight: '700',
-    lineHeight: '1.3',
-    cursor: 'pointer',
-    backgroundColor: 'white',
-  },
-});
-
-const ButtonWrap = styled(FadeIn, {
-  base: {
-    width: '100%',
-    textAlign: 'center',
-  },
-});
-
 export default ChildcareSection;
