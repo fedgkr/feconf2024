@@ -183,7 +183,7 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.Lightning,
-    title: 'Group 2 : 콜라보',
+    title: 'Group 2 : Collaborations',
     description:
       '박태호 - FE의 문화유산답사기 - 레거시 시스템 운영에 대하여<br/>' +
       '배휘동 - AI 시대의 협업 전략: 3자간(AI + 코드 + 인간) 협업을 통한 대용량 JS 파일 리팩토링 경험<br/>' +
@@ -203,7 +203,7 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.Lightning,
-    title: 'Group 3 : 이펙티브 엔지니어',
+    title: 'Group 3 : Effective Engineer',
     description:
       '조성진 - 당신은 어떤 IDE로 개발하나요? (feat. Neovim)<br/>' +
       '김무훈 - A4 레이아웃 프린트를 지원하는 웹 이력서 조판하기<br/>' +
@@ -255,7 +255,7 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.Lightning,
-    title: 'Group 5 : 저는 말이조',
+    title: 'Group 5 : 저는 말이조..',
     description:
       '권경민 - 고졸 개발자로 살아남기<br/>' +
       '김승모 - 우리, 같이 성장할래요?(부제: 커뮤니티와 함께 성장하기)<br/>' +

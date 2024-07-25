@@ -45,11 +45,6 @@ const ChildcareSection: FC = () => {
             </Description>
           </FadeIn>
         </Info>
-        <ButtonWrap distance={30}>
-          <PurchaseButton target="_blank" href={TICKET_LINK}>
-            아이 돌봄 티켓 구매하기
-          </PurchaseButton>
-        </ButtonWrap>
       </Column>
     </Section>
   );
