@@ -4,7 +4,7 @@
 import { useThree } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { Mesh, PerspectiveCamera, ShaderMaterial, Vector2 } from 'three';
+import { Mesh, ShaderMaterial, Vector2 } from 'three';
 import type { GUI as GUIType } from 'dat.gui';
 
 import auroraImage from '../assets/background4.png';
