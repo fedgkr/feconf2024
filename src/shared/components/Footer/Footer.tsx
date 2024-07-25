@@ -2,6 +2,8 @@ import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
 
 import { Logo } from './components';
+import { MailIcon, GlobalIcon, FAQIcon, FacebookIcon } from './icons';
+import { EMAIL, FAQ_LINK, FE_GROUP_LINK } from '~/shared/constants';
 
 const Footer: FC = () => {
   return (
@@ -10,6 +12,32 @@ const Footer: FC = () => {
         <LogoWrap>
           <Logo />
         </LogoWrap>
+        <LinkWrap>
+          <Link target="_blank" href={`mailto:${EMAIL}`}>
+            <IconWrap>
+              <MailIcon />
+            </IconWrap>
+            feconf@googlegroups.com
+          </Link>
+          <Link target="_blank" href={FE_GROUP_LINK}>
+            <IconWrap>
+              <FacebookIcon />
+            </IconWrap>
+            프론트엔드개발그룹
+          </Link>
+          <Link target="_blank" href="https://2023.feconf.kr">
+            <IconWrap>
+              <GlobalIcon />
+            </IconWrap>
+            FEConf 2023
+          </Link>
+          <Link target="_blank" href={FAQ_LINK}>
+            <IconWrap>
+              <FAQIcon />
+            </IconWrap>
+            FQA
+          </Link>
+        </LinkWrap>
         <Rights>© FEConf 2024 All rights reserved.</Rights>
       </Wrap>
     </Container>
@@ -47,6 +75,56 @@ const LogoWrap = styled('div', {
     display: 'flex',
     alignItems: 'center',
     gap: '14px',
+  },
+});
+
+const LinkWrap = styled('div', {
+  base: {
+    display: 'flex',
+    flexDirection: {
+      base: 'column',
+      xl: 'row',
+    },
+    gap: {
+      base: '6px',
+      xl: '31px',
+    },
+  },
+});
+
+const Link = styled('a', {
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: {
+      base: '10px',
+      xl: '12px',
+    },
+    fontSize: {
+      base: '12px',
+      xl: '14px',
+    },
+    lineHeight: '140%',
+    cursor: 'pointer',
+    color: 'rgba(255, 255, 255, 0.7)',
+  },
+});
+
+const IconWrap = styled('div', {
+  base: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: {
+      base: '26px',
+      xl: '28px',
+    },
+    height: {
+      base: '26px',
+      xl: '28px',
+    },
+    borderRadius: '8px',
+    backgroundColor: 'rgba(78, 77, 96, 0.3)',
   },
 });
 
