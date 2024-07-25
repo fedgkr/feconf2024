@@ -1,9 +1,8 @@
 import { forwardRef } from 'react';
 import { styled } from '@styled-system/jsx';
 import { DataLocation, HeroLogo } from './components';
-import { Column, FadeIn } from '~/shared/components';
+import { Column, FadeIn, MainCTAButton } from '~/shared/components';
 import { motion, Variants } from 'framer-motion';
-import { TICKET_LINK } from '~/shared/constants';
 
 interface Props {
   active?: boolean;
@@ -35,11 +34,9 @@ const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
         <Info distance={60} duration={{ in: 0.8 }}>
           <DataLocation />
         </Info>
-        <FadeIn distance={60} duration={{ in: 0.8 }}>
-          <PurchaseButton target="_blank" href={TICKET_LINK}>
-            티켓 구매하기
-          </PurchaseButton>
-        </FadeIn>
+        <ButtonWrap distance={60} duration={{ in: 0.8 }}>
+          <MainCTAButton size="m" status="presale" />
+        </ButtonWrap>
       </Container>
     </Section>
   );
@@ -101,34 +98,12 @@ const Info = styled(FadeIn, {
   },
 });
 
-const PurchaseButton = styled('a', {
+const ButtonWrap = styled(FadeIn, {
   base: {
     marginTop: {
       base: '50px',
       xl: '90px',
     },
-    padding: {
-      base: '16px 0',
-      xl: '17px 0',
-    },
-    border: 'none',
-    borderRadius: '10px',
-    width: {
-      base: '300px',
-      xl: '240px',
-    },
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: '#010308',
-    fontSize: {
-      base: '16px',
-      xl: '20px',
-    },
-    fontWeight: '700',
-    lineHeight: '1.3',
-    cursor: 'pointer',
-    backgroundColor: 'white',
   },
 });
 

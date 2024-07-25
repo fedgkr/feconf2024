@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
-import { Column, FadeIn } from '~/shared/components';
+import { Column, FadeIn, MainCTAButton } from '~/shared/components';
 import {
   DataLocation,
   HeroLogo,
@@ -43,9 +43,7 @@ const FooterSection: FC = () => {
           </InfoWrap>
         </FadeIn>
         <ButtonWrap distance={30}>
-          <PurchaseButton target="_blank" href={TICKET_LINK}>
-            티켓 구매하기
-          </PurchaseButton>
+          <MainCTAButton size="m" status="presale" />
         </ButtonWrap>
       </Column>
     </Section>
@@ -108,37 +106,14 @@ const InfoWrap = styled('div', {
   },
 });
 
-const PurchaseButton = styled('a', {
-  base: {
-    marginTop: {
-      base: '40px',
-      xl: '90px',
-    },
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    padding: '17px 0',
-    border: 'none',
-    borderRadius: '10px',
-    width: {
-      base: '100%',
-      xl: '240px',
-    },
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: '#010308',
-    fontSize: '20px',
-    fontWeight: '700',
-    lineHeight: '1.3',
-    cursor: 'pointer',
-    backgroundColor: 'white',
-  },
-});
-
 const ButtonWrap = styled(FadeIn, {
   base: {
     width: '100%',
     textAlign: 'center',
+    marginTop: {
+      base: '40px',
+      xl: '90px',
+    },
   },
 });
 

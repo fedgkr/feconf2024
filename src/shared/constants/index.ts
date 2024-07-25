@@ -1,7 +1,8 @@
 const TICKET_LINK = 'https://booking.naver.com/booking/5/bizes/263881';
+const YOUTUBE_LINK = 'https://www.youtube.com/@feconfkorea';
 const FE_GROUP_LINK = 'https://www.facebook.com/feconf.kr';
 const FAQ_LINK =
   'https://neighborly-dracopelta-8f3.notion.site/FAQ-198b5b664b9c457b8faadc1517888f94';
 const EMAIL = 'feconf@googlegroups.com';
 
-export { TICKET_LINK, FE_GROUP_LINK, FAQ_LINK, EMAIL };
+export { TICKET_LINK, YOUTUBE_LINK, FE_GROUP_LINK, FAQ_LINK, EMAIL };
