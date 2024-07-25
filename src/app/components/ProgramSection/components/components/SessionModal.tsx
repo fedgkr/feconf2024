@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 
 import * as Dialog from '@radix-ui/react-dialog';
 import { styled } from '@styled-system/jsx';
@@ -39,13 +39,13 @@ const SessionModal: FC<Props> = ({ session, open, onChangeOpen }) => {
               />
               <Speaker>
                 {map(session?.speakers, (speaker, index) => (
-                  <>
+                  <Fragment key={index}>
                     <span>
                       {speaker?.name}
                       {index < size(session?.speakers) - 1 ? ', ' : ''}
                     </span>
                     {speaker?.company && <span> | {speaker?.company}</span>}
-                  </>
+                  </Fragment>
                 ))}
               </Speaker>
             </>

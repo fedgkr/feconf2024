@@ -12,7 +12,7 @@ const container: Variants = {
   visible: {
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.5,
+      delayChildren: 0.3,
     },
   },
 };
@@ -39,7 +39,7 @@ const SponsorSection: FC = () => {
           <SponsorInfo grade="Rookie" />
           <MediaSponsor>
             <Line />
-            <Title>
+            <Title target="_blank" href="https://yozm.wishket.com/">
               Media Partner <strong>요즘 IT</strong>
             </Title>
             <Line />
@@ -109,12 +109,13 @@ const Line = styled('div', {
   },
 });
 
-const Title = styled('span', {
+const Title = styled('a', {
   base: {
     fontSize: {
       base: '14px',
       xl: '18px',
     },
+    cursor: 'pointer',
     color: 'rgba(255, 255, 255, 0.3)',
     '& > strong': {
       fontSize: {

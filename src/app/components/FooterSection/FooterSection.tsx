@@ -7,13 +7,12 @@ import {
 } from '~/app/components/HeroSection/components';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { TICKET_LINK } from '~/shared/constants';
 
 const container: Variants = {
   visible: {
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.5,
+      delayChildren: 0.15,
     },
   },
 };

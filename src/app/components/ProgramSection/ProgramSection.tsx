@@ -12,7 +12,7 @@ const container: Variants = {
   visible: {
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.5,
+      delayChildren: 0.15,
     },
   },
 };

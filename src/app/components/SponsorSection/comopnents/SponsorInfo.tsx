@@ -25,27 +25,31 @@ const googlecloud: SponsorData = {
 };
 const soomgo: SponsorData = {
   imageSrc: soomgoImage.src,
-  href: 'https://www.soomgo.com/',
+  href: 'https://www.soomgo.team/',
 };
 const wooritech: SponsorData = {
   imageSrc: wooritechImage.src,
-  href: 'https://wooritech.com/',
+  href: 'https://realgrid.com/',
 };
 const wyyyes: SponsorData = {
   imageSrc: wyyyesImage.src,
-  href: 'https://wyyyes.com/',
+  href: 'https://wyyyes.career.greetinghr.com/o/111768',
 };
 const imweb: SponsorData = {
   imageSrc: imwebImage.src,
-  href: 'https://imweb.me/',
+  href: 'https://team.imweb.me/',
 };
 const carrot: SponsorData = {
   imageSrc: carrotImage.src,
-  href: 'https://www.carrotins.com/',
+  href: 'https://about.daangn.com/',
 };
+// const oliveyoung: SponsorData = {
+//   imageSrc: oliveyoung.src,
+//   href: 'https://career.oliveyoung.com/',
+// };
 const toss: SponsorData = {
   imageSrc: tossImage.src,
-  href: 'https://toss.im/',
+  href: 'https://toss.im/career',
 };
 const stibee: SponsorData = {
   imageSrc: stibeeImage.src,

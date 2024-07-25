@@ -1,8 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
 import { styled } from '@styled-system/jsx';
-import { match } from 'ts-pattern';
+import { match, P } from 'ts-pattern';
 import { TICKET_LINK, YOUTUBE_LINK } from '~/shared/constants';
-import { isNil } from 'lodash-es';
 
 interface Props {
   size: 's' | 'm';
@@ -17,12 +16,10 @@ const MainCTAButton: FC<PropsWithChildren<Props>> = ({ size, status }) => {
     .with('postevent', () => '세션 보러가기')
     .exhaustive();
   const href = match(status)
-    .with('presale', () => undefined)
-    .with('sale', () => TICKET_LINK)
+    .with(P.union('presale', 'sale'), () => TICKET_LINK)
     .with('soldout', () => undefined)
     .with('postevent', () => YOUTUBE_LINK)
     .exhaustive();
-  const active = !isNil(href);
   return (
     <Button target="_blank" href={href} size={size} status={status}>
       {label}

@@ -1,4 +1,5 @@
-const TICKET_LINK = 'https://booking.naver.com/booking/5/bizes/263881';
+const TICKET_LINK =
+  'https://booking.naver.com/booking/5/bizes/263881/items/6059588';
 const YOUTUBE_LINK = 'https://www.youtube.com/@feconfkorea';
 const FE_GROUP_LINK = 'https://www.facebook.com/feconf.kr';
 const FAQ_LINK =
