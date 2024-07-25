@@ -4,7 +4,7 @@
 import { useThree } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { Mesh, ShaderMaterial, Vector2 } from 'three';
+import { Mesh, PerspectiveCamera, ShaderMaterial, Vector2 } from 'three';
 import type { GUI as GUIType } from 'dat.gui';
 
 import auroraImage from '../assets/background4.png';
@@ -196,7 +196,7 @@ const Aurora: FC<Props> = () => {
       }
       const { width, height } = sizeRef.current;
       gl.setSize(width, height);
-      camera.position.z = 10;
+      camera.position.z = 6;
       (camera as any).aspect = width / height;
       camera.updateProjectionMatrix();
       dispatch('scroll');
