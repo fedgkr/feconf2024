@@ -3,7 +3,7 @@ import { styled } from '@styled-system/jsx';
 import { Column, FadeIn, SectionTitle } from '~/shared/components';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { EMAIL, FE_GROUP_LINK } from '~/shared/constants';
+import { EMAIL, LINKED_IN_LINK } from '~/shared/constants';
 
 const container: Variants = {
   visible: {
@@ -33,7 +33,7 @@ const ContactSection: FC = () => {
               국내 최고의 프론트엔드 개발 인사이트를 얻을 수 있는 기회를
               공유하여 함께 배우고, 함께 성장해보세요.
             </Description>
-            <Link target="_blank" href={FE_GROUP_LINK}>
+            <Link target="_blank" href={LINKED_IN_LINK}>
               <svg
                 width="24"
                 height="24"
@@ -51,7 +51,7 @@ const ContactSection: FC = () => {
                   />
                 </g>
               </svg>
-              <span>프론트엔드개발그룹</span>
+              <span>LinkedIn</span>
             </Link>
           </Item>
           <Item distance={30}>
