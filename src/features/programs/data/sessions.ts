@@ -50,7 +50,7 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.A,
-    title: 'React Native와 웹뷰의 Type Safe한 새로운 다리',
+    title: 'React Native와 웹이 공존하는 또 하나의 방법',
     description:
       'Type Safe에 대한 이야기를 간략하게 합니다. React Native와 WebView를 활용해 개발을 할 때 마주칠 수 밖에 없는 통신 문제를 Type Safe하고, 흔하지 않게 해결하는 방법을 다룹니다. 또한 라이브러리를 개발하면서 어떻게 DX를 생각하며 개발할 수 있는지 다룹니다.',
     speakers: [
