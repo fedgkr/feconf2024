@@ -36,7 +36,7 @@ const ChildcareSection: FC = () => {
           </FadeIn>
           <FadeIn distance={30}>
             <Description>
-              2024 FEConf는 자녀 동반 참가자를 위한 현장 아이돌봄 케어 서비스를
+              FEConf2024는 자녀 동반 참가자를 위한 현장 아이돌봄 케어 서비스를
               제공합니다.
               <br />
               육아 케어 전문 기업 자란다와 함께 안전하고 보람찬 아이돌봄

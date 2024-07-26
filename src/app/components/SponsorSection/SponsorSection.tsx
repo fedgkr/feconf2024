@@ -32,7 +32,7 @@ const SponsorSection: FC = () => {
       <Column>
         <SectionTitle
           title="Sponsors"
-          description="프론트엔드 개발 생태계를 밝혀주는<br/>2024 FEconf 후원사를 소개합니다"
+          description="프론트엔드 개발 생태계를 밝혀주는<br/>FEConf2024 후원사를 소개합니다"
         />
         <SponsorList>
           <SponsorInfo grade="Master" />
