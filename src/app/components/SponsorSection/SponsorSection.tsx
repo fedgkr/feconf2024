@@ -8,6 +8,8 @@ import { SponsorInfo } from './comopnents';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+import mediaSponsorLogo from './assets/it.png';
+
 const container: Variants = {
   visible: {
     transition: {
@@ -40,7 +42,7 @@ const SponsorSection: FC = () => {
           <MediaSponsor>
             <Line />
             <Title target="_blank" href="https://yozm.wishket.com/">
-              Media Partner <strong>요즘 IT</strong>
+              Media Partner <MediaLogo src={mediaSponsorLogo.src} />
             </Title>
             <Line />
           </MediaSponsor>
@@ -111,23 +113,30 @@ const Line = styled('div', {
 
 const Title = styled('a', {
   base: {
+    display: 'flex',
+    alignItems: 'center',
     fontSize: {
       base: '14px',
       xl: '18px',
     },
+    gap: {
+      base: '14px',
+      xl: '24px',
+    },
     cursor: 'pointer',
     color: 'rgba(255, 255, 255, 0.3)',
-    '& > strong': {
-      fontSize: {
-        base: '14px',
-        xl: '18px',
-      },
-      fontWeight: 500,
-      color: '#a4a4a4',
-      marginLeft: {
-        base: '8px',
-        xl: '24px',
-      },
+  },
+});
+
+const MediaLogo = styled('img', {
+  base: {
+    width: {
+      base: '68px',
+      xl: '102px',
+    },
+    height: {
+      base: '17px',
+      xl: '25px',
     },
   },
 });
