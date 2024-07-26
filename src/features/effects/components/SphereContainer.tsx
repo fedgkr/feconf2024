@@ -5,7 +5,7 @@ import { Canvas as FiberCanvas } from '@react-three/fiber';
 import { styled } from '@styled-system/jsx';
 import { GradientSphere } from './SphereEffect/components';
 
-interface Props { }
+interface Props {}
 
 export const SphereContainer: FC<PropsWithChildren<Props>> = () => {
   return (

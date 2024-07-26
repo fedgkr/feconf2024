@@ -5,7 +5,7 @@ import { Canvas as FiberCanvas } from '@react-three/fiber';
 import { styled } from '@styled-system/jsx';
 import Aurora from '~/features/aurora/components/Aurora';
 
-interface Props { }
+interface Props {}
 
 export const AuroraContainer: FC<PropsWithChildren<Props>> = () => {
   return (
