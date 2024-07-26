@@ -21,7 +21,6 @@ import { MeshPhysicalMaterialWithGlow } from './MeshPhysicalMaterialWithGlow';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { BokehPass, ShaderPass } from 'three/examples/jsm/Addons.js';
-import Color4 from 'three/examples/jsm/renderers/common/Color4.js';
 import { BlurShader } from './external/BlurShader';
 import { useHeroScreen } from '~/features/hooks/useHeroScreen';
 import { usePrefersReducedMotionRef } from '~/features/hooks/usePrefersReducedMotion';
@@ -80,8 +79,8 @@ function GradientSphere() {
     const postprocessing = processingRef.current;
     const renderPass = new RenderPass(scene, camera);
 
-    renderPass.clearAlpha = 0;
-    renderPass.clearColor = new Color4(0, 1, 1, 0);
+    renderPass.clearAlpha = 1;
+    renderPass.clearColor = new Color('#010308');
     renderPass.clearDepth = true;
 
     // focus?: number;

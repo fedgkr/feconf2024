@@ -53,7 +53,7 @@ const Button = styled('a', {
       },
       m: {
         fontSize: {
-          base: '20px',
+          base: '16px',
           xl: '20px',
         },
         borderRadius: '10px',
@@ -72,7 +72,7 @@ const Button = styled('a', {
       presale: {
         backgroundColor: 'rgba(0, 0, 0, 0.3)',
         color: '#FFFFFF',
-        border: '1px solid rgba(255, 255, 255, 0.3)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
       },
       sale: {
         backgroundColor: '#FFFFFF',
