@@ -33,7 +33,7 @@ const IntroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
         </FadeIn>
         <FadeIn>
           <Title>
-            <Highlight>프론트 엔지니어</Highlight>들에 위한
+            <Highlight>프론트 엔지니어</Highlight>들을 위한
           </Title>
         </FadeIn>
         <FadeIn>
