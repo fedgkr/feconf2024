@@ -256,7 +256,7 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.Lightning,
-    title: 'Group 5 : 저는 말이조..',
+    title: 'Group 5 : 저는 말이조',
     description:
       '권경민 - 고졸 개발자로 살아남기<br/>' +
       '김승모 - 우리, 같이 성장할래요?(부제: 커뮤니티와 함께 성장하기)<br/>' +
