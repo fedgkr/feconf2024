@@ -165,7 +165,9 @@ const Aurora: FC<Props> = () => {
   const render = useCallback((once?: boolean) => {
     cancelAnimationFrame(id);
     if (shaderRef.current?.uniforms) {
-      shaderRef.current!.uniforms.uTime.value = (Date.now() - startTime) / 1000;
+      shaderRef.current!.uniforms.uTime.value = reducedRef.current
+        ? 0
+        : (Date.now() - startTime) / 1000;
     }
     gl.render(scene, camera);
 
