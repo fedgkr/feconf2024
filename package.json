@@ -7,7 +7,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "env": "touch out/.nojekyll && echo '2024.feconf.kr' >> out/CNAME",
+    "push": "push-dir --dir=out --branch=gh-pages --cleanup --verbose",
+    "deploy": "npm run build && npm run env && npm run push"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
