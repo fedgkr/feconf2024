@@ -118,6 +118,8 @@ const TimeIcon = styled(ClockIcon, {
       base: '0px',
       xl: '119px',
     },
+    opacity: '0',
+    transform: 'translateY(30px)',
     padding: '9px 8px 8px 9px',
     boxSizing: 'content-box !important',
     borderRadius: '10px',
