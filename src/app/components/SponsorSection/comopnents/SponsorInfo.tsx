@@ -9,6 +9,7 @@ import wooritechImage from './assets/wooritech.png';
 import wyyyesImage from './assets/wyyyes.png';
 import imwebImage from './assets/imweb.png';
 import carrotImage from './assets/carrot.png';
+import oliveyoungImage from './assets/oliveyoung.png';
 import tossImage from './assets/toss.png';
 import stibeeImage from './assets/stibee.png';
 import fLabImage from './assets/F-Lab.png';
@@ -43,10 +44,10 @@ const carrot: SponsorData = {
   imageSrc: carrotImage.src,
   href: 'https://about.daangn.com/',
 };
-// const oliveyoung: SponsorData = {
-//   imageSrc: oliveyoung.src,
-//   href: 'https://career.oliveyoung.com/',
-// };
+const oliveyoung: SponsorData = {
+  imageSrc: oliveyoungImage.src,
+  href: 'https://career.oliveyoung.com/',
+};
 const toss: SponsorData = {
   imageSrc: tossImage.src,
   href: 'https://toss.im/career',
@@ -62,7 +63,7 @@ const fLab: SponsorData = {
 
 const masterList = [googlecloud];
 const diamondList = [soomgo, wooritech];
-const platinumList = [wyyyes, imweb, carrot, toss];
+const platinumList = [wyyyes, imweb, oliveyoung, carrot, toss];
 const rookieList = [stibee, fLab];
 const sponsorListLookup: Record<Grade, SponsorData[]> = {
   Master: masterList,
