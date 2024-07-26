@@ -15,7 +15,7 @@ const DataLocation: FC = () => {
         <IconWrap>
           <LocationIcon />
         </IconWrap>
-        <Text>세종대학교 광개토회관</Text>
+        <Text className="test">세종대학교 광개토회관</Text>
       </Wrap>
     </Container>
   );

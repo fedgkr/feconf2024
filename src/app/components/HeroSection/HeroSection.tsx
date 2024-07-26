@@ -44,8 +44,9 @@ const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
 
 const Section = styled(motion.section, {
   base: {
+    position: 'relative',
     height: '100vh',
-    minHeight: '600px',
+    minHeight: '800px',
   },
 });
 

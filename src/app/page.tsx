@@ -12,7 +12,7 @@ import {
 } from './components';
 import { Header, Footer } from '~/shared/components';
 import { AuroraProvider } from '~/features/aurora/contexts';
-import { EffectWrap } from '~/features/effects/components';
+import { AuroraContainer } from '~/features/effects/components';
 
 import { styled } from '@styled-system/jsx';
 
@@ -29,7 +29,7 @@ function Home() {
         <OpenSourceSection />
         <ContactSection />
         <FooterSection />
-        <EffectWrap />
+        <AuroraContainer />
         <Footer />
       </Main>
     </AuroraProvider>

@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import { styled } from '@styled-system/jsx';
 import { Column, FadeIn } from '~/shared/components';
 import { motion, Variants } from 'framer-motion';
+import { SphereContainer } from '~/features/effects/components/SphereContainer';
 
 interface Props {
   active?: boolean;
@@ -23,6 +24,7 @@ const IntroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
       animate={active ? 'visible' : 'hidden'}
       variants={container}
     >
+      <SphereContainer />
       <Column>
         <FadeIn>
           <Title>
@@ -52,6 +54,7 @@ const IntroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
 
 const Section = styled(motion.section, {
   base: {
+    position: 'relative',
     padding: {
       base: '200px 0 300px 0',
       xl: '180px 0 300px 0',

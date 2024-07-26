@@ -65,6 +65,9 @@ function GradientSphere() {
     useHeroScreen();
 
   const render = useCallback(() => {
+    if (!meshRef.current?.visible) {
+      return;
+    }
     processingRef.current?.composer?.render();
   }, []);
 
@@ -177,7 +180,7 @@ function GradientSphere() {
       }
 
       const innerWidth = sizeRef.current.width;
-      const innerHeight = sizeRef.current.height;
+      const innerHeight = gl.domElement.clientHeight; // sizeRef.current.height;
       const ratio = innerWidth / innerHeight;
       const height = 8;
       const width = height * ratio;
@@ -203,14 +206,19 @@ function GradientSphere() {
       const isReduced = reducedRef.current;
       const firstSectionRect = screenSizeRef.current[0];
       const secondSectionRect = screenSizeRef.current[1];
-      const maxScaleScroll =
+      const secondSectionScroll = firstSectionRect.height;
+      const thirdScaleScroll =
         firstSectionRect.height +
+        secondSectionRect.height -
+        -sizeRef.current.height;
+      const maxScaleScroll =
+        secondSectionScroll +
         secondSectionRect.height / 3 -
         sizeRef.current.height / 2;
 
       const lightRGB = [255, 246, 206];
-      const scaleDist = Math.min(1, scrollRef.current / maxScaleScroll) * 3;
-      const scale = Math.max(1, 1 + scaleDist);
+      const scaleDist = Math.min(1, scrollRef.current / maxScaleScroll);
+      const scale = Math.max(1, 1 + scaleDist * 3);
       const emissiveValue = Math.max(0, scale / 2 - 1);
 
       processingRef.current.bokehShaderPass.enabled = !isReduced;
@@ -243,8 +251,11 @@ function GradientSphere() {
       gl.domElement.style.opacity = `${opacity}`;
 
       const prevVisible = meshRef.current!.visible;
-      const nextY = Math.min(20, -7 + scrollTop / 150);
-      const ms = 5 * (isReduced ? 1.3 : Math.min(1.3, 1 + (scale - 1) / 12));
+      const nextY = isReduced
+        ? 0.3
+        : 0.3 - (scrollRef.current / thirdScaleScroll) * 0.1;
+      const ss = 1 + (scrollRef.current / thirdScaleScroll) * 0.1;
+      const ms = 3.2 * (isReduced ? 1 : ss);
 
       meshRef.current!.scale.x = ms;
       meshRef.current!.scale.y = ms;
