@@ -27,7 +27,7 @@ export const SphereContainer: FC<PropsWithChildren<Props>> = () => {
 const Container = styled('div', {
   base: {
     position: 'absolute',
-    top: '-400px',
+    top: '-480px',
     left: '0',
     width: '100vw',
     height: 'calc(100% + 800px)',

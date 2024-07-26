@@ -2,10 +2,11 @@ import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
 import { Column, FadeIn, SectionTitle } from '~/shared/components';
 
-import babelLogo from './assets/babel.png';
-import corejsLogo from './assets/core-js.png';
+import patternLogo from './assets/ts-pattern.png';
 import pretendardLogo from './assets/pretendard.png';
-import reactHookFormLogo from './assets/react-hook-form.png';
+import zodLogo from './assets/zod.png';
+import kyLogo from './assets/ky.png';
+import queryLogo from './assets/query.png';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -37,44 +38,34 @@ const OpenSourceSection: FC = () => {
           <FadeIn distance={30}>
             <List>
               <Item>
-                <Image
-                  src={babelLogo.src}
-                  width="77px"
-                  height="30px"
-                  alt="Babel"
-                />
-              </Item>
-              <Item>
-                <Image
-                  src={corejsLogo.src}
-                  width="135px"
-                  height="32px"
-                  alt="Corejs"
-                />
+                <Image src={patternLogo.src} alt="ts-pattern" />
               </Item>
               <Item>
                 <Image
                   src={pretendardLogo.src}
-                  width="111px"
-                  height="40px"
                   alt="Pretendard"
+                  style={{ padding: '14px' }}
                 />
               </Item>
               <Item>
-                <Image
-                  src={reactHookFormLogo.src}
-                  width="193px"
-                  height="24px"
-                  alt="React Hook Form"
-                />
+                <Image src={zodLogo.src} alt="Zod" />
+              </Item>
+              <Item>
+                <Image src={kyLogo.src} alt="KY" />
+              </Item>
+              <Item>
+                <Image src={queryLogo.src} alt="React Query" />
               </Item>
             </List>
           </FadeIn>
           <FadeIn distance={30}>
             <Description>
-              당연하게만 사용해온 프론트엔드 오픈소스 프로젝트에 감사의 의미를
-              담아 FEConf에서 후원을 진행합니다. 컨퍼런스 현장에서 경험할 수
-              있는 오픈소스 이벤트까지 놓치지 마세요!
+              프론트엔드 오픈소스 프로젝트에 대한 감사의 마음을 담아 FEConf에서
+              후원을 진행합니다. <Br />
+              행사 현장에서 오픈소스 이벤트에 참여하고, 후원할 프로젝트에 직접
+              투표하세요! <Br />
+              여러분의 투표 결과에 따라 오픈소스 프로젝트에 대한 후원 금액이
+              결정됩니다.
             </Description>
           </FadeIn>
         </Wrap>
@@ -130,7 +121,10 @@ const List = styled('ul', {
     display: 'flex',
     width: {
       base: '100%',
-      xl: '540px',
+    },
+    gap: {
+      base: '10px',
+      xl: '20px',
     },
     justifyContent: 'center',
     alignItems: 'center',
@@ -142,16 +136,22 @@ const Item = styled('li', {
   base: {
     display: 'flex',
     alignItems: 'center',
-    height: '40px',
-    padding: '0 12px',
-    marginRight: '12px',
+    height: {
+      base: '50px',
+      xl: '70px',
+    },
     boxSizing: 'content-box',
     marginTop: '16px',
   },
 });
 
 const Image = styled('img', {
-  base: {},
+  base: {
+    height: {
+      base: '50px',
+      xl: '70px',
+    },
+  },
 });
 
 const Description = styled('p', {
@@ -165,6 +165,15 @@ const Description = styled('p', {
     fontStyle: 'normal',
     fontWeight: '500',
     lineHeight: '160%',
+  },
+});
+
+const Br = styled('br', {
+  base: {
+    display: {
+      base: 'none',
+      xl: 'initial',
+    },
   },
 });
 
