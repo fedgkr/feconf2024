@@ -10,7 +10,7 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.A,
-    title: '에어브릿지 SDK팀이 순수한 유닛테스트를 작성하는 방법',
+    title: '에어브릿지 SDK팀이 Unit Testable한 코드를 작성하는 방법',
     description:
       '에어브릿지 SDK 팀에서 사용하는 플랫폼 의존적인 API를 Pure하게 감싸고, 이것을 주입하고, Mocking하고, 유닛테스트를 작성하는 방법에 대해서 소개합니다. 이는 코드를 더 이식하기 쉽게 만들어주고, 테스트의 속도를 높여주고, 코드가 자연스럽게 모듈화 되도록 유도합니다.',
     speakers: [
@@ -36,13 +36,13 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.A,
-    title: 'e2e 테스트 자동화',
+    title: '쉽고 편리한 E2E 테스트 자동화를 꿈꾸며...',
     description:
       '"서비스 운영에서 TDD만으로는 부족하다"<br/><br/>' +
       '백엔드도 TDD, 프론트엔드도 TDD로 부분 부분 테스트 코드를 통해 문제 없는 코드를 작성하지만, 실제 고객에게 보여지는 화면을 검증하는 것은 E2E 테스트로만 가능한 상황입니다. 지금은 사라진 Explore 시절부터 E2E 테스트를 시도해보며 겪었던 경험과 현재 트렌드에 가장 적합한 방법까지, 테스트를 보다 편리하게 자동화하기 위해 노력했던 경험을 공유합니다.',
     speakers: [
       {
-        name: '백부석',
+        name: '백부석 (Kianue)',
         company: '스티비',
       },
     ],
@@ -50,7 +50,7 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.A,
-    title: 'React Native와 웹이 공존하는 또 하나의 방법',
+    title: 'React Native와 웹뷰의 Type Safe한 새로운 다리',
     description:
       'Type Safe에 대한 이야기를 간략하게 합니다. React Native와 WebView를 활용해 개발을 할 때 마주칠 수 밖에 없는 통신 문제를 Type Safe하고, 흔하지 않게 해결하는 방법을 다룹니다. 또한 라이브러리를 개발하면서 어떻게 DX를 생각하며 개발할 수 있는지 다룹니다.',
     speakers: [
@@ -63,7 +63,8 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.A,
-    title: '아�니 이 글자는 왜 들어가는거에요?',
+    title:
+      '아�니 이 글자 왜 들어간거에요? (부제: 알아두면 가끔 쓸모있는 한글 유니코드 완전 정복)',
     description:
       '맥에서 첨부한 파일들 윈도우에서 파일 깨지는 경험 해본 적 있으신가요?<br/>' +
       'url 에 한글 넣고나면 한글이 아니라 인코딩으로 어떻게 변하는지 궁금한적 있으신가요?<br/>' +
@@ -100,7 +101,7 @@ const sessions: Session[] = [
   {
     type: SessionType.B,
     title:
-      '12만 글로벌 유저들이 생겨버린 Three.js 사이드 프로젝트 ─ ShaderGradient 개발기',
+      '10만 글로벌 유저들이 생겨버린 Three.js 사이드 프로젝트 ─ ShaderGradient 개발기 (feat. 프레이머)',
     description:
       '다들 사이드 프로젝트 하시죠? 저도 해봤습니다.. 일주일에 두시간씩 친구 디자이너와 근데 왠걸 반응이... 심상치 않아서 최근 10만 유저를 찍고 돈도 벌어주는 (1년에 160만원 정도..) 프로젝트가 되어버렸다면 믿으시겠습니까?<br/>' +
       '어떻게 이런 결과물이 나올 수 있던것일까요? 하고싶은거 다 해보고 (Three.js, glsl, ESM, Store First Component Design, URL DB, monorepo, 프레이머에서 웹앱 만들기), 변화무쌍한 플랫폼에 적응도해본 1년반간의 개발 스토리와, 이 프로덕트를 사람들이 좋아해줄 수 있었던 썰을 플어보려고 합니다',
@@ -114,7 +115,7 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.B,
-    title: '모던 웹 기술로 C++ 그래픽스 엔진 테스트 자동화하기',
+    title: '모던 웹 기술로 C++ 기반 렌더링 엔진 테스트 자동화하기',
     description:
       '크로스 플랫폼을 지원하는 벡터 그래픽스 엔진에 대한 품질 검사를 Front-End 기술만으로 검증하도록 파이프라인을 개선한 경험에 대해 이야기합니다.<br/>' +
       'Windows, MacOS, Android, iOS 그리고 Linux에 이르기까지 모든 환경에서의 적합성 테스트를 웹 페이지에서 한 번에 처리하며, 수만건의 테스트를 자동화하였습니다.\n' +
@@ -129,7 +130,7 @@ const sessions: Session[] = [
   },
   {
     type: SessionType.B,
-    title: '메타버스 서비스에서 React, WebRTC, Canvas 다루기',
+    title: '메타버스 서비스(ZEP)에서 게임과 WebRTC를 함께 적용하기',
     description:
       '1. WebRTC, ZEP 간략 소개<br/>' +
       '2. WebRTC 적용 과정<br/>' +
@@ -143,7 +144,7 @@ const sessions: Session[] = [
     speakers: [
       {
         name: '박영진',
-        company: '네이버',
+        company: '네이버 with ZEP',
       },
     ],
     order: 5,
@@ -156,7 +157,7 @@ const sessions: Session[] = [
     speakers: [
       {
         name: '정석호',
-        company: '토스',
+        company: '비바리퍼블리카',
       },
     ],
     order: 6,
