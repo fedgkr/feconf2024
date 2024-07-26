@@ -83,6 +83,10 @@ const Container = styled('div', {
       base: '40px',
       xl: '100px',
     },
+    paddingTop: {
+      base: '70px',
+      xl: '0px',
+    },
     width: '100%',
   },
 });
@@ -110,7 +114,10 @@ const TimeIcon = styled(ClockIcon, {
   base: {
     position: 'absolute',
     top: '0px',
-    left: '119px',
+    left: {
+      base: '0px',
+      xl: '119px',
+    },
     padding: '9px 8px 8px 9px',
     boxSizing: 'content-box !important',
     borderRadius: '10px',
