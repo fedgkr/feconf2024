@@ -44,6 +44,7 @@
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.2.5",
+    "push-dir": "^0.4.1",
     "typescript": "^5.1.6"
   }
 }

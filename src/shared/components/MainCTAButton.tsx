@@ -57,6 +57,7 @@ const Button = styled('a', {
           xl: '20px',
         },
         borderRadius: '10px',
+        maxWidth: '300px',
         width: {
           base: '100%',
           xl: '240px',
