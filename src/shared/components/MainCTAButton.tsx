@@ -71,6 +71,7 @@ const Button = styled('a', {
       presale: {
         backgroundColor: 'rgba(0, 0, 0, 0.3)',
         color: '#FFFFFF',
+        border: '1px solid rgba(255, 255, 255, 0.3)',
       },
       sale: {
         backgroundColor: '#FFFFFF',

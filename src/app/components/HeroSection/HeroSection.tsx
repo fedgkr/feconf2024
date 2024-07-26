@@ -55,6 +55,7 @@ const Container = styled(Column, {
     position: 'absolute',
     top: '50%',
     width: '100%',
+    padding: '0 20px',
     transform: 'translateY(-50%) translateY(-40px)',
   },
 });
@@ -101,6 +102,8 @@ const Info = styled(FadeIn, {
 
 const ButtonWrap = styled(FadeIn, {
   base: {
+    width: '100%',
+    textAlign: 'center',
     marginTop: {
       base: '50px',
       xl: '90px',
