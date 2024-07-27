@@ -15,7 +15,7 @@ const Header: FC = () => {
         </LogoWrap>
         <ActionWrap>
           <Place>서울특별시 광진구 능동로 209 | 세종대학교 광개토회관</Place>
-          <MainCTAButton size="s" status="presale" />
+          <MainCTAButton size="s" />
         </ActionWrap>
       </Wrap>
     </Container>

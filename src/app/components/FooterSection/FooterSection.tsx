@@ -42,7 +42,7 @@ const FooterSection: FC = () => {
           </InfoWrap>
         </FadeIn>
         <ButtonWrap distance={30}>
-          <MainCTAButton size="m" status="presale" />
+          <MainCTAButton size="m" />
         </ButtonWrap>
       </Column>
     </Section>

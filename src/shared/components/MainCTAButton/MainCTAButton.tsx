@@ -3,12 +3,14 @@ import { styled } from '@styled-system/jsx';
 import { match, P } from 'ts-pattern';
 import { TICKET_LINK, YOUTUBE_LINK } from '~/shared/constants';
 
+import { useEventStatus } from './hooks';
+
 interface Props {
   size: 's' | 'm';
-  status: 'presale' | 'sale' | 'soldout' | 'postevent';
 }
 
-const MainCTAButton: FC<PropsWithChildren<Props>> = ({ size, status }) => {
+const MainCTAButton: FC<PropsWithChildren<Props>> = ({ size }) => {
+  const status = useEventStatus();
   const label = match(status)
     .with('presale', () => '7월 31 구매 오픈')
     .with('sale', () => '티켓 구매하기')

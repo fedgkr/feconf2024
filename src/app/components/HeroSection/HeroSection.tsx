@@ -35,7 +35,7 @@ const HeroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
           <DataLocation />
         </Info>
         <ButtonWrap distance={60} duration={{ in: 0.8 }}>
-          <MainCTAButton size="m" status="presale" />
+          <MainCTAButton size="m" />
         </ButtonWrap>
       </Container>
     </Section>
