@@ -4,9 +4,12 @@ import { FC, useState } from 'react';
 import { styled } from '@styled-system/jsx';
 import { map, size } from 'lodash-es';
 import { FadeIn } from '~/shared/components';
-import { SessionType } from '~/features/programs/types';
 import type { Session } from '~/features/programs/types';
-import { timeLabelLookup } from '~/features/programs/constants';
+import { SessionType } from '~/features/programs/types';
+import {
+  lightningSessionTimeLabelLookup,
+  sessionTimeLabelLookup,
+} from '~/features/programs/constants';
 
 import { ClockIcon, SessionModal } from './components';
 import { useProgram } from '~/features/programs/contexts';
@@ -15,6 +18,7 @@ import {
   bSessionList,
   lightningSessionList,
 } from '~/features/programs/data/sessions';
+import { match } from 'ts-pattern';
 
 const sessionsLookup: Record<SessionType, Session[]> = {
   [SessionType.A]: aSessionList,
@@ -34,6 +38,9 @@ const SessionList: FC = () => {
   const handleChangeOpen = (open: boolean) => {
     if (!open) setOpen(open);
   };
+  const timeLabelLookup = match(currentTab)
+    .with(SessionType.Lightning, () => lightningSessionTimeLabelLookup)
+    .otherwise(() => sessionTimeLabelLookup);
   const length = sessions.length;
   return (
     <Container>

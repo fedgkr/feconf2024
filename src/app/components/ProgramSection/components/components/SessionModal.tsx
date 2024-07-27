@@ -3,7 +3,7 @@ import { FC, Fragment } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { styled } from '@styled-system/jsx';
 import { Session } from '~/features/programs/types';
-import { timeLabelLookup } from '~/features/programs/constants';
+import { sessionTimeLabelLookup } from '~/features/programs/constants';
 
 import CloseIcon from './CloseIcon';
 import { map, size } from 'lodash-es';
@@ -24,7 +24,7 @@ const SessionModal: FC<Props> = ({ session, open, onChangeOpen }) => {
             {session && (
               <Time>
                 <span>Speaker A</span>
-                <span>{timeLabelLookup[session.order]}</span>
+                <span>{sessionTimeLabelLookup[session.order]}</span>
               </Time>
             )}
             <Dialog.Close asChild>
