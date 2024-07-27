@@ -7,7 +7,7 @@ import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Mesh, ShaderMaterial, Vector2 } from 'three';
 import type { GUI as GUIType } from 'dat.gui';
 
-import auroraImage from '../assets/background4-tiny.png';
+import auroraImage from '../assets/background4-half.png';
 import { useHeroScreen } from '~/features/hooks/useHeroScreen';
 import { usePrefersReducedMotionRef } from '~/features/hooks/usePrefersReducedMotion';
 
