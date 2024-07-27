@@ -3,6 +3,7 @@ import { motion, Variants } from 'framer-motion';
 import { styled } from '@styled-system/jsx';
 
 interface Props {
+  className?: string;
   distance?: 0 | 20 | 30 | 60 | 80;
   duration?: {
     in?: number;

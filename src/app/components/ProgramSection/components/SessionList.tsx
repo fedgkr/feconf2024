@@ -34,8 +34,10 @@ const SessionList: FC = () => {
   const handleChangeOpen = (open: boolean) => {
     if (!open) setOpen(open);
   };
+  const length = sessions.length;
   return (
     <Container>
+      <Line className={'session-time-line'} />
       <TimeIcon />
       {map(sessions, (session, index) => {
         const { title, speakers, order } = session;
@@ -45,6 +47,15 @@ const SessionList: FC = () => {
             distance={30}
             onClick={() => handleClickSession(session)}
           >
+            <Line
+              className={
+                index === 0
+                  ? 'session-first-line'
+                  : index === length - 1
+                    ? 'session-last-line'
+                    : ''
+              }
+            />
             <Time>
               <span>{timeLabelLookup[order]}</span>
               <LiveIcon>
@@ -93,6 +104,7 @@ const Container = styled('div', {
 
 const Session = styled(FadeIn, {
   base: {
+    position: 'relative',
     width: '100%',
     display: 'flex',
     alignItems: 'flex-start',
@@ -110,13 +122,72 @@ const Session = styled(FadeIn, {
   },
 });
 
+const Line = styled(FadeIn, {
+  base: {
+    '--session-margin-top': {
+      base: '30px',
+      xl: '60px',
+    },
+    '--session-time-top': {
+      base: '0px',
+      xl: '58px',
+    },
+    '--session-time-height': '24px',
+    '--session-time-center': 'calc(var(--session-time-height) / 2)',
+    position: 'absolute',
+    top: {
+      base: 'calc(-1 * var(--session-margin-top))',
+      xl: 'calc(var(--session-time-top) + var(--session-time-center))',
+    },
+    height: {
+      // 24px 원이 포함된 영역 크기
+      // 14px 그 사이 여백
+      base: 'calc(var(--session-margin-top) + var(--session-time-height) + 14px)',
+      xl: 'calc(100% + var(--session-margin-top))',
+    },
+    left: {
+      base: '15px',
+      xl: '135px',
+    },
+    width: '1px',
+    background: 'rgba(255, 255, 255, 10%)',
+    '&.session-time-line': {
+      top: '35px',
+      height:
+        'calc(var(--session-margin-top) + var(--session-time-top) + var(--session-time-center) - 35px)',
+      display: {
+        base: 'none',
+        xl: 'block',
+      },
+    },
+    '&.session-first-line': {
+      // padding-top 35px
+      top: {
+        base: 'calc(-1 * var(--session-margin-top) - 35px)',
+        xl: 'calc(var(--session-time-top) + var(--session-time-center))',
+      },
+      height: {
+        // 24px 원이 포함된 영역 크기
+        // 14px 그 사이 여백
+        base: 'calc(var(--session-margin-top) + var(--session-time-height) + 14px + 35px)',
+        xl: 'calc(100% + var(--session-margin-top))',
+      },
+    },
+    '&.session-last-line': {
+      display: {
+        base: 'block',
+        xl: 'none',
+      },
+    },
+  },
+});
 const TimeIcon = styled(ClockIcon, {
   base: {
     position: 'absolute',
     top: '0px',
     left: {
-      base: '0px',
-      xl: '119px',
+      base: '-2px',
+      xl: '118px',
     },
     opacity: '0',
     transform: 'translateY(30px)',
@@ -145,10 +216,15 @@ const Time = styled('div', {
       base: 'initial',
       xl: '58px',
     },
-    marginRight: {
+    // 100px (시간) + 86px (충분한 오른쪽 여백)
+    width: {
       base: 'initial',
-      xl: '84px',
+      xl: '186px',
     },
+    // marginRight: {
+    //   base: 'initial',
+    //   xl: '84px',
+    // },
     paddingLeft: {
       base: '31px',
       xl: 'initial',
@@ -165,7 +241,8 @@ const LiveIcon = styled('div', {
     top: '50%',
     right: {
       base: 'initial',
-      xl: '-27px',
+      // 여백을 줬기 때문에 자체적인 right 값 부여
+      xl: '58px',
     },
     left: {
       base: '8px',
