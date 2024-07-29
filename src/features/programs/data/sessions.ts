@@ -64,11 +64,11 @@ const sessions: Session[] = [
   {
     type: SessionType.A,
     title:
-      '아�니 이 글자 왜 들어간거에요? (부제: 알아두면 가끔 쓸모있는 한글 유니코드 완전 정복)',
+      '아�니 이 글자 왜 들어간거예요? (부제: 알아두면 가끔 쓸모있는 한글 유니코드 완전 정복)',
     description:
       '맥에서 첨부한 파일들 윈도우에서 파일 깨지는 경험 해본 적 있으신가요?<br/>' +
       'url 에 한글 넣고나면 한글이 아니라 인코딩으로 어떻게 변하는지 궁금한적 있으신가요?<br/>' +
-      '레거시 코드를 만져야 해서 euc-kr 로 설정된 웹 페이지를 처리해본 경험 해본적 있으신가요?<br/>' +
+      '레거시 코드를 만져야 해서 euc-kr로 설정된 웹 페이지를 처리한 경험 있으신가요?<br/>' +
       '한글 인코딩, 코드 이 세션으로 완전 정복 해드립니다.',
     speakers: [
       {
@@ -102,9 +102,9 @@ const sessions: Session[] = [
     type: SessionType.B,
     title:
       '10만 글로벌 유저들이 생겨버린 Three.js 사이드 프로젝트 ─ ShaderGradient 개발기 (feat. 프레이머)',
-    description:
-      '다들 사이드 프로젝트 하시죠? 저도 해봤습니다.. 일주일에 두시간씩 친구 디자이너와 근데 왠걸 반응이... 심상치 않아서 최근 10만 유저를 찍고 돈도 벌어주는 (1년에 160만원 정도..) 프로젝트가 되어버렸다면 믿으시겠습니까?<br/>' +
-      '어떻게 이런 결과물이 나올 수 있던것일까요? 하고싶은거 다 해보고 (Three.js, glsl, ESM, Store First Component Design, URL DB, monorepo, 프레이머에서 웹앱 만들기), 변화무쌍한 플랫폼에 적응도해본 1년반간의 개발 스토리와, 이 프로덕트를 사람들이 좋아해줄 수 있었던 썰을 플어보려고 합니다',
+    description: `다들 사이드 프로젝트 하시죠? 저도 해봤습니다..(일주일에 세 시간씩 친구 디자이너와)<br/>
+근데 웬걸 반응이.. 심상치 않아서 최근 12만 유저를 찍고 돈도 벌어주는 (1년에 200만 원 정도) 프로젝트가 되어버렸다면 믿으시겠습니까? 어떻게 이런 결과물이 나올 수 있던 것일까요?<br/>
+하고 싶은 거 다 해보고 (Three.js, GLSL, ESM, Store First Component Design, URL DB, monorepo, Web Application with Framer), 변화무쌍한 플랫폼에 적응도 해본 1년 반간의 개발 스토리와, 이 프로덕트를 사람들이 좋아해 줄 수 있었던 썰을 풀어보려고 합니다`,
     speakers: [
       {
         name: '지용민',
@@ -131,16 +131,11 @@ const sessions: Session[] = [
   {
     type: SessionType.B,
     title: '메타버스 서비스(ZEP)에서 게임과 WebRTC를 함께 적용하기',
-    description:
-      '1. WebRTC, ZEP 간략 소개<br/>' +
-      '2. WebRTC 적용 과정<br/>' +
-      '- 미디어의 상태와 게임의 상태 동기화<br/>' +
-      '- 성능을 생각하며 개발하기<br/>' +
-      '- RxJS로의 리팩터링 시도 (시간이 된다면)<br/>' +
-      '3. 적용과정에서의 트러블슈팅<br/>' +
-      '- iOS에서의 문제점(성능)<br/>' +
-      '- React로 인한 문제점(동기화)<br/>' +
-      '4. Q&A',
+    description: `0. WebRTC, ZEP 소개<br/>
+1. WebRTC 솔루션을 교체하며<br/>
+2. React로 이동하며<br/>
+3. 리팩터링을 해보며<br/>
+4. 다양한 문제점과 해결`,
     speakers: [
       {
         name: '박영진',
