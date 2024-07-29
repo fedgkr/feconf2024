@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { styled } from '@styled-system/jsx';
 import { Column, FadeIn, SectionTitle } from '~/shared/components';
 
-import patternLogo from './assets/ts-pattern.png';
 import pretendardLogo from './assets/pretendard.png';
 import zodLogo from './assets/zod.png';
 import kyLogo from './assets/ky.png';
@@ -37,9 +36,6 @@ const OpenSourceSection: FC = () => {
         <Wrap distance={0} duration={{ in: 0.2 }}>
           <FadeIn distance={30}>
             <List>
-              <Item>
-                <Image src={patternLogo.src} alt="ts-pattern" />
-              </Item>
               <Item>
                 <Image
                   src={pretendardLogo.src}
