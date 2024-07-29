@@ -35,7 +35,7 @@ const Footer: FC = () => {
             <IconWrap>
               <FAQIcon />
             </IconWrap>
-            FQA
+            FAQ
           </Link>
         </LinkWrap>
         <Rights>© FEConf 2024 All rights reserved.</Rights>
