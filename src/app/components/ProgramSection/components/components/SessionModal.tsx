@@ -2,8 +2,11 @@ import { FC, Fragment } from 'react';
 
 import * as Dialog from '@radix-ui/react-dialog';
 import { styled } from '@styled-system/jsx';
-import { Session } from '~/features/programs/types';
-import { sessionTimeLabelLookup } from '~/features/programs/constants';
+import { Session, SessionType } from '~/features/programs/types';
+import {
+  lightningSessionTimeLabelLookup,
+  sessionTimeLabelLookup,
+} from '~/features/programs/constants';
 
 import CloseIcon from './CloseIcon';
 import { map, size } from 'lodash-es';
@@ -14,7 +17,17 @@ interface Props {
   onChangeOpen: (open: boolean) => void;
 }
 
+const labelLookup: Record<SessionType, string> = {
+  [SessionType.A]: 'Speaker A',
+  [SessionType.B]: 'Speaker B',
+  [SessionType.Lightning]: 'Lightning Talk',
+};
+
 const SessionModal: FC<Props> = ({ session, open, onChangeOpen }) => {
+  const timeLabelLookup =
+    session?.type === SessionType.Lightning
+      ? lightningSessionTimeLabelLookup
+      : sessionTimeLabelLookup;
   return (
     <Dialog.Root open={open} onOpenChange={onChangeOpen}>
       <Dialog.Portal>
@@ -23,8 +36,8 @@ const SessionModal: FC<Props> = ({ session, open, onChangeOpen }) => {
           <Header>
             {session && (
               <Time>
-                <span>Speaker A</span>
-                <span>{sessionTimeLabelLookup[session.order]}</span>
+                <span>{labelLookup[session.type]}</span>
+                <span>{timeLabelLookup[session.order]}</span>
               </Time>
             )}
             <Dialog.Close asChild>
