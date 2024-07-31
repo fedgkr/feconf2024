@@ -20,7 +20,7 @@ const MainCTAButton: FC<PropsWithChildren<Props>> = ({ size }) => {
     .exhaustive();
   const href = match(eventStatus)
     .with(P.union('presale', 'sale'), () => TICKET_LINK)
-    .with('soldout', () => undefined)
+    .with('soldout', () => TICKET_LINK)
     .with('postevent', () => YOUTUBE_LINK)
     .exhaustive();
   const status = match(eventStatus)
