@@ -28,12 +28,12 @@ const IntroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
       <Column>
         <FadeIn>
           <Title>
-            <Highlight>프론트 엔지니어</Highlight>들에 의한,
+            <Highlight>프론트엔드 엔지니어</Highlight>들에 의한,
           </Title>
         </FadeIn>
         <FadeIn>
           <Title>
-            <Highlight>프론트 엔지니어</Highlight>들을 위한
+            <Highlight>프론트엔드 엔지니어</Highlight>들을 위한
           </Title>
         </FadeIn>
         <FadeIn>
@@ -43,8 +43,8 @@ const IntroSection = forwardRef<HTMLElement, Props>(({ active }, ref) => {
         </FadeIn>
         <FadeIn>
           <Description>
-            더 나은 프론트 엔지니어링을 위해 노력하는 이들이 함께 모여 현장에서
-            겪는 다양한 문제를 함께 공유하고 성장합니다.
+            더 나은 프론트엔드 엔지니어링을 위해 노력하는 이들이 함께 모여
+            현장에서 겪는 다양한 문제를 함께 공유하고 성장합니다.
           </Description>
         </FadeIn>
       </Column>
