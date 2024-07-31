@@ -14,7 +14,7 @@ const MainCTAButton: FC<PropsWithChildren<Props>> = ({ size }) => {
   const label = match(status)
     .with('presale', () => '7월 31 구매 오픈')
     .with('sale', () => '티켓 구매하기')
-    .with('soldout', () => 'Sold - Out')
+    .with('soldout', () => 'Sold Out')
     .with('postevent', () => '세션 보러가기')
     .exhaustive();
   const href = match(status)
