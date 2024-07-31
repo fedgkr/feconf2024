@@ -83,6 +83,7 @@ const Button = styled('a', {
       soldout: {
         backgroundColor: 'rgba(0, 0, 0, 0.3)',
         color: '#FFFFFF',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
       },
       postevent: {
         backgroundColor: '#FFFFFF',

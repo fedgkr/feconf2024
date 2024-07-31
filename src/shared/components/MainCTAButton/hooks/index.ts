@@ -14,7 +14,7 @@ const getStatus = (): Status =>
       now => now > EVENT_END_TIMESTAMP,
       () => 'postevent' as const
     )
-    .otherwise(() => 'sale' as const);
+    .otherwise(() => 'soldout' as const);
 
 const useEventStatus = () => {
   const [status, setStatus] = useState<Status>(getStatus());
