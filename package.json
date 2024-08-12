@@ -1,7 +1,32 @@
 {
   "name": "feconf2024",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "repository": "git@github.com:fedgkr/feconf2024.git",
+  "contributors": [
+    {
+      "name": "Chaehyun Kim",
+      "email": "elina001106@gmail.com",
+      "url": "https://www.linkedin.com/in/chaehyunkim1106"
+    },
+    {
+      "name": "Juyun Cheon",
+      "email": "ewq3167@gmail.com",
+      "url": "https://www.linkedin.com/in/juyun-cheon-713b37243"
+    },
+    {
+      "name": "Daybrush",
+      "email": "daybrush@gmail.com",
+      "url": "https://github.com/daybrush"
+    },
+    {
+      "name": "Jooyoung Moon",
+      "email": "hckrmoon@gmail.com",
+      "url": "https://github.com/codemilli"
+    }
+  ],
+  "homepage": "https://2024.feconf.kr",
+  "license": "MIT",
   "scripts": {
     "prepare": "panda codegen",
     "dev": "next dev",
